@@ -4,6 +4,13 @@ module.exports = {
     'plugin:react/recommended',
   ],
   rules: {
+    'max-len': ['error', {
+      ignoreTemplateLiterals: true,
+      ignoreComments: true,
+    }],
+    'jsx-a11y/label-has-associated-control': ["error", {
+      assert: "either",
+    }],
     // React
     'react/prop-types': 0,
     'react/self-closing-comp': 0,
