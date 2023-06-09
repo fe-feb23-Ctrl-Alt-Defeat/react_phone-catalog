@@ -6,14 +6,17 @@ import { Tablets } from './pages/Tablets/Tablets';
 import { Accessories } from './pages/Accessories/Accessories';
 import { Favorites } from './pages/Favorites/Favorites';
 import { Cart } from './pages/Cart/Cart';
-import { PhoneInfo } from './pages/PhoneInfo/PhoneInfo';
-import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Footer } from './compononts/Footer/Footer';
+import { Header } from './compononts/Header/Header';
+import { PhoneInfo } from './pages/PhoneInfo/PhoneInfo';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 export const App: FC = () => {
   return (
     <>
+      <Header />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
 
