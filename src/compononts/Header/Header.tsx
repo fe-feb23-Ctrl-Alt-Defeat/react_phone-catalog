@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <div className="header">
-        <div className="container">
+        <div className="containerHeader">
           <nav className="header__nav-links">
             <div className="header__logo">
               {/* фото лого */}
@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
                 <NavLink
                   to="/"
                   className={
-                    ({ isActive }) => classNames('heder__list_link',
+                    ({ isActive }) => classNames('header__list_link',
                       { 'is-active': isActive })
                   }
                 >
@@ -37,7 +37,8 @@ export const Header: React.FC = () => {
                 <NavLink
                   to="/phones"
                   className={
-                    ({ isActive }) => classNames({ 'is-active': isActive })
+                    ({ isActive }) => classNames('header__list_link',
+                      { 'is-active': isActive })
                   }
                 >
                   PHONE
@@ -47,7 +48,8 @@ export const Header: React.FC = () => {
                 <NavLink
                   to="/tablets"
                   className={
-                    ({ isActive }) => classNames({ 'is-active': isActive })
+                    ({ isActive }) => classNames('header__list_link',
+                      { 'is-active': isActive })
                   }
                 >
                   TABLETS
@@ -57,7 +59,8 @@ export const Header: React.FC = () => {
                 <NavLink
                   to="/accessories"
                   className={
-                    ({ isActive }) => classNames({ 'is-active': isActive })
+                    ({ isActive }) => classNames('header__list_link',
+                      { 'is-active': isActive })
                   }
                 >
                   ACCESSORIES
