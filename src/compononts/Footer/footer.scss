@@ -81,6 +81,10 @@
       height: 32px;
 
       border: 1px solid #B4BDC4;
+      transition: 0.5s;
+      &:hover {
+        background-color: #E2E6E9;
+      }
     }
   }
 }
