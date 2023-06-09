@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import './phoneInfo.scss'
+import './phoneInfo.scss';
 
 export const PhoneInfo = () => {
   return (
-    <div className='main'>
-  
+    <div className="main">
+
     </div>
-  )
-}
+  );
+};

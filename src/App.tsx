@@ -9,21 +9,28 @@ import { Cart } from './pages/Cart/Cart';
 import { PhoneInfo } from './pages/PhoneInfo/PhoneInfo';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 import { HomePage } from './pages/HomePage/HomePage';
+import { Footer } from './compononts/Footer/Footer';
 
-export const App: FC = () => (
-  <Routes>
-    <Route path="/" element={<HomePage />} />
+export const App: FC = () => {
+  return (
+    <>
+      <Footer />
 
-    <Route path="/phones">
-      <Route index element={<Phones />} />
-      <Route path=":phoneId" element={<PhoneInfo />} />
-    </Route>
-    <Route path="/tablets" element={<Tablets />} />
-    <Route path="/accessories" element={<Accessories />} />
-    <Route path="/favorites" element={<Favorites />} />
-    <Route path="/cart" element={<Cart />} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
 
-    <Route path="/home" element={<Navigate to="/" replace />} />
-    <Route path="*" element={<PageNotFound />} />
-  </Routes>
-);
+        <Route path="/phones">
+          <Route index element={<Phones />} />
+          <Route path=":phoneId" element={<PhoneInfo />} />
+        </Route>
+        <Route path="/tablets" element={<Tablets />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/cart" element={<Cart />} />
+
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
+  );
+};
