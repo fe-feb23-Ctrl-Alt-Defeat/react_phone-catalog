@@ -7,12 +7,15 @@ import { Favorites } from './pages/Favorites/Favorites';
 import { Cart } from './pages/Cart/Cart';
 import { PhoneInfo } from './pages/PhoneInfo/PhoneInfo';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';
+import { HomePage } from './pages/HomePage/HomePage';
 
 export const App = () => {
   return (
     <>
     <Routes>
-        <Route path='/'> 
+        <Route path='/' element={<HomePage />}/>
+
+        <Route path='/phones'> 
           <Route index element={<Phones />}/>
           <Route path=':phoneId' element={<PhoneInfo />}/>
         </Route>
