@@ -3,6 +3,7 @@ import React from 'react';
 
 import up_arrow from '../../images/up_arrow.svg';
 import logo from '../../images/logo_gnce_gadgets.svg';
+
 import './footer.scss';
 
 export const Footer = () => {
