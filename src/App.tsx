@@ -14,8 +14,6 @@ import { Footer } from './compononts/Footer/Footer';
 export const App: FC = () => {
   return (
     <>
-      <Footer />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -31,6 +29,8 @@ export const App: FC = () => {
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
+      <Footer />
     </>
   );
 };
