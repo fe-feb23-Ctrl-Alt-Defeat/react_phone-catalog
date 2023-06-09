@@ -3,6 +3,7 @@ import React from 'react';
 
 import up_arrow from '../../images/up_arrow.svg';
 import logo from '../../images/logo_gnce_gadgets.svg';
+
 import './footer.scss';
 
 export const Footer = () => {
@@ -10,7 +11,7 @@ export const Footer = () => {
     <div className="footer">
       <div className="container">
         <div className="footer__content">
-          <a href="/" className="footer__logo">
+          <a href="/home" className="footer__logo">
             <img
               src={logo}
               alt="logo"
@@ -37,9 +38,11 @@ export const Footer = () => {
           </ul>
 
           <div className="footer__toTop">
-            <div className="footer__toTop-text">Back to top</div>
+            <div className="footer__toTop-text">
+              Back to top
+            </div>
             <a
-              href="/"
+              href="/home"
               className="footer__toTop_arrow"
             >
               <img src={up_arrow} alt="go to top" />

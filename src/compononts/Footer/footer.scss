@@ -1,3 +1,6 @@
+@import '../../styles/mixins/mixins.scss';
+@import '../../styles/pageContainer/pageContainer.scss';
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -34,6 +37,14 @@
 
     &_link {
       color: #89939A;
+      transition: 0.5s;
+
+      &:hover {
+        color: #313237;
+        font-family: 'Mont';
+        font-style: normal;
+        font-weight: 800;
+      }
     }
   }
 
@@ -74,14 +85,70 @@
   }
 }
 
+@include onTablet {
+  .container {
+    padding: 0px 32px 0px 32px;
+  }
 
+  .footer__list {
+    gap: 13.5px;
+  }
+}
 
+@include onPhone {
+  .container {
+    padding: 0 16px 0 16px;
+  }
+  .footer {
+    height: max-content;
+  
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  
+      height: 257px;
 
+      padding-top: 33.8px;
+      padding-bottom: 32px;
+    }
 
+    &__logo{
+      width: 90px;
+      height: 31px;
+      margin-bottom: 32px;
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+  
+      &_img {
+        min-width: 100%;
+        height: auto;
+      }
+    }
+  
+    &__list {
+      flex-direction: column;
+      gap: 16px;
 
-  padding: 0px 152px 0px 152px;
+      margin-bottom: 32px;
+    }
+  
+    &__toTop {
+      display: flex;
+      align-self: center;
+      align-items: center;
+
+  
+      &_arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        width: 32px;
+        height: 32px;
+  
+        border: 1px solid #B4BDC4;
+      }
+    }
+  }
 }
