@@ -1,2 +1,8 @@
 @import './styles/reset.scss';
 @import './styles/normalize.scss';
+
+.col {
+  background-color: purple;
+  min-height: 100vh;
+  color: wheat;
+}

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './homePage.scss'
+import './phoneInfo.scss'
 
-export const HomePage = () => {
+export const PhoneInfo = () => {
   return (
     <div className='main'>
   
