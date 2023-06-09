@@ -1,0 +1,158 @@
+@import '../../styles/mixins/mixins.scss';
+@import '../../styles/pageContainer/pageContainer.scss';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  
+  width: 100%;
+  height: 96px;
+
+  background: #fff;
+  box-shadow: 0px -1px 0px #E2E6E9;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1200px;
+    height: 96px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 107px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: #89939A;
+
+    &_link {
+      color: #89939A;
+      transition: 0.5s;
+
+      &:hover {
+        color: #313237;
+        font-family: 'Mont';
+        font-style: normal;
+        font-weight: 800;
+      }
+    }
+  }
+
+  &__logo{
+    width: 90px;
+    height: 31px;
+
+    &_img {
+      min-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__toTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+
+    color: #89939A;
+
+    &_arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid #B4BDC4;
+      transition: 0.5s;
+      &:hover {
+        background-color: #E2E6E9;
+      }
+    }
+  }
+}
+
+@include onTablet {
+  .container {
+    padding: 0px 32px 0px 32px;
+  }
+
+  .footer__list {
+    gap: 13.5px;
+  }
+}
+
+@include onPhone {
+  .container {
+    padding: 0 16px 0 16px;
+  }
+  .footer {
+    height: max-content;
+  
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+  
+      height: 257px;
+
+      padding-top: 33.8px;
+      padding-bottom: 32px;
+    }
+
+    &__logo{
+      width: 90px;
+      height: 31px;
+      margin-bottom: 32px;
+
+  
+      &_img {
+        min-width: 100%;
+        height: auto;
+      }
+    }
+  
+    &__list {
+      flex-direction: column;
+      gap: 16px;
+
+      margin-bottom: 32px;
+    }
+  
+    &__toTop {
+      display: flex;
+      align-self: center;
+      align-items: center;
+
+  
+      &_arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        width: 32px;
+        height: 32px;
+  
+        border: 1px solid #B4BDC4;
+      }
+    }
+  }
+}
