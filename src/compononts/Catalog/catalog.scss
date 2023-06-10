@@ -1,0 +1,76 @@
+@import '../../styles/reset.scss';
+@import '../../styles/mixins/mixins.scss';
+@import '../../styles/pageContainer/pageContainer.scss';
+@import '../../styles/normalize.scss';
+
+.catalog {
+  margin-top: 24px;
+  margin-bottom: 180px;
+
+  &__routing {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    margin-bottom: 40px;
+
+    &-icon-home {
+      max-width: 16px;
+      max-height: 16px;
+
+      &-link {
+        max-width: 16px;
+        max-height: 16px;
+      }
+
+      &-image {
+        color: #313237;
+      }
+    }
+
+    &-icon-arrow {
+
+      &-image {
+        color: #B4BDC4;
+      }
+    }
+
+    &-selected-page {
+
+      &-paragraph {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #89939A;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 40px;
+
+    &-head {
+      font-family: 'Mont-Black';
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+
+      color: #313237;
+    }
+
+    &-description {
+      font-family: 'Mont-SemiBold';
+      font-size: 14px;
+      line-height: 21px;
+
+      color: #89939A;
+    }
+  }
+
+  &__sorts {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+  }
+}
