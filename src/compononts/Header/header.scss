@@ -1,3 +1,5 @@
+@import '../../styles/mixins/mixins.scss';
+
 .containerHeader {
   max-width: 1440px;
   margin: 0 auto;
@@ -37,6 +39,17 @@
     display: flex;
     padding: 0;
     margin-left: 48px;
+    gap: 64px;
+
+    @include onTablet {
+        margin-left: 32px;
+        gap: 32px;
+      }
+
+      @include onPhone {
+        display: none;
+        pointer-events: none;
+      }
 
     &_link {
       color: #89939A;;
@@ -46,7 +59,6 @@
       position: relative;
       height: 64px;
       line-height: 64px;
-      margin-right: 64px;
 
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -72,6 +84,27 @@
     align-items: center;
     box-shadow: -1px 0px 1px #E2E6E9;
 
+    @include onPhone {
+      display: none;
+      pointer-events: none;
+    }
+
+  }
+
+  &__menu-opener {
+    display: none;
+    pointer-events: none;
+  
+    @include onPhone {
+      display: flex;
+      width: 64px;
+      height: 64px;
+  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: -1px 0px 1px #E2E6E9;
+    }
   }
 }
 
