@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react';
 
 import up_arrow from '../../images/up_arrow.svg';
@@ -47,12 +44,13 @@ export const Footer = () => {
             <div className="footer__toTop-text">
               Back to top
             </div>
-            <div
+            <button
+              type="button"
               className="footer__toTop_arrow"
               onClick={handleScrollToTop}
             >
               <img src={up_arrow} alt="go to top" />
-            </div>
+            </button>
           </div>
         </div>
       </div>
