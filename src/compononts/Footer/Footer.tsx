@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react';
 
@@ -7,6 +9,10 @@ import logo from '../../images/logo_gnce_gadgets.svg';
 import './footer.scss';
 
 export const Footer = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="footer">
       <div className="container">
@@ -41,12 +47,12 @@ export const Footer = () => {
             <div className="footer__toTop-text">
               Back to top
             </div>
-            <a
-              href="/home"
+            <div
               className="footer__toTop_arrow"
+              onClick={handleScrollToTop}
             >
               <img src={up_arrow} alt="go to top" />
-            </a>
+            </div>
           </div>
         </div>
       </div>
