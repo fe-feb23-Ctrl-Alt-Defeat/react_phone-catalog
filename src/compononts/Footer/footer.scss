@@ -90,19 +90,12 @@
 }
 
 @include onTablet {
-  .container {
-    padding: 0px 32px 0px 32px;
-  }
-
   .footer__list {
     gap: 13.5px;
   }
 }
 
 @include onPhone {
-  .container {
-    padding: 0 16px 0 16px;
-  }
   .footer {
     height: max-content;
   
