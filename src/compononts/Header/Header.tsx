@@ -76,7 +76,6 @@ export const Header: React.FC = () => {
                 alt="favourite"
                 className="header__favorite-image"
               />
-              <i className="fas fa-heart"></i>
             </div>
             <div className="header__shopping-bag">
               {/* иконка корзины */}
@@ -85,8 +84,6 @@ export const Header: React.FC = () => {
                 alt="shopping_bag"
                 className="header__shopping-bag-image"
               />
-              <i className="fas fa-shopping-cart">
-              </i>
             </div>
           </div>
         </div>

@@ -1,4 +1,7 @@
 .containerHeader {
+  max-width: 1440px;
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,9 +11,7 @@
 .header {
   box-shadow: 0px 1px 0px #E2E6E9;
 
-  font-family: 'Mont';
-  font-style: normal;
-  font-weight: 800;
+  font-family: 'Mont-Bold';
   font-size: 12px;
   line-height: 11px;
 
@@ -59,9 +60,6 @@
   &__right-section {
     display: flex;
     align-items: center;
-
-    margin-left: 735px;
-    margin-right: 20px;
   }
 
   &__favorite,
@@ -72,11 +70,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 0px #E2E6E9;
+    box-shadow: -1px 0px 1px #E2E6E9;
 
-    &-image {
-      padding: 32px;
-    }
   }
 }
 
