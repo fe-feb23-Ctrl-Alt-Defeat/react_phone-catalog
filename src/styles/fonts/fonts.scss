@@ -2,16 +2,19 @@
   font-family: 'Mont-Bold';
   src: url('../../utils/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../../utils/fonts/Mont-Regular.otf') format('opentype');
-  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont-SemiBold';
   src: url('../../utils/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('../../utils/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 500;
+  font-style: normal;
 }
