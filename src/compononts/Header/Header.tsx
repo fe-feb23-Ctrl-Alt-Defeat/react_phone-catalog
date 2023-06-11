@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
 import Logo from '../../images/logo_gnce_gadgets.svg';
@@ -11,11 +11,29 @@ import Favourite from '../../images/icon_favourite.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
 
-interface Props {
-  setIsOpenBurger: (open: boolean) => void;
-}
+export const Header: React.FC = () => {
+  const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(false);
 
-export const Header: React.FC<Props> = () => {
+  const handleBurgerToggle = () => {
+    setIsBurgerOpened(currState => !currState);
+    setScrollLocked(currState => !currState);
+
+    console.log(123);
+  };
+
+  useEffect(() => {
+    if (scrollLocked) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [scrollLocked]);
+
   return (
     <>
       <div className="header">
@@ -78,7 +96,10 @@ export const Header: React.FC<Props> = () => {
             </ul>
           </nav>
 
-          <div className="header__right-section">
+          <div
+            className="header__right-section"
+            onClick={handleBurgerToggle}
+          >
             {/* фото фейворит */}
             <NavLink
               to="/favorites"
@@ -117,15 +138,14 @@ export const Header: React.FC<Props> = () => {
                 src={Menu_opener}
                 alt="menu-opener"
                 className="header__menu-opener-image"
-                onClick={() => console.log(123)}
               />
             </div>
           </div>
         </div>
       </div>
 
-      <nav className="menu">
-        <div className="menu__content">
+      {isBurgerOpened && (
+        <nav className="menu">
           <div className="menu__top">
             <ul className="menu__list">
               <li className="menu__list_item">
@@ -205,8 +225,8 @@ export const Header: React.FC<Props> = () => {
               />
             </NavLink>
           </div>
-        </div>
-      </nav>
+        </nav>
+      )}
     </>
   );
 };
