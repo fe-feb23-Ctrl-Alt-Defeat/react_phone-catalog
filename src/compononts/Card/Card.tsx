@@ -15,9 +15,6 @@ export const Card: React.FC<Props> = ({ cardData }) => {
   const [isFavoriteSelected, setIsFavoriteSelected] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
 
-  // eslint-disable-next-line no-console
-  console.log(cardData);
-
   return (
     <div className="card">
       <div className="card__content">
