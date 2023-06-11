@@ -74,7 +74,7 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="catalog__products">
-          {catalogData.length && catalogData.map(
+          {catalogData.map(
             cardData => <Card key={cardData.name} cardData={cardData} />,
           )}
         </div>
