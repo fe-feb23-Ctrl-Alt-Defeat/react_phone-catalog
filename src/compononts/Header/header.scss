@@ -135,6 +135,8 @@
     display: flex;
     margin: 0 auto;
 
+    overflow: hidden;
+
     z-index: 15;
   }
 
@@ -162,8 +164,11 @@
 
   &__buttom {
     @include onPhone {
-      height:  24px;
-      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      height:  64px;
+      width: 100vh;
       border: 1px solid red;
     }
 
@@ -179,6 +184,10 @@
 .is-active {
   color: #313237;
 
+  @include onPhone {
+    color: #313237;
+  }
+
   &::after {
     position: absolute;
     display: block;
@@ -188,14 +197,18 @@
     bottom: 0;
     background-color: #313237;
     border-radius: 8px;
+
+    @include onPhone {
+      &::after{
+        position: absolute;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 4px;
+        bottom: 0;
+        background-color: #313237;
+        border-radius: 8px;
+      }
+    }
   }
-}
-
-.zindex {
-  background-color: #fff;
-
-  height: 100%;
-  width: 100%;
-
-  z-index: 100;
 }

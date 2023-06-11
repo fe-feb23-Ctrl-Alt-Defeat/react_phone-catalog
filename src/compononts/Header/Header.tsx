@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import classNames from 'classnames';
@@ -7,7 +11,11 @@ import Favourite from '../../images/icon_favourite.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
 
-export const Header: React.FC = () => {
+interface Props {
+  setIsOpenBurger: (open: boolean) => void;
+}
+
+export const Header: React.FC<Props> = () => {
   return (
     <>
       <div className="header">
@@ -101,12 +109,15 @@ export const Header: React.FC = () => {
               />
             </NavLink>
 
-            <div className="header__menu-opener">
+            <div
+              className="header__menu-opener"
+            >
               {/* иконка menu */}
               <img
                 src={Menu_opener}
                 alt="menu-opener"
                 className="header__menu-opener-image"
+                onClick={() => console.log(123)}
               />
             </div>
           </div>
@@ -196,8 +207,6 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </nav>
-      <div className="zindex">
-      </div>
     </>
   );
 };
