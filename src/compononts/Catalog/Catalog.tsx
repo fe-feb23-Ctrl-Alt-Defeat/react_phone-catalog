@@ -6,6 +6,7 @@ import { Card } from '../Card/Card';
 import { DropDown } from '../SortInput/DropDown';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
+import { DropDown } from '../SortInput/DropDown';
 
 
 export interface Option {
