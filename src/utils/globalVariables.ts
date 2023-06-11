@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://95.46.140.240:28015/';
+export const BASE_URL = 'https://fe-feb23-team8-backend.onrender.com/';

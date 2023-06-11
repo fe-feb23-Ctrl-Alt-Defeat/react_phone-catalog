@@ -49,6 +49,7 @@
     &_img {
       max-width: 100%;
       height: auto;
+      max-height: 208px;
       object-fit: contain;
 
       @include onPhone {
@@ -65,6 +66,7 @@
     font-family: 'Mont-SemiBold';
     font-size: 14px;
     line-height: 21px;
+    height: 63px;
 
     color: #313237;
 

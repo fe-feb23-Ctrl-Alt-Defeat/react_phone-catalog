@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import Favorite from '../../images/icon_favourite.svg';
 import redHeart from '../../images/redHeart.svg';
 import { CardData } from '../../types/CardData';
-import { BASE_URL } from '../../utils/globalVariables';
 
 type Props = {
   cardData: CardData;
@@ -20,8 +19,8 @@ export const Card: React.FC<Props> = ({ cardData }) => {
       <div className="card__content">
         <a href="/" className="card__image">
           <img
-            src={`${BASE_URL}${cardData.image}`}
-            alt="phome"
+            src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${cardData.image}`}
+            alt="phone_image"
             className="card__image_img"
           />
         </a>
