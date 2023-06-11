@@ -4,8 +4,18 @@
   }
 }
 
+@mixin onLowTablet {
+  @media (max-width: 768px){
+    @content;
+  }
+}
+
 @mixin onPhone {
   @media (max-width: 639px) {
     @content;
   }
+}
+
+@mixin query ($cols) {
+  grid-template-columns: repeat($cols, 1fr);
 }

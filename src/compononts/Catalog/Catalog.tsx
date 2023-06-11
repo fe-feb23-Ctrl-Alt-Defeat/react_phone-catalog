@@ -3,6 +3,7 @@ import './catalog.scss';
 import IconHome from '../../images/icon_home.svg';
 import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { SortInput } from '../SortInput/SortInput';
+import { Card } from '../Card/Card';
 
 export interface Option {
   title: string;
@@ -56,6 +57,25 @@ export const Catalog: React.FC = () => {
         <div className="catalog__sorts">
           <SortInput options={options[0]} />
           <SortInput options={options[1]} />
+        </div>
+
+        <div className="catalog__products">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </div>
       </div>
     </div>

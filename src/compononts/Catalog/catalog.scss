@@ -73,4 +73,24 @@
     justify-content: space-between;
     width: 350px;
   }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-content: start;
+    gap: 40px 16px;
+ 
+    @include onTablet {
+      @include query(3);
+    }
+
+    @include onLowTablet {
+      @include query(2);
+    }
+
+    @include onPhone {
+      @include query(1);
+    }
+  }
 }
