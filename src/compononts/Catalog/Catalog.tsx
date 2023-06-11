@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './catalog.scss';
 import IconHome from '../../images/icon_home.svg';
 import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { SortInput } from '../SortInput/SortInput';
 import { Card } from '../Card/Card';
+import { getProducts } from '../../api/products';
+import { CardData } from '../../types/CardData';
 
 export interface Option {
   title: string;
@@ -22,6 +24,18 @@ const options: Option[] = [
 ];
 
 export const Catalog: React.FC = () => {
+  const [catalogData, setCatalogData] = useState<CardData[]>([]);
+
+  const loadData = async () => {
+    const dataFromServer = await getProducts();
+
+    setCatalogData(dataFromServer);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <div className="catalog">
       <div className="container">
@@ -60,22 +74,9 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="catalog__products">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {catalogData.length && catalogData.map(
+            cardData => <Card key={cardData.name} cardData={cardData} />,
+          )}
         </div>
       </div>
     </div>
