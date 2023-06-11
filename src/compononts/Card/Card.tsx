@@ -4,33 +4,41 @@ import './card.scss';
 import classNames from 'classnames';
 import Favorite from '../../images/icon_favourite.svg';
 import redHeart from '../../images/redHeart.svg';
-import testPhoto from '../../images/phoneTest.png';
+import { CardData } from '../../types/CardData';
+import { BASE_URL } from '../../utils/globalVariables';
 
-export const Card = () => {
+type Props = {
+  cardData: CardData;
+};
+
+export const Card: React.FC<Props> = ({ cardData }) => {
   const [isFavoriteSelected, setIsFavoriteSelected] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+
+  // eslint-disable-next-line no-console
+  console.log(cardData);
 
   return (
     <div className="card">
       <div className="card__content">
         <a href="/" className="card__image">
           <img
-            src={testPhoto}
+            src={`${BASE_URL}${cardData.image}`}
             alt="phome"
             className="card__image_img"
           />
         </a>
 
         <p className="card__title">
-          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+          {cardData.name}
         </p>
 
         <div className="card__price">
           <div className="card__price_normal">
-            $799
+            {cardData.price}
           </div>
           <div className="card__price_discount">
-            $899
+            {cardData.fullPrice}
           </div>
         </div>
 
@@ -44,9 +52,9 @@ export const Card = () => {
           </div>
 
           <div className="card__char_descr">
-            <p className="card__char_descr-screen"> 5.8” OLED </p>
-            <p className="card__char_descr-screen"> 64 GB </p>
-            <p className="card__char_descr-screen"> 4 GB </p>
+            <p className="card__char_descr-screen">{cardData.screen}</p>
+            <p className="card__char_descr-screen">{cardData.capacity}</p>
+            <p className="card__char_descr-screen">{cardData.ram}</p>
           </div>
         </div>
 
