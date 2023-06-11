@@ -32,10 +32,10 @@ export const Card: React.FC<Props> = ({ cardData }) => {
 
         <div className="card__price">
           <div className="card__price_normal">
-            {cardData.price}
+            {`${cardData.price}$`}
           </div>
           <div className="card__price_discount">
-            {cardData.fullPrice}
+            {`${cardData.fullPrice}$`}
           </div>
         </div>
 
