@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
                       { 'is-active': isActive })
                   }
                 >
-                  PHONE
+                  PHONES
                 </NavLink>
               </li>
               <li className="header__list_item">
@@ -71,23 +71,35 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="header__right-section">
-            <div className="header__favorite">
-              {/* фото фейворит */}
+            {/* фото фейворит */}
+            <NavLink
+              to="/favorites"
+              className={
+                ({ isActive }) => classNames('header__favorite',
+                  { 'is-active': isActive })
+              }
+            >
               <img
                 src={Favourite}
                 alt="favourite"
                 className="header__favorite-image"
               />
-            </div>
+            </NavLink>
 
-            <div className="header__shopping-bag">
+            <NavLink
+              to="/cart"
+              className={
+                ({ isActive }) => classNames('header__shopping-bag',
+                  { 'is-active': isActive })
+              }
+            >
               {/* иконка корзины */}
               <img
                 src={ShoppingBag}
                 alt="shopping_bag"
                 className="header__shopping-bag-image"
               />
-            </div>
+            </NavLink>
 
             <div className="header__menu-opener">
               {/* иконка menu */}

@@ -52,7 +52,12 @@
       }
 
     &_link {
-      color: #89939A;;
+      color: #89939A;
+      transition: 0.5s color;
+
+      &:hover {
+        color: #313237;
+      }
     }
 
     &_item {
@@ -72,10 +77,14 @@
   &__right-section {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    gap: 1px;
   }
 
   &__favorite,
   &__shopping-bag {
+    position: relative;
+
     width: 64px;
     height: 64px;
 
@@ -83,6 +92,12 @@
     justify-content: center;
     align-items: center;
     box-shadow: -1px 0px 1px #E2E6E9;
+
+    transition: 0.5s border;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
 
     @include onPhone {
       display: none;
