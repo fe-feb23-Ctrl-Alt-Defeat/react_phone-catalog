@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "./static/css/main.586567f9.chunk.css",
-    "main.js": "./static/js/main.6bb640e0.chunk.js",
-    "main.js.map": "./static/js/main.6bb640e0.chunk.js.map",
+    "main.css": "./static/css/main.5e97377f.chunk.css",
+    "main.js": "./static/js/main.69544900.chunk.js",
+    "main.js.map": "./static/js/main.69544900.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.8c9895b1.js",
     "runtime-main.js.map": "./static/js/runtime-main.8c9895b1.js.map",
-    "static/js/2.18473eba.chunk.js": "./static/js/2.18473eba.chunk.js",
-    "static/js/2.18473eba.chunk.js.map": "./static/js/2.18473eba.chunk.js.map",
+    "static/js/2.681894f2.chunk.js": "./static/js/2.681894f2.chunk.js",
+    "static/js/2.681894f2.chunk.js.map": "./static/js/2.681894f2.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.586567f9.chunk.css.map": "./static/css/main.586567f9.chunk.css.map",
-    "static/js/2.18473eba.chunk.js.LICENSE.txt": "./static/js/2.18473eba.chunk.js.LICENSE.txt",
+    "static/css/main.5e97377f.chunk.css.map": "./static/css/main.5e97377f.chunk.css.map",
+    "static/js/2.681894f2.chunk.js.LICENSE.txt": "./static/js/2.681894f2.chunk.js.LICENSE.txt",
     "static/media/App.scss": "./static/media/Mont-SemiBold.8979d71a.otf",
+    "static/media/icon_arrow_forward.2a072ff1.svg": "./static/media/icon_arrow_forward.2a072ff1.svg",
     "static/media/icon_favourite.2901080b.svg": "./static/media/icon_favourite.2901080b.svg",
+    "static/media/icon_home.d4c29e4f.svg": "./static/media/icon_home.d4c29e4f.svg",
     "static/media/icon_menu_opener.7d886604.svg": "./static/media/icon_menu_opener.7d886604.svg",
     "static/media/icon_shopping_bag.1beda4df.svg": "./static/media/icon_shopping_bag.1beda4df.svg",
     "static/media/logo_gnce_gadgets.65bd4828.svg": "./static/media/logo_gnce_gadgets.65bd4828.svg",
-    "static/media/phoneTest.3066ac4e.png": "./static/media/phoneTest.3066ac4e.png",
     "static/media/redHeart.a50cb178.svg": "./static/media/redHeart.a50cb178.svg",
     "static/media/up_arrow.df6c57d0.svg": "./static/media/up_arrow.df6c57d0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8c9895b1.js",
-    "static/js/2.18473eba.chunk.js",
-    "static/css/main.586567f9.chunk.css",
-    "static/js/main.6bb640e0.chunk.js"
+    "static/js/2.681894f2.chunk.js",
+    "static/css/main.5e97377f.chunk.css",
+    "static/js/main.69544900.chunk.js"
   ]
 }
