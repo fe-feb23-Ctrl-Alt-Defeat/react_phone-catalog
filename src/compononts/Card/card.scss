@@ -2,18 +2,24 @@
 
 .card {
   width: 272px;
-  height: 506px;
-
-  @include onLowTablet {
-    max-width: 229px;
-  }
-
   background: #FFFFFF;
   border: 1px solid #E2E6E9;
-
   color:black;
 
   transition: 0.5s;
+
+  @include onTablet {
+    width: 229px;
+  }
+
+  @include onLowTablet {
+    width: 288px;
+  }
+
+  @include onPhone {
+    width: 287px;
+    height: 440px;
+  }
 
   &:hover {
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
@@ -27,15 +33,27 @@
   }
 
   &__image {
-    max-width: 208px;
-    max-height: 196px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 196px;
     margin-bottom: 24px;
 
     transition: 0.5s;
+    object-fit: contain;
+
+    @include onPhone {
+      max-height: 130px;
+    }
 
     &_img {
-      width: 100%;
-      height: max-content;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+
+      @include onPhone {
+        max-height: 130px;
+      }
     }
 
     &:hover {
@@ -50,7 +68,7 @@
 
     color: #313237;
 
-    margin-bottom: 9px;
+    margin-bottom: 8px;
     cursor: pointer;
   }
 
@@ -126,7 +144,7 @@
       justify-content: center;
 
       padding: 9.5px 39.5px;
-      min-width: 160px;
+      height: 40px;
 
       font-family: 'Mont-SemiBold';
       font-size: 14px;
@@ -141,6 +159,14 @@
       transition: 1s;
       cursor: pointer;
 
+      @include onTablet {
+        padding: 9px 18px;
+      }
+
+      @include onLowTablet {
+        padding: 9.5px 47.5px;
+      }
+
       &:hover {
         box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
       }
@@ -149,8 +175,6 @@
         color: #27AE60;
         background: #fff;
         border: 1px solid #E2E6E9;
-
-        // padding: 9.5px 56px;
       }
 
     }

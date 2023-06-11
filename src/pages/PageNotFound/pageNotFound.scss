@@ -1,3 +1,82 @@
-.pgntf {
-  color: red;
+@import '../../styles/mixins/mixins.scss';
+
+.error {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 200px;
+
+  font-family: 'Mont-SemiBold';
+  max-height: 500px;
+  max-width: 500px;
+  
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__code {
+    color: #27AE60;
+    font-size: 200px;
+    margin-bottom: 100px;
+
+    @include onPhone {
+      font-size: 100px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__text {
+    color: black;
+    font-size: 50px;
+    margin-bottom: 50px;
+    @include onPhone {
+      font-size: 25px;
+    }
+  }
 }
+
+// .card {
+//   &__buy {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+
+//     &_button {
+//       display: flex;
+//       align-items:center;
+//       justify-content: center;
+
+//       padding: 9.5px 39.5px;
+//       min-width: 160px;
+
+//       font-family: 'Mont-SemiBold';
+//       font-size: 14px;
+//       line-height: 21px;
+//       text-align: center;
+
+//       background: #313237;
+//       color: #FFFFFF;
+
+//       border: 1px solid transparent;
+
+//       transition: 1s;
+//       cursor: pointer;
+
+//       &_link {
+//         color: white;
+//       }
+
+//       &:hover {
+//         box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+//       }
+
+//       &-isAdded {
+//         color: #27AE60;
+//         background: #fff;
+//         border: 1px solid #E2E6E9;
+//       }
+//     }
+//   }
+// }
