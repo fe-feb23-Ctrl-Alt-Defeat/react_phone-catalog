@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './catalog.scss';
 import IconHome from '../../images/icon_home.svg';
 import IconArrowForward from '../../images/icon_arrow_forward.svg';
-import { SortInput } from '../SortInput/SortInput';
 import { Card } from '../Card/Card';
+import { DropDown } from '../SortInput/DropDown';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
+
 
 export interface Option {
   title: string;
@@ -69,8 +70,8 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="catalog__sorts">
-          <SortInput options={options[0]} />
-          <SortInput options={options[1]} />
+          <DropDown options={options[0]} />
+          <DropDown options={options[1]} />
         </div>
 
         <div className="catalog__products">
