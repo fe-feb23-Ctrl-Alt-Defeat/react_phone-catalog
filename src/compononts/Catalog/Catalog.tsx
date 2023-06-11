@@ -3,11 +3,9 @@ import './catalog.scss';
 import IconHome from '../../images/icon_home.svg';
 import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { Card } from '../Card/Card';
-import { DropDown } from '../SortInput/DropDown';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
 import { DropDown } from '../SortInput/DropDown';
-
 
 export interface Option {
   title: string;
