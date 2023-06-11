@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import classNames from 'classnames';
@@ -7,7 +11,11 @@ import Favourite from '../../images/icon_favourite.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
 
-export const Header: React.FC = () => {
+interface Props {
+  setIsOpenBurger: (open: boolean) => void;
+}
+
+export const Header: React.FC<Props> = () => {
   return (
     <>
       <div className="header">
@@ -42,7 +50,7 @@ export const Header: React.FC = () => {
                       { 'is-active': isActive })
                   }
                 >
-                  PHONE
+                  PHONES
                 </NavLink>
               </li>
               <li className="header__list_item">
@@ -71,35 +79,134 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="header__right-section">
-            <div className="header__favorite">
-              {/* фото фейворит */}
+            {/* фото фейворит */}
+            <NavLink
+              to="/favorites"
+              className={
+                ({ isActive }) => classNames('header__favorite',
+                  { 'is-active': isActive })
+              }
+            >
               <img
                 src={Favourite}
                 alt="favourite"
                 className="header__favorite-image"
               />
-            </div>
+            </NavLink>
 
-            <div className="header__shopping-bag">
+            <NavLink
+              to="/cart"
+              className={
+                ({ isActive }) => classNames('header__shopping-bag',
+                  { 'is-active': isActive })
+              }
+            >
               {/* иконка корзины */}
               <img
                 src={ShoppingBag}
                 alt="shopping_bag"
                 className="header__shopping-bag-image"
               />
-            </div>
+            </NavLink>
 
-            <div className="header__menu-opener">
+            <div
+              className="header__menu-opener"
+            >
               {/* иконка menu */}
               <img
                 src={Menu_opener}
                 alt="menu-opener"
                 className="header__menu-opener-image"
+                onClick={() => console.log(123)}
               />
             </div>
           </div>
         </div>
       </div>
+
+      <nav className="menu">
+        <div className="menu__content">
+          <div className="menu__top">
+            <ul className="menu__list">
+              <li className="menu__list_item">
+                <NavLink
+                  to="/"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  HOME
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/phones"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  PHONES
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/tablets"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  TABLETS
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/accessories"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  ACCESSORIES
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className="menu__buttom">
+            <NavLink
+              to="/favorites"
+              className={
+                ({ isActive }) => classNames('menu__favorite',
+                  { 'is-active': isActive })
+              }
+            >
+              <img
+                src={Favourite}
+                alt="favourite"
+                className="header__favorite-image"
+              />
+            </NavLink>
+
+            <NavLink
+              to="/cart"
+              className={
+                ({ isActive }) => classNames('menu__shopping-bag',
+                  { 'is-active': isActive })
+              }
+            >
+              {/* иконка корзины */}
+              <img
+                src={ShoppingBag}
+                alt="shopping_bag"
+                className="header__shopping-bag-image"
+              />
+            </NavLink>
+          </div>
+        </div>
+      </nav>
     </>
   );
 };
