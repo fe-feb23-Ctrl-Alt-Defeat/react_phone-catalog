@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import up_arrow from '../../images/up_arrow.svg';
 import logo from '../../images/logo_gnce_gadgets.svg';
 
 import './footer.scss';
 
-export const Footer = () => {
+export const Footer: FC = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -24,7 +24,12 @@ export const Footer = () => {
 
           <ul className="footer__list">
             <li className="footer__list_item">
-              <a href="/github" className="footer__list_link">
+              <a
+                href="https://github.com/fe-feb23-Ctrl-Alt-Defeat"
+                target="_blank"
+                rel="noreferrer"
+                className="footer__list_link"
+              >
                 github
               </a>
             </li>
