@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -10,6 +9,7 @@ import Logo from '../../images/logo_gnce_gadgets.svg';
 import Favourite from '../../images/icon_favourite.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
+import Menu_cross from '../../images/icon_menu_cross.svg';
 
 export const Header: React.FC = () => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
@@ -18,8 +18,6 @@ export const Header: React.FC = () => {
   const handleBurgerToggle = () => {
     setIsBurgerOpened(currState => !currState);
     setScrollLocked(currState => !currState);
-
-    console.log(123);
   };
 
   useEffect(() => {
@@ -135,7 +133,9 @@ export const Header: React.FC = () => {
             >
               {/* иконка menu */}
               <img
-                src={Menu_opener}
+                src={isBurgerOpened
+                  ? Menu_cross
+                  : Menu_opener}
                 alt="menu-opener"
                 className="header__menu-opener-image"
               />
@@ -206,7 +206,7 @@ export const Header: React.FC = () => {
               <img
                 src={Favourite}
                 alt="favourite"
-                className="header__favorite-image"
+                className="menu__favorite-image"
               />
             </NavLink>
 
@@ -221,7 +221,7 @@ export const Header: React.FC = () => {
               <img
                 src={ShoppingBag}
                 alt="shopping_bag"
-                className="header__shopping-bag-image"
+                className="menu__shopping-bag-image"
               />
             </NavLink>
           </div>

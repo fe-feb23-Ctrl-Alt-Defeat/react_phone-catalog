@@ -7,7 +7,6 @@ import { DropDown } from '../SortInput/DropDown';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
 
-
 export interface Option {
   title: string;
   selects: (string | number)[];
