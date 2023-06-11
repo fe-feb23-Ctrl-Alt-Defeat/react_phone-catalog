@@ -1,0 +1,34 @@
+.sort {
+  margin-bottom: 24px;
+
+  &__title {
+    font-family: "Mont-SemiBold";
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939A;
+  }
+
+  &__form {
+
+    &-select {
+      height: 40px;
+      border: 1px solid #B4BDC4;
+      font-family: 'Mont-Bold';
+      font-size: 14px;
+      line-height: 21px;
+      padding: 10px 111px 9px 12px;
+
+      color: #313237;
+
+      &--sort-by {
+        width: 176px;
+      }
+
+      &--items-on-page {
+        width: 128px;
+      }
+    }
+  }
+}
+

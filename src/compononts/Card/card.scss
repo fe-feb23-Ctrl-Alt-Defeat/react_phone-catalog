@@ -1,11 +1,12 @@
-.card {
-  //this margin is for testing 
-  //and the image will be separated from the body border!
-  margin-left: 50px;
-  margin-top: 20px;
+@import '../../styles/mixins/mixins.scss';
 
+.card {
   width: 272px;
   height: 506px;
+
+  @include onLowTablet {
+    max-width: 229px;
+  }
 
   background: #FFFFFF;
   border: 1px solid #E2E6E9;
@@ -13,7 +14,7 @@
   color:black;
 
   transition: 0.5s;
-  
+
   &:hover {
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
   }
@@ -121,7 +122,7 @@
 
     &_button {
       display: flex;
-      align-items:center;
+      align-items: center;
       justify-content: center;
 
       padding: 9.5px 39.5px;
@@ -157,8 +158,8 @@
     &_favorite {
       display: flex;
       justify-content: center;
-      align-items:center;
-      
+      align-items: center;
+
       width: 40px;
       height: 40px;
 

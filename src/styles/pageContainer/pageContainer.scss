@@ -2,7 +2,8 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  padding: 0px 152px 0px 152px;
+  // padding: 0px 152px 0px 152px;
+  padding: 0px 32px 0px 32px;
 }
 
 @include onTablet {
@@ -11,8 +12,14 @@
   }
 }
 
+@include onLowTablet {
+  .container {
+    padding: 0 24px;
+  }
+}
+
 @include onPhone {
   .container {
-    padding: 0 16px 0 16px;
+    padding: 0 24px;
   }
 }
