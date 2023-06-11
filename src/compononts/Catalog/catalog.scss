@@ -79,6 +79,7 @@
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     align-content: start;
+    justify-items: center;
     gap: 40px 16px;
  
     @include onTablet {
