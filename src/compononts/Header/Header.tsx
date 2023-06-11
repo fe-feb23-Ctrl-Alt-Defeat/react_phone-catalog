@@ -112,6 +112,92 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <nav className="menu">
+        <div className="menu__content">
+          <div className="menu__top">
+            <ul className="menu__list">
+              <li className="menu__list_item">
+                <NavLink
+                  to="/"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  HOME
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/phones"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  PHONES
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/tablets"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  TABLETS
+                </NavLink>
+              </li>
+              <li className="menu__list_item">
+                <NavLink
+                  to="/accessories"
+                  className={
+                    ({ isActive }) => classNames('menu__list_link',
+                      { 'is-active': isActive })
+                  }
+                >
+                  ACCESSORIES
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className="menu__buttom">
+            <NavLink
+              to="/favorites"
+              className={
+                ({ isActive }) => classNames('menu__favorite',
+                  { 'is-active': isActive })
+              }
+            >
+              <img
+                src={Favourite}
+                alt="favourite"
+                className="header__favorite-image"
+              />
+            </NavLink>
+
+            <NavLink
+              to="/cart"
+              className={
+                ({ isActive }) => classNames('menu__shopping-bag',
+                  { 'is-active': isActive })
+              }
+            >
+              {/* иконка корзины */}
+              <img
+                src={ShoppingBag}
+                alt="shopping_bag"
+                className="header__shopping-bag-image"
+              />
+            </NavLink>
+          </div>
+        </div>
+      </nav>
+      <div className="zindex">
+      </div>
     </>
   );
 };
