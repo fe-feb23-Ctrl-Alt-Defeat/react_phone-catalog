@@ -65,7 +65,7 @@ export const Catalog: React.FC = () => {
 
         <div className="catalog__title">
           <h1 className="catalog__title-head">Mobile phones</h1>
-          <p className="catalog__title-description">95 models</p>
+          <p className="catalog__title-description">{`${catalogData.length} models`}</p>
         </div>
 
         <div className="catalog__sorts">

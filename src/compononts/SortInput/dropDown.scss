@@ -1,5 +1,8 @@
+.sort:not(:last-child) {
+  margin-right: 16px;
+}
+
 .sort {
-  margin-bottom: 24px;
 
   &__title {
     font-family: "Mont-SemiBold";
