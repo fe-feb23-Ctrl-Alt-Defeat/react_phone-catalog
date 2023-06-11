@@ -156,11 +156,11 @@
 
       border: 1px solid transparent;
 
-      transition: 1s;
+      transition: box-shadow 0.5s;
       cursor: pointer;
 
       @include onTablet {
-        padding: 9px 18px;
+        padding: 9.5px 18.5px;
       }
 
       @include onLowTablet {
@@ -175,6 +175,17 @@
         color: #27AE60;
         background: #fff;
         border: 1px solid #E2E6E9;
+        padding: 9.5px 30.5px;
+        height: 40px;
+
+
+        @include onTablet {
+          padding: 9.5px 9.5px;
+        }
+  
+        @include onLowTablet {
+          padding: 9.5px 39.5px;
+        }
       }
 
     }

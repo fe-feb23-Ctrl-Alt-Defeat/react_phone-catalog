@@ -63,7 +63,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
             })}
             onClick={() => setIsAdded(!isAdded)}
           >
-            {isAdded ? 'Added' : 'Add to cart'}
+            {isAdded ? 'Added to cart' : 'Add to cart'}
           </button>
 
           <button
