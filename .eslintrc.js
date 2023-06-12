@@ -1,7 +1,6 @@
 module.exports = {
   extends: [
     '@mate-academy/eslint-config-react-typescript',
-    'stylelint-config-standard', // CSS
   ],
   rules: {
     'no-console': 'error',
@@ -12,7 +11,6 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': ['error', {
       assert: 'either',
     }],
-    'semi': ["error", "always"],
     // React
     'react/prop-types': 0,
     'react/self-closing-comp': 0,
@@ -33,6 +31,5 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
-    'stylelint', // CSS
   ],
 };
