@@ -1,9 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import React, {
-  useCallback,
+  Dispatch,
+  SetStateAction,
   useEffect,
   useRef,
+  useCallback,
   useState,
 } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
@@ -15,23 +21,33 @@ interface Props {
     title: string;
     selects: (string | number)[];
   };
+  setOnSelect: Dispatch<SetStateAction<string>>
+  selectedItem: string | number
 }
 
-export const DropDown: React.FC<Props> = ({ options }) => {
+export const DropDown: React.FC<Props> = (
+  { options, setOnSelect, selectedItem },
+) => {
   const { title, selects } = options;
+
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(selects[0]);
+
+  const [search, setSearchParams] = useSearchParams();
 
   const handleMenuToggle = useCallback(() => {
     setIsOpen((prevVal) => !prevVal);
   }, []);
 
-  const handleOptionClick = useCallback((select: string) => {
-    setSelected(select);
+  const handleOptionClick = (select: string) => {
+    if (!Number.isNaN(+select)) {
+      setSearchParams({ limit: String(select) });
+    }
+
+    setOnSelect(select);
     handleMenuToggle();
-  }, []);
+  };
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
@@ -62,7 +78,7 @@ export const DropDown: React.FC<Props> = ({ options }) => {
             )}
             onClick={handleMenuToggle}
           >
-            {selected}
+            {selectedItem}
             <div className="sort__form-select-button">
               <img src={isOpen ? IconUp : IconDown} alt="Icon down" />
             </div>

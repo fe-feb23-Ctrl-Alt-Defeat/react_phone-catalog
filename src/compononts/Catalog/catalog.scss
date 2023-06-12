@@ -4,7 +4,16 @@
 @import '../../styles/normalize.scss';
 
 .catalog {
+<<<<<<< HEAD
   margin-bottom: 180px;
+=======
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  @include onPhone {
+    margin-bottom: 24px;
+  }
+>>>>>>> 2c1182c (added pagination and resolved conflicts in branch)
 
   &__path {
     margin: 31px 0 40px;
@@ -45,6 +54,18 @@
 
     @include onPhone {
       @include query(1);
+    }
+  }
+
+  &__pagination {
+    margin-bottom: 80px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onPhone {
+      margin-bottom: 64px;
     }
   }
 }

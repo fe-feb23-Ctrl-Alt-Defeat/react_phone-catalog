@@ -8,4 +8,8 @@ export const getProducts = () => {
 
 export const getProductById = (id: string) => {
   return client.get<Phone>(`phones/${id}`);
+}
+
+  export const getProductWithPagination = (page: string, limit: string) => {
+  return client.get(`products?page=${page}&limit=${limit}`);
 };
