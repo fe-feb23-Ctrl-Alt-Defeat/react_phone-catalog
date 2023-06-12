@@ -5,7 +5,7 @@ import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { Card } from '../Card/Card';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
-import { DropDown } from '../SortInput/DropDown';
+import { DropDown } from '../DropDown/DropDown';
 
 export interface Option {
   title: string;
