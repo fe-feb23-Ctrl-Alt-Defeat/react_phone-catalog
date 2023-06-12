@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
@@ -15,6 +14,7 @@ interface Props {
 
 export const DropDown: React.FC<Props> = ({ options }) => {
   const { title, selects } = options;
+  const menuRef = React.useRef<HTMLUListElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(selects[0]);
@@ -27,6 +27,20 @@ export const DropDown: React.FC<Props> = ({ options }) => {
     setSelected(select);
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const handler = (event: MouseEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  }, []);
 
   return (
     <div className="sort">
@@ -49,6 +63,7 @@ export const DropDown: React.FC<Props> = ({ options }) => {
         </button>
         {isOpen && (
           <ul
+            ref={menuRef}
             className={cn(
               'sort__form-options',
               { 'sort__form-options--sort-by': title === 'Sort By' },
@@ -57,7 +72,6 @@ export const DropDown: React.FC<Props> = ({ options }) => {
                   title === 'Items on page',
               },
             )}
-            onBlur={handleMenuToggle}
           >
             {selects.map((select) => (
               <li
