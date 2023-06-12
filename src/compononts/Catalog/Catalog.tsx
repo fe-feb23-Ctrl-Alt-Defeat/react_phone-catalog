@@ -3,9 +3,9 @@ import './catalog.scss';
 import IconHome from '../../images/icon_home.svg';
 import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { Card } from '../Card/Card';
-import { DropDown } from '../SortInput/DropDown';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
+import { DropDown } from '../DropDown/DropDown';
 
 export interface Option {
   title: string;
@@ -65,7 +65,7 @@ export const Catalog: React.FC = () => {
 
         <div className="catalog__title">
           <h1 className="catalog__title-head">Mobile phones</h1>
-          <p className="catalog__title-description">95 models</p>
+          <p className="catalog__title-description">{`${catalogData.length} models`}</p>
         </div>
 
         <div className="catalog__sorts">
