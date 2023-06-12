@@ -1,8 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './catalog.scss';
-// import IconHome from '../../images/icon_home.svg';
-// import IconArrowForward from '../../images/icon_arrow_forward.svg';
 import { Card } from '../Card/Card';
 import { getProducts } from '../../api/products';
 import { CardData } from '../../types/CardData';
