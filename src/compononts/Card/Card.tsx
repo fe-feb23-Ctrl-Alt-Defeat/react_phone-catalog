@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Favorite from '../../images/icon_favourite.svg';
 import redHeart from '../../images/redHeart.svg';
 import { CardData } from '../../types/CardData';
+import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 
 type Props = {
   cardData: CardData;
@@ -19,7 +20,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
       <div className="card__content">
         <a href="/" className="card__image">
           <img
-            src={`https://raw.githubusercontent.com/fe-feb23-Ctrl-Alt-Defeat/backend_react_phone_catalog/main/public/${cardData.image}`}
+            src={`${IMAGE_BASE_URL}${cardData.image}`}
             alt="phone_image"
             className="card__image_img"
           />
