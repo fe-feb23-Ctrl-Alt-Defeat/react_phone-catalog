@@ -19,7 +19,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
       <div className="card__content">
         <a href="/" className="card__image">
           <img
-            src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${cardData.image}`}
+            src={`https://raw.githubusercontent.com/fe-feb23-Ctrl-Alt-Defeat/backend_react_phone_catalog/main/public/${cardData.image}`}
             alt="phone_image"
             className="card__image_img"
           />
