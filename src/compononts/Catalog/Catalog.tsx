@@ -72,49 +72,49 @@ export const Catalog: React.FC = () => {
   return (
     <>
       <div className="catalog">
-      <div className="container">
-        <div className="catalog__path">
-          <PageRoute />
+        <div className="container">
+          <div className="catalog__path">
+            <PageRoute />
+          </div>
+
+          <div className="catalog__routing-selected-page">
+            <p className="catalog__routing-selected-page-paragraph">Phones</p>
+          </div>
         </div>
 
-            <div className="catalog__routing-selected-page">
-              <p className="catalog__routing-selected-page-paragraph">Phones</p>
+        <div className="catalog__title">
+          <PageTitle title="Mobile phones" />
+          <ItemsOnPage itemsOnPage={catalogData.length} />
+        </div>
+
+        <div className="catalog__sorts">
+          <DropDown
+            options={filterBy}
+            selectedItem={selectedFilter}
+            setOnSelect={setSelectedFilter}
+          />
+          <DropDown
+            options={selectNum}
+            selectedItem={selectedPage}
+            setOnSelect={setSelectedPage}
+          />
+        </div>
+
+        {isLoading
+          ? <Loader />
+          : (
+            <div className="catalog__products">
+              {catalogData.map(
+                cardData => (
+                  <Fragment key={cardData.name}>
+                    <Link to={`/phones/${cardData.itemId}`}>
+                      <Card key={cardData.name} cardData={cardData} />
+                    </Link>
+                  </Fragment>
+                ),
+              )}
             </div>
-          </div>
-
-          <div className="catalog__title">
-            <PageTitle title="Mobile phones" />
-            <ItemsOnPage itemsOnPage={catalogData.length} />
-        </div>
-
-          <div className="catalog__sorts">
-            <DropDown
-              options={filterBy}
-              selectedItem={selectedFilter}
-              setOnSelect={setSelectedFilter}
-            />
-            <DropDown
-              options={selectNum}
-              selectedItem={selectedPage}
-              setOnSelect={setSelectedPage}
-            />
-          </div>
-
-          {isLoading
-            ? <Loader />
-            : (
-              <div className="catalog__products">
-          {catalogData.map(
-            cardData => (
-              <Fragment key={cardData.name}>
-                <Link to={`/phones/${cardData.itemId}`}>
-                  <Card key={cardData.name} cardData={cardData} />
-                </Link>
-              </Fragment>
-            ),
           )}
-          </div>
-        )}
       </div>
 
       {!isLoading && (
