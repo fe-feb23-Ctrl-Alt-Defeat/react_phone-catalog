@@ -7,6 +7,7 @@ import React, {
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
+import IconUp from '../../images/icon_arrow_up.svg';
 import { DropMenu } from './DropMenu';
 
 interface Props {
@@ -63,7 +64,7 @@ export const DropDown: React.FC<Props> = ({ options }) => {
           >
             {selected}
             <div className="sort__form-select-button">
-              <img src={IconDown} alt="Icon down" />
+              <img src={isOpen ? IconDown : IconUp} alt="Icon down" />
             </div>
           </button>
           {isOpen && (
