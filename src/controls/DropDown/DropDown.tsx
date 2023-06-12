@@ -64,11 +64,12 @@ export const DropDown: React.FC<Props> = ({ options }) => {
           >
             {selected}
             <div className="sort__form-select-button">
-              <img src={isOpen ? IconDown : IconUp} alt="Icon down" />
+              <img src={isOpen ? IconUp : IconDown} alt="Icon down" />
             </div>
           </button>
           {isOpen && (
             <DropMenu
+              key={title}
               onOpen={handleOptionClick}
               title={title}
               selects={selects}
