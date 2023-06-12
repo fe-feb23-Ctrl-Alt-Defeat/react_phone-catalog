@@ -125,7 +125,6 @@
 
 .menu {
   display: none;
-  pointer-events: none;
 
   font-family: 'Mont-Bold';
   font-size: 12px;
@@ -136,6 +135,7 @@
     flex-direction: column;
     text-align: center;
     overflow: hidden;
+    cursor: pointer;
 
     height: 100vh;
     width: 100%;
@@ -147,6 +147,12 @@
     &_link{
       color: #89939A;
       position: relative;
+
+      transition: 0.5s color;
+
+      &:hover {
+        color: #313237;
+      }
     }
 
     &_item {
@@ -159,6 +165,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      gap: 1px;
 
       position: absolute;
       bottom: 0;
@@ -175,10 +183,18 @@
       justify-content: center;
       align-items: center;
 
+      position: relative;
+
       height: 64px;
       width: 50%;
       
       box-shadow: -1px 0px 1px #E2E6E9;
+
+      transition: 0.5s border;
+
+      &:hover {
+        border: 1px solid #313237;
+      }
     }
   }
 }
@@ -196,5 +212,13 @@
     background-color: #313237;
     border-radius: 8px;
     margin: 0 auto;
+
+    @include onPhone {
+      display: block;
+      margin: 0 auto;
+      margin-top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
