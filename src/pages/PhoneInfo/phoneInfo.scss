@@ -1,17 +1,35 @@
-.main {
-  background-color: #000;
+.info {
 
-  display: flex;
-  flex: 1 1 auto;
-  
-  max-width: 1120px;
-  min-height: 100vh;
+  &__path {
+    margin: 31px 0 41px;
+  }
 
-  margin: 0 auto;
-}
+  &__back {
+    margin-bottom: 16px;
+  }
 
-@media (max-width: 600px) {
-  .main {
-    background-color: lightblue;
+  &__title {
+    margin-bottom: 40px;
+
+    &-subtitle {
+      font-family: 'Mont-Black';
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      color: #313237;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+    grid-gap: 65px;
+
+    &-description {
+      margin-bottom: 80px;
+    }
   }
 }
+

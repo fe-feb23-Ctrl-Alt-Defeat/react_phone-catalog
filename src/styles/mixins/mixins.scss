@@ -16,6 +16,12 @@
   }
 }
 
+@mixin onLowPhone {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
 @mixin query ($cols) {
   grid-template-columns: repeat($cols, 1fr);
 }

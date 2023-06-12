@@ -1,0 +1,24 @@
+.move-back {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    margin-right: 10px;
+
+    &-image {
+      color: #313237;
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+  }
+
+  &__paragraph {
+
+    &-text {
+      font-family: 'Mont-Bold';
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #89939A;
+    }
+  }
+}
