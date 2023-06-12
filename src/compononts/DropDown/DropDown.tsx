@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
-import { Menu } from './Menu';
+import { DropMenu } from './DropMenu';
 
 interface Props {
   options: {
@@ -13,24 +18,22 @@ interface Props {
 
 export const DropDown: React.FC<Props> = ({ options }) => {
   const { title, selects } = options;
-  const menuRef = React.useRef<HTMLUListElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(selects[0]);
 
-  const handleMenuToggle = () => {
-    setIsOpen(currVal => !currVal);
-  };
+  const handleMenuToggle = useCallback(() => {
+    setIsOpen((prevVal) => !prevVal);
+  }, []);
 
-  const handleOptionClick = (select: string) => {
+  const handleOptionClick = useCallback((select: string) => {
     setSelected(select);
     handleMenuToggle();
-  };
+  }, []);
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
-      // eslint-disable-next-line no-console
-      console.log(menuRef.current);
       if (!menuRef.current?.contains(event.target as Node)) {
         setIsOpen(false);
       }
@@ -48,28 +51,29 @@ export const DropDown: React.FC<Props> = ({ options }) => {
       <p className="sort__title">{title}</p>
 
       <form action="" className="sort__form">
-        <button
-          type="button"
-          className={cn(
-            'sort__form-select',
-            { 'sort__form-select--sort-by ': title === 'Sort By' },
-            { 'sort__form-select--items-on-page': title === 'Items on page' },
+        <div className="sort__form-container" ref={menuRef}>
+          <button
+            type="button"
+            className={cn(
+              'sort__form-select',
+              { 'sort__form-select--sort-by ': title === 'Sort By' },
+              { 'sort__form-select--items-on-page': title === 'Items on page' },
+            )}
+            onClick={handleMenuToggle}
+          >
+            {selected}
+            <div className="sort__form-select-button">
+              <img src={IconDown} alt="Icon down" />
+            </div>
+          </button>
+          {isOpen && (
+            <DropMenu
+              onOpen={handleOptionClick}
+              title={title}
+              selects={selects}
+            />
           )}
-          onClick={handleMenuToggle}
-        >
-          {selected}
-          <div className="sort__form-select-button">
-            <img src={IconDown} alt="Icon down" />
-          </div>
-        </button>
-        {isOpen && (
-          <Menu
-            onOpen={handleOptionClick}
-            title={title}
-            menuRef={menuRef}
-            selects={selects}
-          />
-        )}
+        </div>
       </form>
     </div>
   );

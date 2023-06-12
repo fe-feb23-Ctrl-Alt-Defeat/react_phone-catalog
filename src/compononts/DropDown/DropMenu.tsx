@@ -6,14 +6,14 @@ import React, { useEffect, useState } from 'react';
 type Props = {
   onOpen: (select: string) => void;
   title: string;
-  menuRef: React.RefObject<HTMLUListElement>;
+  // menuRef: React.RefObject<HTMLUListElement>;
   selects: (string | number)[];
 };
 
-export const Menu: React.FC<Props> = ({
+export const DropMenu: React.FC<Props> = ({
   onOpen,
   title,
-  menuRef,
+  // menuRef,
   selects,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,12 +21,12 @@ export const Menu: React.FC<Props> = ({
   useEffect(() => {
     setTimeout(() => {
       setIsVisible(true);
-    }, 500);
+    }, 100);
   }, []);
 
   return (
     <ul
-      ref={menuRef}
+      // ref={menuRef}
       className={cn(
         'sort__form-options',
         {

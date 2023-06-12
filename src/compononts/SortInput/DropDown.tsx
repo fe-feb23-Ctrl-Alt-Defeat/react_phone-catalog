@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
-import { Menu } from '../DropDown/Menu';
+import { Menu } from '../DropDown/DropMenu';
 
 interface Props {
   options: {
