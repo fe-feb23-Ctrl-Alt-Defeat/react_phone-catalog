@@ -15,13 +15,12 @@
   }
 
   &__form {
-    // transition: height 0.3s ease-in-out;
-
+    
     &-select {
       height: 40px;
       padding: 12px;
       margin-bottom: 4px;
-
+      
       border: 1px solid #B4BDC4;
       outline: none;
 
@@ -79,7 +78,9 @@
       }
     }
 
+    transition: height 0.3s ease-in-out;
     &-options {
+
       background-color: red;
       position: absolute;
       z-index: 1;
