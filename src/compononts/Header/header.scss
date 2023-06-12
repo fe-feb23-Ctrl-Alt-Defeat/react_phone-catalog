@@ -215,6 +215,7 @@
 
     @include onPhone {
       display: block;
+      height: 2px;
       margin: 0 auto;
       margin-top: 10px;
       left: 50%;
