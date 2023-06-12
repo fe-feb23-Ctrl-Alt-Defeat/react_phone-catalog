@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, { FC } from 'react';
 import './App.scss';
