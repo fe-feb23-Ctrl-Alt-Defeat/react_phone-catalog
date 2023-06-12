@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
-import { Menu } from './Menu';
+import { Menu } from '../DropDown/Menu';
 
 interface Props {
   options: {
@@ -29,8 +29,6 @@ export const DropDown: React.FC<Props> = ({ options }) => {
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
-      // eslint-disable-next-line no-console
-      console.log(menuRef.current);
       if (!menuRef.current?.contains(event.target as Node)) {
         setIsOpen(false);
       }
@@ -41,7 +39,7 @@ export const DropDown: React.FC<Props> = ({ options }) => {
     return () => {
       document.removeEventListener('mousedown', handler);
     };
-  }, [isOpen]);
+  }, []);
 
   return (
     <div className="sort">
