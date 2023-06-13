@@ -29,5 +29,11 @@ function request<T>(
 }
 
 export const client = {
-  get: <T>(url: string) => request<T>(url),
+  get: <T>(url: string, data?: string) => {
+    if (data) {
+      return request<T>(url, 'GET', data);
+    }
+
+    return request<T>(url);
+  },
 };
