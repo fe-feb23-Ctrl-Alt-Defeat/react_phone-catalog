@@ -1,8 +1,8 @@
 import React from 'react';
-import { CardData } from '../../types/CardData';
 import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 import './cartItem.scss';
 import removeImage from '../../images/icon_menu_cross.svg';
+import { CardData } from '../../types/CardData';
 
 type Props = {
   data: CardData;

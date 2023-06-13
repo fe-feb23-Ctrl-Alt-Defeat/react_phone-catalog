@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
 import Logo from '../../images/logo_gnce_gadgets.svg';
@@ -13,24 +13,24 @@ import Menu_cross from '../../images/icon_menu_cross.svg';
 
 export const Header: React.FC = () => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
-  const [scrollLocked, setScrollLocked] = useState(false);
+  const [, setScrollLocked] = useState(false);
 
   const handleBurgerToggle = () => {
     setIsBurgerOpened(currState => !currState);
     setScrollLocked(currState => !currState);
   };
 
-  useEffect(() => {
-    if (scrollLocked) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'visible';
-    }
+  // useEffect(() => {
+  //   if (scrollLocked) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = 'visible';
+  //   }
 
-    return () => {
-      document.body.style.overflow = 'visible';
-    };
-  }, [scrollLocked]);
+  //   return () => {
+  //     document.body.style.overflow = 'visible';
+  //   };
+  // }, [scrollLocked]);
 
   return (
     <>

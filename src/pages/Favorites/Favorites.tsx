@@ -1,7 +1,68 @@
-import React from 'react';
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+import React, {
+  Fragment, useEffect, useState,
+} from 'react';
+
+import { PageRoute } from '../../controls/PageRoute/PageRoute';
+import { PageTitle } from '../../controls/PageTitle/PageTitle';
+import { ItemsOnPage } from '../../controls/ItemsOnPage/ItemsOnPage';
+import { Card } from '../../compononts/Card/Card';
+import { Loader } from '../../compononts/Loader/Loader';
+import { CardData } from '../../types/CardData';
+import { getProductByIds } from '../../api/products';
 
 export const Favorites = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const localStorageFavorites = localStorage.getItem('favorites');
+  const currentFavorites: number[] = JSON.parse(localStorageFavorites || '[]');
+
+  // const [favoritesDataIds, setFavoritesDataIds] = useState(currentFavorites);
+  const [favoritesData, setFavoritesData] = useState<CardData[]>([]);
+
+  const loadData = async () => {
+    setIsLoading(true);
+    const recivedData = await getProductByIds(currentFavorites);
+
+    setIsLoading(false);
+    setFavoritesData(recivedData);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
-    <div>Favorites</div>
+    <>
+      <div className="catalog">
+        <div className="container">
+          <div className="catalog__path">
+            <PageRoute />
+          </div>
+
+          <div className="catalog__title">
+            <PageTitle title="Mobile phones" />
+            <ItemsOnPage itemsOnPage={favoritesData.length} text="models" />
+          </div>
+
+          {isLoading
+            ? <Loader />
+            : (
+              <div className="catalog__products">
+                {favoritesData.map(
+                  favorite => (
+                    <Card
+                      key={favorite.id}
+                      cardData={favorite}
+                    />
+                  ),
+                )}
+              </div>
+            )}
+        </div>
+      </div>
+
+    </>
   );
 };
