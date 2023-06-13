@@ -1,3 +1,5 @@
+@import '../../styles/mixins/mixins.scss';
+
 .info {
 
   &__path {
@@ -23,13 +25,112 @@
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(24, 1fr);
     justify-items: start;
-    grid-gap: 65px;
+    grid-gap: 16px;
+
+    @include onLowTablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include onPhone {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &-desktop {
+      @for $start from 1 through 24 {
+        @for $end from $start through 24 {
+          @include onDesktop {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
+    &-tablet {
+      @for $start from 1 through 24 {
+        @for $end from $start through 24 {
+          @include onTablet {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
+    &-lowTablet {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          @include onTablet {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
+    &-phone {
+      @for $start from 1 through 4 {
+        @for $end from $start through 4 {
+          @include onTablet {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
 
     &-description {
-      margin-bottom: 80px;
+      grid-column: 1/12;
+
+
+      &-title {
+        margin-bottom: 32px;
+      }
+
+      &-gallery {
+        height: 464px;
+        margin-bottom: 80px;
+      }
+    }
+
+    &-characteristics {
+      width: 100%;
+      background-color: purple;
+      opacity: 0.2;
+      border: 1px solid red;
+      grid-column: 14 / 24;
+    }
+  }
+
+  .article:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  .article {
+    margin-bottom: 32px;
+    grid-column: 1/12;
+
+    &__title {
+      font-family: 'Mont-Bold';
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 16px;
+
+      color: #313237;
+
+      &__text {
+        font-family: 'Mont-Regular';
+        font-size: 14px;
+        line-height: 21px;
+
+        color: #89939A;
+      }
     }
   }
 }
-

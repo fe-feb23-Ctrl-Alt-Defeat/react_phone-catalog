@@ -1,28 +1,49 @@
 @import '../../styles/mixins/mixins.scss';
 
 .gallery {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-gap: 16px;
   align-items: center;
 
   &__sub-photos {
+    height: 464px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 464px;
+    align-items: center;
+    justify-content: space-around;
 
     &-photo {
-      height: 50px;
+      display: flex;
+      justify-content: center;
       width: 80px;
       height: 80px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid #B4BDC4;
+      opacity: 0.7;
+
+      &:hover {
+        border-color: #89939A;
+      }
+
+      &-image {
+        width: auto;
+        height: 100%;
+        padding: 7px;
+      }
     }
   }
 
   &__main-photo {
-    width: 464px;
+    width: 380px;
     height: 464px;
-    border: 1px solid #E5E5E5;
-    margin: 11px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+
+    &-image {
+      width: auto;
+      height: 100%;
+      padding: 7px;
+    }
   }
 }
