@@ -22,6 +22,10 @@ export const Favorites = () => {
   const [favoritesData, setFavoritesData] = useState<CardData[]>([]);
 
   const loadData = async () => {
+    if (currentFavorites.length === 0) {
+      return;
+    }
+
     setIsLoading(true);
     const recivedData = await getProductByIds(currentFavorites);
 
