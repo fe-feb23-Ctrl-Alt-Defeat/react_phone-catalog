@@ -1,0 +1,46 @@
+.sliderTest {
+  font-family: 'Mont-Black';
+  font-size: 48px;
+  line-height: 56px;
+  margin-top: 56px;
+}
+
+.sliderContainer {
+  height: 400px;
+  width: 1040px;
+  display: flex;
+  align-items: center;
+}
+
+.sliderBox {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  &__contents {
+    height: 100%;
+    display: flex;
+
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+.arrow {
+  height: 100%;
+  width: 32px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.bannerImg {
+  height: 100%;
+  width: 100%;
+  margin: 0 16px;
+}
