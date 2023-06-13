@@ -33,7 +33,6 @@ export const DropDown: React.FC<Props> = (
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-
   const [search, setSearchParams] = useSearchParams();
 
   const handleMenuToggle = useCallback(() => {
@@ -82,6 +81,7 @@ export const DropDown: React.FC<Props> = (
             <div className="sort__form-select-button">
               <img src={isOpen ? IconUp : IconDown} alt="Icon down" />
             </div>
+
           </button>
           {isOpen && (
             <DropMenu
