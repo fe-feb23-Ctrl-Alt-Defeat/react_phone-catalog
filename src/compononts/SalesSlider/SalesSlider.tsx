@@ -8,6 +8,8 @@ import Banner_arrow_left from '../../images/Banner_arrow_left.svg';
 import Banner_arrow_right from '../../images/Banner_arrow_right.svg';
 
 export const SalesSlider = () => {
+  const pictures = [Banner, Banner, Banner];
+
   const [offset, setOffset] = useState(0);
 
   const hendleLeftArrowClick = () => {
@@ -27,7 +29,7 @@ export const SalesSlider = () => {
     setOffset((currentOffset: number) => {
       const newOffset = currentOffset - 1040;
 
-      const maxOffset = -(1040 * 2);
+      const maxOffset = -(1040 * (pictures.length - 1));
 
       console.log(newOffset);
 
@@ -36,8 +38,8 @@ export const SalesSlider = () => {
   };
 
   return (
-    <div>
-      <div>Welcome to Nice Gadgets store!</div>
+    <div className="container">
+      <div className="sliderTest">Welcome to Nice Gadgets store!</div>
 
       <div className="sliderContainer">
         <div

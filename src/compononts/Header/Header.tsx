@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
 import Logo from '../../images/logo_gnce_gadgets.svg';
-import Favourite from '../../images/icon_favourite.svg';
+import Favorites from '../../images/icon_favorites.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
 import Menu_cross from '../../images/icon_menu_cross.svg';
@@ -107,8 +107,8 @@ export const Header: React.FC = () => {
               }
             >
               <img
-                src={Favourite}
-                alt="favourite"
+                src={Favorites}
+                alt="favorite"
                 className="header__favorite-image"
               />
             </NavLink>
@@ -195,7 +195,7 @@ export const Header: React.FC = () => {
             </ul>
           </div>
 
-          <div className="menu__buttom">
+          <div className="menu__bottom">
             <NavLink
               to="/favorites"
               className={
@@ -204,8 +204,8 @@ export const Header: React.FC = () => {
               }
             >
               <img
-                src={Favourite}
-                alt="favourite"
+                src={Favorites}
+                alt="favorite"
                 className="menu__favorite-image"
               />
             </NavLink>

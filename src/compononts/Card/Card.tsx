@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './card.scss';
 
 import classNames from 'classnames';
-import Favorite from '../../images/icon_favourite.svg';
+import Favorite from '../../images/icon_favorites.svg';
 import redHeart from '../../images/redHeart.svg';
 import { CardData } from '../../types/CardData';
 
