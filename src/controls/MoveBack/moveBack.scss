@@ -1,6 +1,13 @@
 .move-back {
   display: flex;
   align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+
+  &:hover {
+    color: #313237;
+  }
 
   &__icon {
     margin-right: 10px;
@@ -14,7 +21,7 @@
   &__paragraph {
 
     &-text {
-      font-family: 'Mont-Bold';
+      font-family: 'Mont-SemiBold';
       font-size: 12px;
       line-height: 15px;
 

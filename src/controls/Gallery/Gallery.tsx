@@ -1,25 +1,35 @@
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-console */
 import React from 'react';
 import './gallery.scss';
-import { Phone } from '../../types/CardDescription';
+import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 
 interface Props {
-  phone: Phone | null;
+  images: string[];
 }
 
-export const Gallery: React.FC<Props> = ({ phone }) => {
+export const Gallery: React.FC<Props> = ({ images }) => {
+  console.log('images', images, IMAGE_BASE_URL);
+
   return (
     <div className="gallery">
       <div className="gallery__sub-photos">
-        {phone?.images.map((image) => (
-          <div className="gallery__sub-photos-photo" key={image}>
-            <img src={image} alt="Phone iamge" />
+        {images.map((image) => (
+          <div key={image} className="gallery__sub-photos-photo">
+            <img
+              src={`${IMAGE_BASE_URL}${image}`}
+              alt="Phone iamge"
+              className="gallery__sub-photos-photo-image"
+            />
           </div>
         ))}
       </div>
 
       <div className="gallery__main-photo">
-
+        <img
+          src={`${IMAGE_BASE_URL}${images[0]}`}
+          alt="Phone iamge"
+          className="gallery__main-photo-image"
+        />
       </div>
     </div>
   );

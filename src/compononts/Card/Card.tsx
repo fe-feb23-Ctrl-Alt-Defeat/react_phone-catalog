@@ -20,6 +20,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
   return (
     <div className="card">
       <div className="card__content">
+
         <Link to={`/phones/${cardData.itemId}`} className="card__image">
           <img
             src={`${IMAGE_BASE_URL}${cardData.image}`}
@@ -27,6 +28,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
             className="card__image_img"
           />
         </Link>
+
 
         <Link to={`/phones/${cardData.itemId}`} className="card__title">
           {cardData.name}
