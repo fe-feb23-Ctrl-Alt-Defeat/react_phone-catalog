@@ -16,11 +16,19 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ cardData }) => {
-  const [isFavoriteSelected, setIsFavoriteSelected] = useState(false);
   const localStorageCart = localStorage.getItem('cart');
   const currCart: LocalStCart = localStorageCart
     ? JSON.parse(localStorageCart)
     : [];
+
+  const localStorageFavorites = localStorage.getItem('favorites');
+  const currFavorite: number[] = localStorageFavorites
+    ? JSON.parse(localStorageFavorites)
+    : [];
+
+  const [isFavoriteSelected, setIsFavoriteSelected] = useState(
+    currFavorite.some(favorite => favorite === cardData.id),
+  );
 
   const [isAdded, setIsAdded] = useState(
     currCart.some(cartVal => cartVal[0] === cardData.id),
@@ -49,6 +57,31 @@ export const Card: React.FC<Props> = ({ cardData }) => {
     const newCart = currentCart.filter(cartVal => cartVal[0] !== productId);
 
     localStorage.setItem('cart', JSON.stringify(newCart));
+  };
+
+  const handleAddFavoriteClick = (productId: number) => {
+    const favorites = localStorage.getItem('favorites');
+
+    setIsFavoriteSelected(currVal => !currVal);
+
+    if (!favorites || favorites === '[]') {
+      localStorage.setItem('favorites', JSON.stringify([productId]));
+
+      return;
+    }
+
+    const currentFavorites: number[] = JSON.parse(favorites);
+
+    if (!currentFavorites.some(favoritesVal => favoritesVal === productId)) {
+      currentFavorites.push(productId);
+      localStorage.setItem('favorites', JSON.stringify(currentFavorites));
+
+      return;
+    }
+
+    const newFavorites = currentFavorites.filter(favoritesVal => favoritesVal !== productId);
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
   return (
@@ -108,9 +141,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
             className={classNames('card__buy_favorite', {
               'card__buy_favorite-isSelected': isFavoriteSelected,
             })}
-            onClick={() => {
-              setIsFavoriteSelected(!isFavoriteSelected);
-            }}
+            onClick={() => handleAddFavoriteClick(cardData.id)}
           >
             {isFavoriteSelected
               ? (

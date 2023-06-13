@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import './cart.scss';
 import { PageTitle } from '../../controls/PageTitle/PageTitle';
-import { CardData } from '../../types/CardData';
 import { getProductByIds } from '../../api/products';
 import { CartItem } from '../../compononts/CartItem/CartItem';
 import { Button } from '../../controls/Button/Button';
 import { LocalStCart } from '../../types/LocalStCart';
+import { CardData } from '../../types/CardData';
 
 export const Cart: React.FC = () => {
   const localStorageCart = localStorage.getItem('cart');

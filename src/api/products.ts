@@ -23,9 +23,3 @@ export const getProductWithPaginationSorted = (
 ) => {
   return client.get(`products?page=${page}&limit=${limit}&orderBy=${orderBy}&orderDir=${orderDir}`);
 };
-
-export const getFavoritesProducts = (
-  ids: string[],
-) => {
-  return client.get(`products?ids=${ids}`);
-};

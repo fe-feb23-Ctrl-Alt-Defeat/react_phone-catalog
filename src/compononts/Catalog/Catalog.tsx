@@ -10,7 +10,6 @@ import { useSearchParams } from 'react-router-dom';
 import './catalog.scss';
 import { Card } from '../Card/Card';
 import { getProductWithPaginationSorted } from '../../api/products';
-import { CardData } from '../../types/CardData';
 
 import { DropDown } from '../../controls/DropDown/DropDown';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
@@ -20,6 +19,7 @@ import { PhonesForCatalogData } from '../../types/PhonesForCatalogData';
 import { Pagination } from '../Pagination/Pagination';
 import { Loader } from '../Loader/Loader';
 import { catalogProductsFilter } from '../../utils/functionsHelpers/catalogProductsFilter';
+import { CardData } from '../../types/CardData';
 
 export interface Option {
   title: string;
