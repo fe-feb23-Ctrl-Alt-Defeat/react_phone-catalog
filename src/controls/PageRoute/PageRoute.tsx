@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import './pageRoute.scss';

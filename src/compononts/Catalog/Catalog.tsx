@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import './catalog.scss';
 import { Card } from '../Card/Card';
@@ -102,9 +102,7 @@ export const Catalog: React.FC = () => {
                 {catalogData.map(
                   cardData => (
                     <Fragment key={cardData.name}>
-                      <Link to={`/phones/${cardData.itemId}`}>
-                        <Card key={cardData.name} cardData={cardData} />
-                      </Link>
+                      <Card key={cardData.name} cardData={cardData} />
                     </Fragment>
                   ),
                 )}
