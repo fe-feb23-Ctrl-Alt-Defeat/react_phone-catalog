@@ -8,6 +8,7 @@ import { CardData } from '../../types/CardData';
 import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 
 import './card.scss';
+import { LocalStCart } from '../../types/LocalStCart';
 
 type Props = {
   cardData: CardData;
@@ -15,7 +16,39 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ cardData }) => {
   const [isFavoriteSelected, setIsFavoriteSelected] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
+  const localStorageCart = localStorage.getItem('cart');
+  const currCart: LocalStCart = localStorageCart
+    ? JSON.parse(localStorageCart)
+    : [];
+
+  const [isAdded, setIsAdded] = useState(
+    currCart.some(cartVal => cartVal[0] === cardData.id),
+  );
+
+  const handleAddToCartClick = (productId: number) => {
+    const cart = localStorage.getItem('cart');
+
+    setIsAdded(currVal => !currVal);
+
+    if (!cart || cart === '[]') {
+      localStorage.setItem('cart', JSON.stringify([[productId, 1]]));
+
+      return;
+    }
+
+    const currentCart: [[number, number]] = JSON.parse(cart);
+
+    if (!currentCart.some(cartVal => cartVal[0] === productId)) {
+      currentCart.push([productId, 1]);
+      localStorage.setItem('cart', JSON.stringify(currentCart));
+
+      return;
+    }
+
+    const newCart = currentCart.filter(cartVal => cartVal[0] !== productId);
+
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  };
 
   return (
     <div className="card">
@@ -63,7 +96,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
             className={classNames('card__buy_button card__buy_button', {
               'card__buy_button card__buy_button-isAdded': isAdded,
             })}
-            onClick={() => setIsAdded(!isAdded)}
+            onClick={() => handleAddToCartClick(cardData.id)}
           >
             {isAdded ? 'Added to cart' : 'Add to cart'}
           </button>

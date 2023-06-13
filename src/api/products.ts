@@ -11,7 +11,7 @@ export const getProductById = (id: string) => {
 };
 
 export const getProductByIds = (ids: number[]) => {
-  return client.get<CardData[]>('products', JSON.stringify({ ids }));
+  return client.get<CardData[]>(`products?ids=${ids.join(',')}`);
 };
 
 export const getProductWithPagination = (page: string, limit: string) => {

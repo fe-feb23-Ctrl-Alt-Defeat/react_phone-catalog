@@ -1,0 +1,68 @@
+@import '../../styles/mixins/mixins.scss';
+@import '../../styles/pageContainer/pageContainer.scss';
+
+.cart {
+  &__moveback {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include onTablet {
+      grid-template-columns: 1fr;
+    }
+
+    &__items {
+      margin-right: 16px;
+
+      @include onTablet {
+        margin: 0;
+      }
+    }
+
+    &__checkout {
+      border: 1px solid #E2E6E9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      max-height: 206px;
+
+      &__totalPrice {
+        font-family: 'Mont-black';
+        font-size: 32px;
+        line-height: 41px;
+      }
+
+      &__totalLabel {
+        font-family: 'Mont-Regular';
+        font-size: 14px;
+        line-height: 150%;
+        color: #89939A;
+        margin-bottom: 24px;
+      }
+
+      &__breakline {
+        border-top: 1px solid #E2E6E9;
+        width: 100%;
+        margin-bottom: 24px;
+      }
+
+      &__button {
+        height: 48px;
+        font-size: 14px;
+        line-height: 150%;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+}
