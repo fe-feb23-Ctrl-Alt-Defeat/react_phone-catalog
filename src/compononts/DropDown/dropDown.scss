@@ -1,0 +1,155 @@
+@import '../../styles/mixins/mixins.scss';
+
+.sort:not(:last-child) {
+  margin-right: 16px;
+}
+
+.sort {
+
+  &__title {
+    font-family: "Mont-SemiBold";
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939A;
+  }
+
+  &__form {
+      &-select {
+      height: 40px;
+      padding: 12px;
+      margin-bottom: 4px;
+      
+      border: 1px solid #B4BDC4;
+      outline: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background-color: inherit;
+
+      &--sort-by {
+        width: 176px;
+
+        @include onTablet {
+          width: 187px;
+        }
+
+        @include onLowTablet {
+          width: 187px;
+        }
+
+        @include onPhone {
+          width: 136px;
+        }
+      }
+
+      &--items-on-page {
+        width: 128px;
+
+        @include onTablet {
+          width: 136px;
+
+          @include onLowTablet {
+            width: 136px;
+          }
+
+          @include onPhone {
+            width: 136px;
+          }
+        }
+
+        &-button {
+          background-color: inherit;
+          border: none;
+          outline: none;
+          cursor: pointer;
+        }
+
+        &:hover {
+          border-color: #89939A;
+        }
+
+        &:focus {
+          border-color: #313237;
+        }
+      }
+    }
+
+    &-options {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+
+      position: absolute;
+      z-index: 1;
+      height: 144px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+
+      border: 1px solid #E2E6E9;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+      background-color: #FFF;
+      overflow-y: auto;
+
+
+      &--visible {
+        opacity: 1;
+      }
+
+      &--sort-by {
+        width: 176px;
+
+        @include onTablet {
+          width: 187px;
+        }
+
+        @include onLowTablet {
+          width: 187px;
+        }
+
+        @include onPhone {
+          width: 136px;
+        }
+      }
+
+      &--items-on-page {
+        width: 128px;
+
+        @include onTablet {
+          width: 136px;
+        }
+
+        @include onLowTablet {
+          width: 136px;
+        }
+
+        @include onPhone {
+          width: 136px;
+        }
+      }
+
+      &-option {
+        font-family: "Mont-Regular";
+        font-size: 14px;
+        line-height: 21px;
+        display: inline-block;
+        width: 100%;
+        padding: 6px 86px 5px 12px;
+        cursor: pointer;
+
+        color: #89939A;
+
+        &:hover {
+          font-size: 14px;
+          line-height: 21px;
+
+          background-color: #FAFBFC;
+          color: #313237;
+        }
+      }
+    }
+  }
+}
