@@ -44,3 +44,15 @@
   width: 100%;
   margin: 0 16px;
 }
+
+.jumpButtonBox {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.jumpButton {
+  width: 14px;
+  height: 4px;
+  cursor: pointer;
+}

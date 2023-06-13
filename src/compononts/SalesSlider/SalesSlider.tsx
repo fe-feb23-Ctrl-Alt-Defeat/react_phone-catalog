@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -6,35 +7,48 @@ import './salesSlider.scss';
 import Banner from '../../images/Banner.svg';
 import Banner_arrow_left from '../../images/Banner_arrow_left.svg';
 import Banner_arrow_right from '../../images/Banner_arrow_right.svg';
+import Jump_Button_Empty from '../../images/Banner_icon_jumpButton_empty.svg';
+import Jump_Button_Color from '../../images/Banner_icon_jumpButton_color.svg';
 
 export const SalesSlider = () => {
   const pictures = [Banner, Banner, Banner];
 
   const [offset, setOffset] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const hendleLeftArrowClick = () => {
-    console.log(123);
-
-    setOffset((currentOffset: number) => {
+    setOffset((currentOffset) => {
       const newOffset = currentOffset + 1040;
+      const maxOffset = -(1040 * (pictures.length - 1));
 
-      console.log(newOffset);
+      return newOffset > 0 ? maxOffset : newOffset;
+    });
 
-      return Math.min(newOffset, 0);
+    setActiveSlide((currentSlide) => {
+      const previousSlide = currentSlide - 1;
+
+      return previousSlide < 0 ? pictures.length - 1 : previousSlide;
     });
   };
 
   const hendleRightArrowClick = () => {
-    console.log(456);
-    setOffset((currentOffset: number) => {
+    setOffset((currentOffset) => {
       const newOffset = currentOffset - 1040;
-
       const maxOffset = -(1040 * (pictures.length - 1));
 
-      console.log(newOffset);
-
-      return Math.max(newOffset, maxOffset);
+      return newOffset < maxOffset ? 0 : newOffset;
     });
+
+    setActiveSlide((currentSlide) => {
+      const nextSlide = currentSlide + 1;
+
+      return nextSlide >= pictures.length ? 0 : nextSlide;
+    });
+  };
+
+  const goToSlide = (slideIndex: number) => {
+    setOffset(-1040 * slideIndex);
+    setActiveSlide(slideIndex);
   };
 
   return (
@@ -55,9 +69,9 @@ export const SalesSlider = () => {
               transform: `translateX(${offset}px)`,
             }}
           >
-            <img src={Banner} alt="Banner" className="bannerImg" />
-            <img src={Banner} alt="Banner" className="bannerImg" />
-            <img src={Banner} alt="Banner" className="bannerImg" />
+            {pictures.map((picture) => (
+              <img src={picture} alt="Banner" className="bannerImg" />
+            ))}
           </div>
         </div>
         <div
@@ -66,6 +80,22 @@ export const SalesSlider = () => {
         >
           <img src={Banner_arrow_right} alt="arrowRight" />
         </div>
+      </div>
+      <div className="jumpButtonBox">
+        {pictures.map((_, sliderIndex) => (
+          <div
+            key={sliderIndex}
+            className={`jumpButton ${activeSlide === sliderIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(sliderIndex)}
+          >
+            <img
+              src={activeSlide === sliderIndex
+                ? Jump_Button_Color : Jump_Button_Empty}
+              alt="jumpButton"
+              className="jumpButtonImg"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
