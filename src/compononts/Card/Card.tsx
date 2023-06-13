@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import './card.scss';
+import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
 import Favorite from '../../images/icon_favorites.svg';
 import redHeart from '../../images/redHeart.svg';
 import { CardData } from '../../types/CardData';
+import { IMAGE_BASE_URL } from '../../utils/globalVariables';
+
+import './card.scss';
 
 type Props = {
   cardData: CardData;
@@ -17,17 +20,17 @@ export const Card: React.FC<Props> = ({ cardData }) => {
   return (
     <div className="card">
       <div className="card__content">
-        <a href="/" className="card__image">
+        <Link to={`/phones/${cardData.itemId}`} className="card__image">
           <img
-            src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${cardData.image}`}
+            src={`${IMAGE_BASE_URL}${cardData.image}`}
             alt="phone_image"
             className="card__image_img"
           />
-        </a>
+        </Link>
 
-        <p className="card__title">
+        <Link to={`/phones/${cardData.itemId}`} className="card__title">
           {cardData.name}
-        </p>
+        </Link>
 
         <div className="card__price">
           <div className="card__price_normal">

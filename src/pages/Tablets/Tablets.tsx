@@ -1,7 +1,4 @@
 import React from 'react';
+import { EmptyCatalog } from '../../compononts/EmptyCatalog/EmptyCatalog';
 
-export const Tablets = () => {
-  return (
-    <div>Tablets</div>
-  );
-};
+export const Tablets = () => <EmptyCatalog />;

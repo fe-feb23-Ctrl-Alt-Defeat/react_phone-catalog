@@ -1,0 +1,31 @@
+.routing {
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  &__icon-home {
+    max-width: 16px;
+    max-height: 16px;
+
+    &-link {
+      max-width: 16px;
+      max-height: 16px;
+    }
+
+    &-image {
+      color: #313237;
+    }
+  }
+
+  &__selected-page {
+
+    &-paragraph {
+      font-family: 'Mont-SemiBold';
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #89939A;
+    }
+  }
+}

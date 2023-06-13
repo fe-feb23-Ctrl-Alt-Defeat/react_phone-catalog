@@ -16,7 +16,7 @@ export const ContentWithRoutes = () => {
 
       <Route path="/phones">
         <Route index element={<Phones />} />
-        <Route path=":phoneId" element={<PhoneInfo />} />
+        <Route path=":itemId" element={<PhoneInfo />} />
       </Route>
       <Route path="/tablets" element={<Tablets />} />
       <Route path="/accessories" element={<Accessories />} />
