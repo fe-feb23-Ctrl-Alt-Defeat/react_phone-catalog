@@ -1,9 +1,15 @@
-import React, { useEffect, useState, Fragment } from 'react';
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+import React, {
+  useEffect,
+  useState,
+  Fragment,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import './catalog.scss';
 import { Card } from '../Card/Card';
-import { getProductWithPagination } from '../../api/products';
+import { getProductWithPaginationSorted } from '../../api/products';
 import { CardData } from '../../types/CardData';
 
 import { DropDown } from '../../controls/DropDown/DropDown';
@@ -13,6 +19,7 @@ import { ItemsOnPage } from '../../controls/ItemsOnPage/ItemsOnPage';
 import { PhonesForCatalogData } from '../../types/PhonesForCatalogData';
 import { Pagination } from '../Pagination/Pagination';
 import { Loader } from '../Loader/Loader';
+import { catalogProductsFilter } from '../../utils/functionsHelpers/catalogProductsFilter';
 
 export interface Option {
   title: string;
@@ -21,7 +28,7 @@ export interface Option {
 
 const filterBy = {
   title: 'Sort By',
-  selects: ['Newest', 'Oldest', 'Cheapest'],
+  selects: ['Expensive', 'Cheapest'],
 };
 
 const selectNum = {
@@ -36,9 +43,12 @@ export const Catalog: React.FC = () => {
 
   const limit = searchParams.get('limit') || '16';
   const page = searchParams.get('page') || '1';
+  const order = searchParams.get('order') || 'Expensive';
+
+  const { orderBy, orderDir } = catalogProductsFilter(order);
 
   const [selectedPage, setSelectedPage] = useState(limit);
-  const [selectedFilter, setSelectedFilter] = useState(filterBy.selects[0]);
+  const [selectedFilter, setSelectedFilter] = useState(order);
 
   const [total, setTotal] = useState(0);
 
@@ -49,9 +59,7 @@ export const Catalog: React.FC = () => {
   const fetchPhonesForCatalog = async () => {
     try {
       setIsLoading(true);
-      // eslint-disable-next-line max-len
-      const productsFromServer: unknown = await getProductWithPagination(page, limit);
-      // eslint-disable-next-line max-len
+      const productsFromServer: unknown = await getProductWithPaginationSorted(page, limit, orderDir, orderBy);
       const data: PhonesForCatalogData = productsFromServer as PhonesForCatalogData;
 
       setIsLoading(false);
@@ -67,7 +75,7 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     fetchPhonesForCatalog();
-  }, [page, limit]);
+  }, [page, limit, order, orderBy, orderDir]);
 
   return (
     <>
@@ -79,7 +87,7 @@ export const Catalog: React.FC = () => {
 
           <div className="catalog__title">
             <PageTitle title="Mobile phones" />
-            <ItemsOnPage itemsOnPage={catalogData.length} />
+            <ItemsOnPage itemsOnPage={total} text="models" />
           </div>
 
           <div className="catalog__sorts">
@@ -102,7 +110,10 @@ export const Catalog: React.FC = () => {
                 {catalogData.map(
                   cardData => (
                     <Fragment key={cardData.name}>
-                      <Card key={cardData.name} cardData={cardData} />
+                      <Card
+                        key={cardData.name}
+                        cardData={cardData}
+                      />
                     </Fragment>
                   ),
                 )}

@@ -6,14 +6,12 @@ import React, { useEffect, useState } from 'react';
 type Props = {
   onOpen: (select: string) => void;
   title: string;
-  // menuRef: React.RefObject<HTMLUListElement>;
   selects: (string | number)[];
 };
 
 export const DropMenu: React.FC<Props> = ({
   onOpen,
   title,
-  // menuRef,
   selects,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,7 +24,6 @@ export const DropMenu: React.FC<Props> = ({
 
   return (
     <ul
-      // ref={menuRef}
       className={cn(
         'sort__form-options',
         {

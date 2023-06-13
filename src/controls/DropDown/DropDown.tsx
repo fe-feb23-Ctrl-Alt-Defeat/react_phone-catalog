@@ -15,6 +15,7 @@ import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
 import IconUp from '../../images/icon_arrow_up.svg';
 import { DropMenu } from './DropMenu';
+import { getSearchWith } from '../../utils/searchHelper';
 
 interface Props {
   options: {
@@ -33,7 +34,7 @@ export const DropDown: React.FC<Props> = (
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleMenuToggle = useCallback(() => {
     setIsOpen((prevVal) => !prevVal);
@@ -41,7 +42,14 @@ export const DropDown: React.FC<Props> = (
 
   const handleOptionClick = (select: string) => {
     if (!Number.isNaN(+select)) {
-      setSearchParams({ limit: String(select) });
+      setSearchParams(
+        getSearchWith(searchParams, { limit: String(select) }),
+      );
+    } else {
+      console.log(`select  ${select}`);
+      setSearchParams(
+        getSearchWith(searchParams, { order: String(select) }),
+      );
     }
 
     setOnSelect(select);

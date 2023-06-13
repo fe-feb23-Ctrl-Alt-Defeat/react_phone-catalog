@@ -1,14 +1,15 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
 import Favorite from '../../images/icon_favorites.svg';
 import redHeart from '../../images/redHeart.svg';
-import { CardData } from '../../types/CardData';
 import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 
 import './card.scss';
 import { LocalStCart } from '../../types/LocalStCart';
+import { CardData } from '../../types/CardData';
 
 type Props = {
   cardData: CardData;
@@ -107,7 +108,9 @@ export const Card: React.FC<Props> = ({ cardData }) => {
             className={classNames('card__buy_favorite', {
               'card__buy_favorite-isSelected': isFavoriteSelected,
             })}
-            onClick={() => setIsFavoriteSelected(!isFavoriteSelected)}
+            onClick={() => {
+              setIsFavoriteSelected(!isFavoriteSelected);
+            }}
           >
             {isFavoriteSelected
               ? (
