@@ -37,54 +37,6 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    &-desktop {
-      @for $start from 1 through 24 {
-        @for $end from $start through 24 {
-          @include onDesktop {
-            &--#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
-      }
-    }
-
-    &-tablet {
-      @for $start from 1 through 24 {
-        @for $end from $start through 24 {
-          @include onTablet {
-            &--#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
-      }
-    }
-
-    &-lowTablet {
-      @for $start from 1 through 12 {
-        @for $end from $start through 12 {
-          @include onTablet {
-            &--#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
-      }
-    }
-
-    &-phone {
-      @for $start from 1 through 4 {
-        @for $end from $start through 4 {
-          @include onTablet {
-            &--#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
-      }
-    }
-
     &-description {
       grid-column: 1/12;
 
@@ -100,11 +52,12 @@
     }
 
     &-characteristics {
+      height: 464px;
       width: 100%;
-      background-color: purple;
-      opacity: 0.2;
-      border: 1px solid red;
       grid-column: 14 / 24;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: start
     }
   }
 
@@ -132,5 +85,98 @@
         color: #89939A;
       }
     }
+  }
+
+  .available-colors {
+    grid-column: 1/13;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+
+    &__text {
+      font-family: 'Mont-SemiBold';
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #89939A;
+    }
+
+    &__id {
+      font-family: 'Mont-Bold';
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #B4BDC4;
+    }
+  }
+
+  .color-selects {
+    grid-column: 1/8;
+
+    &__colors {
+      display: flex;
+      gap: 8px;
+
+      &-item {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #E2E6E9;
+        cursor: pointer;
+        padding: 1px;
+
+        &:hover {
+          border-color: #B4BDC4;
+        }
+
+        &--selected {
+          border-color: #313237;
+        }
+
+        &-color {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: #FCDBC1;
+        }
+      }
+    }
+  }
+
+  .under-line {
+    grid-column: 1/10;
+    border: 1px solid #E2E6E9;
+  }
+
+  // change sizes of buttons
+  .select-capacity {
+    grid-column: 1/5;
+
+    &__text {
+      font-family: 'Mont-SemiBold';
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #89939A;
+    }
+  }
+
+  .capacityes {
+    grid-column: 1/6;
+    display: flex;
+    gap: 8px;
+  }
+
+  .price {
+    grid-column: 1/6;
+    align-items: center;
+  }
+
+  // change sizes of buttons
+  .buttons-block {
+    grid-column: 1/8;
+    display: flex;
+    gap: 8px;
   }
 }
