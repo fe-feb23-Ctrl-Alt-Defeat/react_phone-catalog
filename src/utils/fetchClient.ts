@@ -7,16 +7,8 @@ type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
-  data: any = null,
 ): Promise<T> {
   const options: RequestInit = { method };
-
-  if (data) {
-    options.body = JSON.stringify(data);
-    options.headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-    };
-  }
 
   return fetch(BASE_URL + url, options)
     .then(response => {
@@ -29,11 +21,5 @@ function request<T>(
 }
 
 export const client = {
-  get: <T>(url: string, data?: string) => {
-    if (data) {
-      return request<T>(url, 'GET', data);
-    }
-
-    return request<T>(url);
-  },
+  get: <T>(url: string) => request<T>(url),
 };
