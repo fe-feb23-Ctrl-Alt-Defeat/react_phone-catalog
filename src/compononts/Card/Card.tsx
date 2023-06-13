@@ -29,7 +29,6 @@ export const Card: React.FC<Props> = ({ cardData }) => {
           />
         </Link>
 
-
         <Link to={`/phones/${cardData.itemId}`} className="card__title">
           {cardData.name}
         </Link>
