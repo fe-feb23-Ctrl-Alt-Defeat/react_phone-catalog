@@ -1,24 +1,53 @@
-.sliderTest {
+@import '../../styles/mixins/mixins.scss';
+
+.sliderText {
   font-family: 'Mont-Black';
   font-size: 48px;
   line-height: 56px;
   margin-top: 56px;
+
+  white-space: normal;
+  
+
+  @include onTablet {
+    line-height: 48px;
+    white-space: pre-wrap;
+    display: block;
+  }
+
+  @include onPhone {
+    font-size: 32px;
+    line-height: 41px;
+    white-space: pre-wrap;
+  }
 }
 
 .sliderContainer {
   height: 400px;
-  width: 1040px;
+  width: 100%;
   display: flex;
   align-items: center;
+  margin-top: 56px;
+
+  @include onTablet {
+    height: 189px;
+    width: 100%;
+  }
+
+  @include onPhone {
+    height: 320px;
+    width: 100%;
+  }
 }
 
 .sliderBox {
   height: 100%;
   width: 100%;
+  object-fit: contain;
+
   overflow: hidden;
 
   &__contents {
-    height: 100%;
     display: flex;
 
     transition: translate;
@@ -31,18 +60,39 @@
 .arrow {
   height: 100%;
   width: 32px;
-  border: 1px solid black;
+  border: 1px solid #B4BDC4;
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
+
+  @include onPhone {
+    display: none;
+  }
+}
+
+.arrow-left {
+  margin-right: 16px;
+}
+
+.arrow-right {
+  margin-left: 16px;
 }
 
 .bannerImg {
   height: 100%;
   width: 100%;
-  margin: 0 16px;
+  object-fit: cover;
+
+  @include onTablet {
+    height: 189px;
+  }
+
+  @include onPhone {
+    height: 320px;
+    width: 320px;
+  }
 }
 
 .jumpButtonBox {

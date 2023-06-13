@@ -4,14 +4,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import './salesSlider.scss';
-import Banner from '../../images/Banner.svg';
-import Banner_arrow_left from '../../images/Banner_arrow_left.svg';
-import Banner_arrow_right from '../../images/Banner_arrow_right.svg';
-import Jump_Button_Empty from '../../images/Banner_icon_jumpButton_empty.svg';
-import Jump_Button_Color from '../../images/Banner_icon_jumpButton_color.svg';
+import Banner from '../../images/Banner/Banner.svg';
+import Banner_2 from '../../images/Banner/Banner_2.jpg';
+import Banner_arrow_left from '../../images/Banner/Banner_arrow_left.svg';
+import Banner_arrow_right from '../../images/Banner/Banner_arrow_right.svg';
+// eslint-disable-next-line max-len
+import Jump_Button_Empty from '../../images/Banner/Banner_icon_jumpButton_empty.svg';
+// eslint-disable-next-line max-len
+import Jump_Button_Color from '../../images/Banner/Banner_icon_jumpButton_color.svg';
 
 export const SalesSlider = () => {
-  const pictures = [Banner, Banner, Banner];
+  const pictures = [Banner, Banner_2, Banner];
 
   const [offset, setOffset] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -53,11 +56,15 @@ export const SalesSlider = () => {
 
   return (
     <div className="container">
-      <div className="sliderTest">Welcome to Nice Gadgets store!</div>
+      <div className="sliderText">
+        Welcome to Nice
+        <wbr />
+        &nbsp;Gadgets store!
+      </div>
 
       <div className="sliderContainer">
         <div
-          className="arrow"
+          className="arrow arrow-left"
           onClick={hendleLeftArrowClick}
         >
           <img src={Banner_arrow_left} alt="arrowLeft" />
@@ -75,7 +82,7 @@ export const SalesSlider = () => {
           </div>
         </div>
         <div
-          className="arrow"
+          className="arrow arrow-right"
           onClick={hendleRightArrowClick}
         >
           <img src={Banner_arrow_right} alt="arrowRight" />
