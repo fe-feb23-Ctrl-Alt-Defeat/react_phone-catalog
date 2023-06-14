@@ -24,8 +24,6 @@ export const PhoneInfo = () => {
 
   // const [phoneCapacity, setPhoneCapacity] = useState<string>('');
 
-  console.log(itemId);
-
   const loadPhoneById = async () => {
     setIsLoading(true);
     const phoneFromServer = await getProductById(itemId || '');
