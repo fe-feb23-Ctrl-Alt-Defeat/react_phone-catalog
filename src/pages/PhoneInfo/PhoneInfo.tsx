@@ -42,7 +42,7 @@ export const PhoneInfo = () => {
             <div className="container">
 
               <div className="info__path">
-                <PageRoute phoneName={phone?.name} />
+                <PageRoute phoneName={phone?.name} text="Phones" />
               </div>
 
               <div className="info__back">
