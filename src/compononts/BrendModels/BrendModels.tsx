@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
+import './brendmodels.scss';
 import { CardData } from '../../types/CardData';
 import { getProductWithPaginationSorted } from '../../api/products';
 import { PhonesForCatalogData } from '../../types/PhonesForCatalogData';
@@ -27,7 +28,9 @@ export const BrendsModels = () => {
 
   return (
     <>
-      <NewModelsSlider phonesData={phones} title="Brand new models" />
+      <div className="container brendsModels">
+        <NewModelsSlider phonesData={phones} title="Brand new models" />
+      </div>
     </>
   );
 };

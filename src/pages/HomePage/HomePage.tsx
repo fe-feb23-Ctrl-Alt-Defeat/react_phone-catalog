@@ -2,13 +2,13 @@
 import React from 'react';
 import './homePage.scss';
 import { SalesSlider } from '../../compononts/SalesSlider/SalesSlider';
-import { NewModelsCarousel } from '../../compononts/NewModelsCarousel/NewModelsCarousel';
+import { BrendsModels } from '../../compononts/BrendModels/BrendModels';
 
 export const HomePage = () => {
   return (
     <div className="homePage">
       <SalesSlider />
-      <NewModelsCarousel />
+      <BrendsModels />
       {/* <Card /> */}
     </div>
   );

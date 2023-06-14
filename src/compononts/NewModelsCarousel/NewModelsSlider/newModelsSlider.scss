@@ -1,8 +1,16 @@
 @import '../../../styles/mixins/mixins.scss';
 
-// .simpleSliderContainer {
-//   position: relative;
-// }
+.simpleSliderContainer {
+  margin-bottom: 80px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onPhone {
+    margin-bottom: 57px;
+  }
+}
 
 // .picturesBan {
 //   height: 500px;
