@@ -20,7 +20,9 @@ export const PhoneInfo = () => {
   const loadPhoneById = async () => {
     const phoneFromServer = await getProductById(itemId || '');
 
-    setPhone(phoneFromServer);
+    if (phoneFromServer) {
+      setPhone(phoneFromServer);
+    }
   };
 
   useEffect(() => {

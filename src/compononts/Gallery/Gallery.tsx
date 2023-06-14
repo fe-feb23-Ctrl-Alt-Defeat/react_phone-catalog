@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import './gallery.scss';
 import cn from 'classnames';
 import { IMAGE_BASE_URL } from '../../utils/globalVariables';
@@ -11,11 +11,11 @@ interface Props {
 }
 
 export const Gallery: React.FC<Props> = ({ images }) => {
-  const [mainImage, setMainImage] = React.useState(images[0]);
+  const [mainImage, setMainImage] = useState(images[0]);
 
-  const handleSelectImage = (image: string) => {
+  const handleSelectImage = useCallback((image: string) => {
     setMainImage(image);
-  };
+  }, []);
 
   return (
     <div className="gallery">
