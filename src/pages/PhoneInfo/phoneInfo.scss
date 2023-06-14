@@ -29,14 +29,6 @@
     justify-items: start;
     grid-gap: 16px;
 
-    @include onLowTablet {
-      grid-template-columns: repeat(12, 1fr);
-    }
-
-    @include onPhone {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
     &-description {
       grid-column: 1/12;
 
