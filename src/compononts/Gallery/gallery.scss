@@ -29,6 +29,12 @@
         width: auto;
         height: 100%;
         padding: 7px;
+        cursor: pointer;
+      }
+
+      &--active {
+        border-color: #313237;
+        opacity: 1;
       }
     }
   }
