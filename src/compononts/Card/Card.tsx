@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -79,7 +78,9 @@ export const Card: React.FC<Props> = ({ cardData }) => {
       return;
     }
 
-    const newFavorites = currentFavorites.filter(favoritesVal => favoritesVal !== productId);
+    const newFavorites = currentFavorites.filter(
+      (favoritesVal) => favoritesVal !== productId,
+    );
 
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };

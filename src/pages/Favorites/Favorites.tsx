@@ -42,11 +42,11 @@ export const Favorites = () => {
       <div className="catalog">
         <div className="container">
           <div className="catalog__path">
-            <PageRoute />
+            <PageRoute text="Favourites" />
           </div>
 
           <div className="catalog__title">
-            <PageTitle title="Favorites" />
+            <PageTitle title="Favourites" />
             <ItemsOnPage itemsOnPage={favoritesData.length} text="items" />
           </div>
 

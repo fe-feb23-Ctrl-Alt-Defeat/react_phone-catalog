@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, {
   useEffect,
@@ -6,6 +5,7 @@ import React, {
   Fragment,
 } from 'react';
 import cn from 'classnames';
+
 import './phoneInfo.scss';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../../api/products';
@@ -53,7 +53,7 @@ export const PhoneInfo = () => {
             <div className="container">
 
               <div className="info__path">
-                <PageRoute phoneName={phone?.name} />
+                <PageRoute phoneName={phone?.name} text="Phones" />
               </div>
 
               <div className="info__back">
