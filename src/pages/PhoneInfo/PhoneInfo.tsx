@@ -121,10 +121,10 @@ export const PhoneInfo = () => {
             <div className="price">
               <div className="card__price">
                 <div className="card__price_normal">
-                  {`${phone?.priceRegular}$`}
+                  {`${phone?.priceDiscount}$`}
                 </div>
                 <div className="card__price_discount">
-                  {`${phone?.priceDiscount}$`}
+                  {`${phone?.priceRegular}$`}
                 </div>
               </div>
             </div>
