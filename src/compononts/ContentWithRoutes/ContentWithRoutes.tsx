@@ -9,6 +9,7 @@ import { PhoneInfo } from '../../pages/PhoneInfo/PhoneInfo';
 import { Phones } from '../../pages/Phones/Phones';
 import { Tablets } from '../../pages/Tablets/Tablets';
 
+
 export const ContentWithRoutes = () => {
   return (
     <Routes>

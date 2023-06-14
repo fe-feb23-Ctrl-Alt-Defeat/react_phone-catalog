@@ -81,7 +81,7 @@ export const Catalog: React.FC = () => {
       <div className="catalog">
         <div className="container">
           <div className="catalog__path">
-            <PageRoute />
+            <PageRoute text="Phones" />
           </div>
 
           <div className="catalog__title">

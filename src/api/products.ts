@@ -1,5 +1,6 @@
 import { CardData } from '../types/CardData';
 import { Phone } from '../types/CardDescription';
+import { PhonesForCatalogData } from '../types/PhonesForCatalogData';
 import { client } from '../utils/fetchClient';
 
 export const getProducts = () => {
@@ -15,7 +16,7 @@ export const getProductByIds = (ids: number[]) => {
 };
 
 export const getProductWithPagination = (page: string, limit: string) => {
-  return client.get<CardData[]>(`products?page=${page}&limit=${limit}`);
+  return client.get<PhonesForCatalogData>(`products?page=${page}&limit=${limit}`);
 };
 
 export const getProductWithPaginationSorted = (
