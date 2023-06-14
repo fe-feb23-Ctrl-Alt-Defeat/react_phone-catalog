@@ -87,7 +87,7 @@ export const Catalog: React.FC = () => {
 
           <div className="catalog__title">
             <PageTitle title="Mobile phones" />
-            <ItemsOnPage itemsOnPage={total} text="models" />
+            <ItemsOnPage itemsOnPage={total} text="items" />
           </div>
 
           <div className="catalog__sorts">

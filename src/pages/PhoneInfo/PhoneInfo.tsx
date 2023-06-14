@@ -1,6 +1,11 @@
 /* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+  Fragment,
+} from 'react';
+import cn from 'classnames';
+
 import './phoneInfo.scss';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../../api/products';
@@ -8,26 +13,32 @@ import { Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import { Gallery } from '../../compononts/Gallery/Gallery';
-import {
-  AboutDescriptionTitle,
-} from '../../compononts/AboutDescriptionTitle/AboutDescription';
-import redHeart from '../../images/redHeart.svg';
 import { Loader } from '../../compononts/Loader/Loader';
+import { Button } from '../../controls/Button/Button';
+import { DescriptionTitle } from '../../compononts/DescriptionTitle/DescriptionTitle';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // const [phoneCapacity, setPhoneCapacity] = useState<string>('');
+
+  console.log(itemId);
+
   const loadPhoneById = async () => {
     setIsLoading(true);
     const phoneFromServer = await getProductById(itemId || '');
 
     setIsLoading(false);
-    if (phoneFromServer) {
+    if (phoneFromServer !== null) {
       setPhone(phoneFromServer);
     }
   };
+
+  // const hanleSetCapacity = (capacity: string) => {
+  //   setPhoneCapacity(capacity);
+  // };
 
   useEffect(() => {
     loadPhoneById();
@@ -56,106 +67,156 @@ export const PhoneInfo = () => {
               <div className="info__content">
                 <section className="info__content-description">
                   <div className="info__content-description-gallery">
-                    {phone?.images && <Gallery images={phone?.images} />}
+                    {phone?.images && <Gallery images={phone.images} />}
                   </div>
                   <div className="info__content-description-title">
-                    <AboutDescriptionTitle />
+                    <DescriptionTitle title="About" />
                   </div>
+                  {phone?.description.map(descr => (
+                    <article className="article" key={descr.title}>
+                      <h4 className="article__title">{descr.title}</h4>
+                      <p className="artilce__text">
+                        {descr.text.length === 1 ? descr.text[0] : (
+                          <>
+                            {descr.text[0]}
+                            <br />
+                            <br />
+                            {descr.text[1]}
+                          </>
+                        )}
 
-                  <article className="article">
-                    <h4 className="article__title">And then there was Pro</h4>
-                    <p className="artilce__text">
-                      A transformative triple‑camera system that adds tons of capability without complexity.
-                      <br />
-                      <br />
-                      An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.
-                    </p>
-                  </article>
-
-                  <article className="article">
-                    <h4 className="article__title">Camera</h4>
-                    <p className="artilce__text">
-                      Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.
-                    </p>
-                  </article>
-
-                  <article className="article">
-                    <h4 className="article__title">Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.</h4>
-                    <p className="artilce__text">
-                      iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.
-                    </p>
-                  </article>
+                      </p>
+                    </article>
+                  ))}
                 </section>
 
                 <section className="info__content-characteristics">
-                  <div className="available-colors">
-                    <p className="available-colors__text">Available colors</p>
-                    <p className="available-colors__id">ID: 802390</p>
-                  </div>
+                  <div className="grid-container">
+                    <div className="available-colors">
+                      <p className="available-colors__text">Available colors</p>
+                      <p className="available-colors__id">ID: 802390</p>
+                    </div>
 
-                  <div className="color-selects">
-                    <div className="color-selects__colors">
+                    <div className="color-selects">
+                      <div className="color-selects__colors">
 
-                      {phone?.colorsAvailable && phone.colorsAvailable.map(color => (
-                        <div key={color} className="color-selects__colors-item">
-                          <div
-                            className="color-selects__colors-item-color"
-                            style={{ backgroundColor: color }}
+                        {phone?.colorsAvailable.map(color => (
+                          <div key={color} className="color-selects__colors-item">
+                            <div
+                              className="color-selects__colors-item-color"
+                              style={{ backgroundColor: color }}
+                            />
+                          </div>
+                        ))}
+
+                      </div>
+                    </div>
+
+                    <div className="under-line" />
+
+                    <div className="select-capacity">
+                      <p className="select-capacity__text">Select capacity</p>
+                    </div>
+
+                    <div className="capacityes">
+                      {phone?.capacityAvailable.map(capacity => (
+                        <Fragment key={capacity}>
+                          <Button
+                            text={capacity}
+                            // classes="button-capacity"
+                            classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
+                          // onClick={hanleSetCapacity}
                           />
-                        </div>
+                        </Fragment>
                       ))}
 
                     </div>
-                  </div>
 
-                  <div className="under-line" />
+                    <div className="under-line" />
 
-                  <div className="select-capacity">
-                    <p className="select-capacity__text">Select capacity</p>
-                  </div>
-
-                  <div className="capacityes">
-                    {phone?.capacityAvailable && phone.capacityAvailable.map(capacity => (
-                      <button
-                        type="button"
-                        className="card__buy_button card__buy_button"
-                      >
-                        {capacity}
-                      </button>
-                    ))}
-
-                  </div>
-
-                  <div className="under-line" />
-
-                  <div className="price">
-                    <div className="card__price">
-                      <div className="card__price_normal">
-                        {`${phone?.priceDiscount}$`}
+                    <div className="price">
+                      <div className="card__price">
+                        <div className="card__price_normal">
+                          {`${phone?.priceDiscount}$`}
+                        </div>
+                        <div className="card__price_discount">
+                          {`${phone?.priceRegular}$`}
+                        </div>
                       </div>
-                      <div className="card__price_discount">
-                        {`${phone?.priceRegular}$`}
+                    </div>
+
+                    <div className="buttons-block">
+                      <Button
+                        text="Add to cart"
+                        classes="button-add-to-cart"
+                      />
+
+                      <Button classes="button-favorite" />
+                    </div>
+
+                    <div className="characterisriics-block">
+                      <div className="characterisriics-block__small-info">
+                        <p className="characterisriics-block__small-info-text">Screen</p>
+                        <p className="characterisriics-block__small-info-info">6.5” OLED</p>
+                      </div>
+                      <div className="characterisriics-block__resolution">
+                        <p className="characterisriics-block__small-info-text">Resolution</p>
+                        <p className="characterisriics-block__small-info-info">2688x1242</p>
+                      </div>
+                      <div className="characterisriics-block__processor">
+                        <p className="characterisriics-block__small-info-text">Processor</p>
+                        <p className="characterisriics-block__small-info-info">Apple A12 Bionic</p>
+                      </div>
+                      <div className="characterisriics-block__ram">
+                        <p className="characterisriics-block__small-info-text">RAM</p>
+                        <p className="characterisriics-block__small-info-info">3 GB</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="buttons-block">
-                    <button type="button" className="card__buy_button">
-                      Added to cart
-                    </button>
-
-                    <button
-                      type="button"
-                      className="card__buy_favorite"
-                    >
-                      <img
-                        src={redHeart}
-                        alt="favourite"
-                        className="card__buy_favorite-img-isSelected"
-                      />
-                    </button>
+                  <div className="tech-specs">
+                    <div className="tech-specs__title">
+                      <DescriptionTitle title="Tech specs" />
+                    </div>
+                    <div className="tech-specs__details">
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Screen</p>
+                        <p className="tech-specs__details-detail-value">6.5” OLED</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Resolution</p>
+                        <p className="tech-specs__details-detail-value">2688x1242</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Processor</p>
+                        <p className="tech-specs__details-detail-value">Apple A12 Bionic</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">RAM</p>
+                        <p className="tech-specs__details-detail-value">3 GB</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Built in memory</p>
+                        <p className="tech-specs__details-detail-value">64 GB</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Camera</p>
+                        <p className="tech-specs__details-detail-value">12 Mp + 12 Mp + 12 Mp (Triple)</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Zoom</p>
+                        <p className="tech-specs__details-detail-value">Optical, 2x</p>
+                      </div>
+                      <div className="tech-specs__details-detail">
+                        <p className="tech-specs__details-detail-key">Cell</p>
+                        <div>
+                          <span className="tech-specs__details-detail-value">GSM,</span>
+                          <span className="tech-specs__details-detail-value">LTE,</span>
+                          <span className="tech-specs__details-detail-value">UMTS</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
                 </section>
               </div>
             </div>

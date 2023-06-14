@@ -25,3 +25,7 @@ export interface Phone {
   zoom: string;
   cell: string[];
 }
+
+export type AbbreciatedPhoneInfo = Pick<
+Phone, 'screen' | 'resolution' | 'processor'
+>;
