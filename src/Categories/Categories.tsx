@@ -34,13 +34,13 @@ export const Categories = () => {
             quantity={totalPhones}
           />
           <CategoryCard
-            path="/phones"
+            path="/tablets"
             img={categorieTablet}
             title="Tablets"
             quantity={12}
           />
           <CategoryCard
-            path="/phones"
+            path="/accessories"
             img={categorieAccessories}
             title="Accessories"
             quantity={12}
