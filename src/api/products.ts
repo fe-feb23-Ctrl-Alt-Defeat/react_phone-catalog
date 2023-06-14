@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CardData } from '../types/CardData';
 import { Phone } from '../types/CardDescription';
 import { client } from '../utils/fetchClient';

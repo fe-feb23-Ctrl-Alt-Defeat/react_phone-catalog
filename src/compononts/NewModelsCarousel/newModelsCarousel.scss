@@ -1,0 +1,28 @@
+.carouselHeader {
+  display: flex;
+  justify-content:space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.carouselText {
+  font-family: 'Mont-Black';
+  font-size: 32px;
+  line-height: 41px;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.Button_Errow_img {
+  height: 32px;
+  width: 32px;
+  transition: 0.5s;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}

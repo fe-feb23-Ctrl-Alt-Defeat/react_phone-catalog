@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 /* eslint-disable no-console */
 /* eslint-disable max-len */
+=======
+/* eslint-disable @typescript-eslint/no-unused-vars */
+>>>>>>> d11329c (carousel works)
 import React, { useEffect, useState } from 'react';
 import './phoneInfo.scss';
 import { useParams } from 'react-router-dom';

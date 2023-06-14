@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import './pageRoute.scss';
