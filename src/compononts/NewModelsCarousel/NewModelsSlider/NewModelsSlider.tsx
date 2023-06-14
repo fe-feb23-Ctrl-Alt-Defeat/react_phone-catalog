@@ -1,24 +1,23 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useRef } from 'react';
+import React, { FC, useRef } from 'react';
 import Slider from 'react-slick';
 import './newModelsSlider.scss';
-import Photo_1 from '../../../images/Banner/Iphons_test_photo_to_banner/1.jpg';
-import Photo_2 from '../../../images/Banner/Iphons_test_photo_to_banner/2.jpg';
-import Photo_3 from '../../../images/Banner/Iphons_test_photo_to_banner/3.jpg';
-import Photo_4 from '../../../images/Banner/Iphons_test_photo_to_banner/4.jpg';
-import Photo_5 from '../../../images/Banner/Iphons_test_photo_to_banner/5.jpg';
-
 // eslint-disable-next-line max-len
 import Button_Errow_Next_Empty from '../../../images/Carousel_Slider/Button_Errow_Next_Empty.svg';
 // eslint-disable-next-line max-len
 import Button_Errow_Prev_Empty from '../../../images/Carousel_Slider/Button_Errow_Prev_Empty.svg';
-
 import './slick.scss';
 import './slick-theme.scss';
+import { Card } from '../../Card/Card';
+import { CardData } from '../../../types/CardData';
 
-export const NewModelsSlider = () => {
-  const caruselPictures = [Photo_1, Photo_2, Photo_3, Photo_4, Photo_5];
+interface Props {
+  phonesData: CardData[];
+  title: string;
+}
+
+export const NewModelsSlider: FC<Props> = ({ phonesData, title }) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings = {
@@ -26,7 +25,7 @@ export const NewModelsSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
 
     responsive: [
       {
@@ -58,7 +57,7 @@ export const NewModelsSlider = () => {
   return (
     <>
       <div className="carouselHeader">
-        <div className="carouselText">Brand new models</div>
+        <div className="carouselText">{title}</div>
         <div className="buttonBox">
           <div className="button_errow button_prev" onClick={handlePrevClick}>
             <img
@@ -78,8 +77,10 @@ export const NewModelsSlider = () => {
       </div>
       <div className="simpleSliderContainer">
         <Slider ref={sliderRef} {...settings}>
-          {caruselPictures.map((picture) => (
-            <img src={picture} alt="Banner" className="picturesBan" />
+          {phonesData.map((phone) => (
+            <div key={phone.itemId} className="picturesBan">
+              <Card cardData={phone} />
+            </div>
           ))}
         </Slider>
       </div>

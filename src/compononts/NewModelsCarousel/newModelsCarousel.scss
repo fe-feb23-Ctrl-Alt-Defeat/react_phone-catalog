@@ -1,28 +1,13 @@
-.carouselHeader {
-  display: flex;
-  justify-content:space-between;
-  align-items: flex-end;
-  margin-bottom: 24px;
-}
+@import '../../styles/mixins/mixins.scss';
 
-.carouselText {
-  font-family: 'Mont-Black';
-  font-size: 32px;
-  line-height: 41px;
-}
+.newModelsCarousel {
+  margin-bottom: 80px;
 
-.buttonBox {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+  @include onTablet {
+    margin-bottom: 64px;
+  }
 
-.Button_Errow_img {
-  height: 32px;
-  width: 32px;
-  transition: 0.5s;
-
-  &:hover {
-    border: 1px solid #313237;
+  @include onPhone {
+    margin-bottom: 57px;
   }
 }

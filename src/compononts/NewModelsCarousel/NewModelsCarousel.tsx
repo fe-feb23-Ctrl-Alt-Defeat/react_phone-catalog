@@ -1,12 +1,12 @@
 import React from 'react';
 import './newModelsCarousel.scss';
-import { NewModelsSlider } from './NewModelsSlider/NewModelsSlider';
+import { BrendsModels } from '../BrendModels/BrendModels';
 
 export const NewModelsCarousel = () => {
   return (
     <>
       <div className="container newModelsCarousel">
-        <NewModelsSlider />
+        <BrendsModels />
       </div>
     </>
   );
