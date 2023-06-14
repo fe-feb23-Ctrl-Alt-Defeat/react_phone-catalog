@@ -20,6 +20,7 @@
       height: 80px;
       border: 1px solid #B4BDC4;
       opacity: 0.7;
+      cursor: pointer;
 
       &:hover {
         border-color: #89939A;
@@ -29,7 +30,6 @@
         width: auto;
         height: 100%;
         padding: 7px;
-        cursor: pointer;
       }
 
       &--active {

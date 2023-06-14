@@ -1,4 +1,64 @@
 .customButton {
   font-family: 'Mont-Bold';
-  width: 100%;
+  // width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.button-capacity {
+  font-family: 'Mont-Regular';
+  font-size: 14px;
+  line-height: 21px;
+  padding: 7px 8px 4px;
+  border: 1px solid #B4BDC4;
+  color: #313237;
+  background-color: #fff;
+
+  &--selected {
+    color: #FFFFFF;
+    background-color: #313237;
+  }
+}
+
+.button-add-to-cart {
+  font-family: 'Mont-Bold';
+  font-size: 14px;
+  line-height: 21px;
+  padding: 13.5px 91px;
+
+  color: #FFFFFF;
+  background-color: #313237;
+
+  transition: box-shadow 0.5s;
+
+
+
+  &--selected {
+    border: 1px solid #E2E6E9;
+    background-color: #FFF;
+    color: #27AE60
+  }
+}
+
+.button-favorite {
+  background-color: #FFF;
+  padding: 16px 17px;
+  border: 1px solid #B4BDC4;
+  transition: border-color 0.5s, box-shadow 0.5s;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &__image {
+    width: 24px;
+    height: 24px;
+  }
 }

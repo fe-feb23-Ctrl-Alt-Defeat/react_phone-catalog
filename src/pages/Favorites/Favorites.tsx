@@ -46,8 +46,8 @@ export const Favorites = () => {
           </div>
 
           <div className="catalog__title">
-            <PageTitle title="Mobile phones" />
-            <ItemsOnPage itemsOnPage={favoritesData.length} text="models" />
+            <PageTitle title="Favorites" />
+            <ItemsOnPage itemsOnPage={favoritesData.length} text="items" />
           </div>
 
           {isLoading

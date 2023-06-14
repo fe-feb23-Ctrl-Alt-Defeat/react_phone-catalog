@@ -40,17 +40,23 @@
       &-gallery {
         height: 464px;
         margin-bottom: 80px;
+
       }
     }
 
     &-characteristics {
-      height: 464px;
-      width: 100%;
       grid-column: 14 / 24;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      align-items: start
+
     }
+  }
+
+  .grid-container {
+    height: 464px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+    margin-bottom: 80px;
   }
 
   .article:not(:last-child) {
@@ -141,7 +147,6 @@
     border: 1px solid #E2E6E9;
   }
 
-  // change sizes of buttons
   .select-capacity {
     grid-column: 1/5;
 
@@ -165,10 +170,139 @@
     align-items: center;
   }
 
-  // change sizes of buttons
   .buttons-block {
-    grid-column: 1/8;
+    grid-column: 1/10;
     display: flex;
     gap: 8px;
+  }
+
+  .characterisriics-block {
+    grid-column: 1/10;
+
+    &__small-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &-text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #89939A;
+      }
+
+      &-info {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #313237;
+      }
+    }
+
+    &__resolution {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &-text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #89939A;
+      }
+
+      &-info {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #313237;
+      }
+    }
+
+    &__processor {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &-text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #89939A;
+      }
+
+      &-info {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #313237;
+      }
+    }
+
+    &__ram {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #89939A;
+      }
+
+      &-info {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #313237;
+      }
+    }
+  }
+
+  .tech-specs {
+    margin-bottom: 25px;
+
+    &__title {
+      margin-bottom: 25px;
+    }
+
+    &__details {
+      margin-bottom: 8px;
+
+      &-detail {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        &-key {
+          font-family: 'Mont-Regular';
+          font-size: 14px;
+          line-height: 21px;
+
+          color: #89939A;
+        }
+
+        &-value {
+          font-family: 'Mont-Regular';
+          font-size: 14px;
+          line-height: 21px;
+
+          color: #313237;
+        }
+      }
+    }
   }
 }
