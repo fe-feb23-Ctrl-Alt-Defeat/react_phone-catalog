@@ -10,7 +10,6 @@ import { useSearchParams } from 'react-router-dom';
 import './catalog.scss';
 import { Card } from '../Card/Card';
 import { getProductWithPaginationSorted } from '../../api/products';
-
 import { DropDown } from '../../controls/DropDown/DropDown';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { PageTitle } from '../../controls/PageTitle/PageTitle';

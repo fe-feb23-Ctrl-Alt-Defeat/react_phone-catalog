@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
