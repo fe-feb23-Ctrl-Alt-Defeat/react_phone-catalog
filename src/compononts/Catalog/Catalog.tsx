@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
   Fragment,
+  useCallback,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -55,7 +56,7 @@ export const Catalog: React.FC = () => {
     setCatalogData(data);
   };
 
-  const fetchPhonesForCatalog = async () => {
+  const fetchPhonesForCatalog = useCallback(async () => {
     try {
       setIsLoading(true);
       const productsFromServer: unknown = await getProductWithPaginationSorted(page, limit, orderDir, orderBy);
@@ -70,7 +71,7 @@ export const Catalog: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [page, limit, order, orderBy, orderDir]);
 
   useEffect(() => {
     fetchPhonesForCatalog();
@@ -81,7 +82,7 @@ export const Catalog: React.FC = () => {
       <div className="catalog">
         <div className="container">
           <div className="catalog__path">
-            <PageRoute />
+            <PageRoute text="Phones" />
           </div>
 
           <div className="catalog__title">

@@ -6,10 +6,11 @@ import { ArrowForward } from '../ArrowForward/ArrowForward';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
 
 interface Props {
+  text: string
   phoneName?: string | undefined;
 }
 
-export const PageRoute: React.FC<Props> = ({ phoneName }) => {
+export const PageRoute: React.FC<Props> = ({ phoneName, text }) => {
   const { itemId } = useParams();
 
   return (
@@ -18,7 +19,7 @@ export const PageRoute: React.FC<Props> = ({ phoneName }) => {
       <ArrowForward />
 
       <div className="routing__selected-page">
-        <p className="routing__selected-page-paragraph">Phones</p>
+        <p className="routing__selected-page-paragraph">{text}</p>
       </div>
 
       {itemId && (

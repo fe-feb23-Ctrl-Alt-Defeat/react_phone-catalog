@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import './salesSlider.scss';
+import { v4 as uuidv4 } from 'uuid';
 import Banner from '../../images/Banner/Banner.svg';
 import Banner_2 from '../../images/Banner/Banner_2.jpg';
 import Banner_arrow_left from '../../images/Banner/Banner_arrow_left.svg';
@@ -12,6 +12,8 @@ import Banner_arrow_right from '../../images/Banner/Banner_arrow_right.svg';
 import Jump_Button_Empty from '../../images/Banner/Banner_icon_jumpButton_empty.svg';
 // eslint-disable-next-line max-len
 import Jump_Button_Color from '../../images/Banner/Banner_icon_jumpButton_color.svg';
+
+import './salesSlider.scss';
 
 export const SalesSlider = () => {
   const pictures = [Banner, Banner_2, Banner];
@@ -77,7 +79,12 @@ export const SalesSlider = () => {
             }}
           >
             {pictures.map((picture) => (
-              <img src={picture} alt="Banner" className="bannerImg" />
+              <img
+                src={picture}
+                alt="Banner"
+                className="bannerImg"
+                key={uuidv4()}
+              />
             ))}
           </div>
         </div>

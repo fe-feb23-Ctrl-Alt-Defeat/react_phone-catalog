@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -7,16 +6,14 @@ import { getProductWithPaginationSorted } from '../../api/products';
 import { PhonesForCatalogData } from '../../types/PhonesForCatalogData';
 import { NewModelsSlider } from '../NewModelsCarousel/NewModelsSlider/NewModelsSlider';
 
-import './brendmodels.scss';
+import './hotPrices.scss';
 
-export const BrendsModels = () => {
+export const HotPrices = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
-
-  console.log(phones);
 
   const loadData = useCallback(async () => {
     const loadestFromServer: unknown = await getProductWithPaginationSorted(
-      '1', '20', 'DESC', 'fullPrice',
+      '1', '20', 'ASC', 'fullPrice',
     );
 
     const data: PhonesForCatalogData = loadestFromServer as PhonesForCatalogData;
@@ -31,7 +28,7 @@ export const BrendsModels = () => {
   return (
     <>
       <div className="container brendsModels">
-        <NewModelsSlider phonesData={phones} title="Brand new models" />
+        <NewModelsSlider phonesData={phones} title="Hot prices" />
       </div>
     </>
   );

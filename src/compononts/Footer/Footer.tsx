@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 
 import up_arrow from '../../images/up_arrow.svg';
 import logo from '../../images/logo_gnce_gadgets.svg';
@@ -7,9 +6,9 @@ import logo from '../../images/logo_gnce_gadgets.svg';
 import './footer.scss';
 
 export const Footer: FC = () => {
-  const handleScrollToTop = () => {
+  const handleScrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
   return (
     <div className="footer">
