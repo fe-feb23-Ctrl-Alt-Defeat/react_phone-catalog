@@ -7,10 +7,11 @@ import { getProductById } from '../../api/products';
 import { Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
-import { Gallery } from '../../controls/Gallery/Gallery';
+import { Gallery } from '../../compononts/Gallery/Gallery';
 import {
   AboutDescriptionTitle,
 } from '../../compononts/AboutDescriptionTitle/AboutDescription';
+import redHeart from '../../images/redHeart.svg';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -77,6 +78,73 @@ export const PhoneInfo = () => {
           </section>
 
           <section className="info__content-characteristics">
+            <div className="available-colors">
+              <p className="available-colors__text">Available colors</p>
+              <p className="available-colors__id">ID: 802390</p>
+            </div>
+
+            <div className="color-selects">
+              <div className="color-selects__colors">
+
+                {phone?.colorsAvailable && phone.colorsAvailable.map(color => (
+                  <div key={color} className="color-selects__colors-item">
+                    <div
+                      className="color-selects__colors-item-color"
+                      style={{ backgroundColor: color }}
+                    />
+                  </div>
+                ))}
+
+              </div>
+            </div>
+
+            <div className="under-line" />
+
+            <div className="select-capacity">
+              <p className="select-capacity__text">Select capacity</p>
+            </div>
+
+            <div className="capacityes">
+              {phone?.capacityAvailable && phone.capacityAvailable.map(capacity => (
+                <button
+                  type="button"
+                  className="card__buy_button card__buy_button"
+                >
+                  {capacity}
+                </button>
+              ))}
+
+            </div>
+
+            <div className="under-line" />
+
+            <div className="price">
+              <div className="card__price">
+                <div className="card__price_normal">
+                  {`${phone?.priceDiscount}$`}
+                </div>
+                <div className="card__price_discount">
+                  {`${phone?.priceRegular}$`}
+                </div>
+              </div>
+            </div>
+
+            <div className="buttons-block">
+              <button type="button" className="card__buy_button">
+                Added to cart
+              </button>
+
+              <button
+                type="button"
+                className="card__buy_favorite"
+              >
+                <img
+                  src={redHeart}
+                  alt="favourite"
+                  className="card__buy_favorite-img-isSelected"
+                />
+              </button>
+            </div>
 
           </section>
         </div>

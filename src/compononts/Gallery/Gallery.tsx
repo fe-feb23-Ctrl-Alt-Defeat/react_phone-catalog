@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const Gallery: React.FC<Props> = ({ images }) => {
-  console.log('images', images, IMAGE_BASE_URL);
-
   return (
     <div className="gallery">
       <div className="gallery__sub-photos">
