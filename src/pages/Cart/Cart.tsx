@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable max-len */
+import React, { useContext, useEffect, useState } from 'react';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import './cart.scss';
 import { PageTitle } from '../../controls/PageTitle/PageTitle';
@@ -7,8 +8,11 @@ import { CartItem } from '../../compononts/CartItem/CartItem';
 import { Button } from '../../controls/Button/Button';
 import { LocalStCart } from '../../types/LocalStCart';
 import { CardData } from '../../types/CardData';
+import { FavoritesAndCartCountContext } from '../../compononts/FavoritesCartContext/FavoritesCartContext';
 
 export const Cart: React.FC = () => {
+  const { cartCount, setCartCount } = useContext(FavoritesAndCartCountContext);
+
   const localStorageCart = localStorage.getItem('cart');
   const [currentCart, setCurrentCart] = useState<LocalStCart>(
     localStorageCart
@@ -40,6 +44,12 @@ export const Cart: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
+    if (cartCount.includes(id)) {
+      const data = cartCount.filter(item => item !== id);
+
+      setCartCount([...data]);
+    }
+
     setCartItems(currItems => {
       const copy = currItems.filter(currItem => currItem.id !== id);
 
@@ -61,12 +71,18 @@ export const Cart: React.FC = () => {
   };
 
   const handleNumberDecrease = (id: number) => {
+    if (cartCount.includes(id)) {
+      const data = cartCount.indexOf(id);
+      const dataToSet = cartCount.filter((item, index) => index !== data);
+
+      setCartCount([...dataToSet]);
+    }
+
     setCurrentCart(prevCart => {
       const index = prevCart.findIndex(cartValue => cartValue[0] === id);
       const copy: LocalStCart = [...prevCart];
 
       copy[index][1] -= 1;
-
       if (copy[index][1] === 0) {
         copy.splice(index, 1);
 
@@ -85,6 +101,8 @@ export const Cart: React.FC = () => {
   };
 
   const handleNumberIncrease = (id: number) => {
+    setCartCount(prevIds => [...prevIds, id]);
+
     setCurrentCart(prevCart => {
       const index = prevCart.findIndex(cartValue => cartValue[0] === id);
       const copy: LocalStCart = [...prevCart];

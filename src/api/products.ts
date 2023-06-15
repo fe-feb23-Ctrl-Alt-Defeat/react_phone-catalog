@@ -7,6 +7,18 @@ export const getProducts = () => {
   return client.get<CardData[]>('products');
 };
 
+export const getRecomendedProducts = () => {
+  return client.get<CardData[]>('products/recommended');
+};
+
+export const getProductsByCategory = (productType: string) => {
+  return client.get<CardData[]>(`products?productType=${productType}`);
+};
+
+export const getProductsWithDiscount = () => {
+  return client.get<CardData[]>('products/discount');
+};
+
 export const getProductById = (id: string) => {
   return client.get<Phone>(`phones/${id}`);
 };

@@ -1,8 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { NavLink } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
 import Logo from '../../images/logo_gnce_gadgets.svg';
@@ -10,6 +12,7 @@ import Favorites from '../../images/icon_favorites.svg';
 import ShoppingBag from '../../images/icon_shopping_bag.svg';
 import Menu_opener from '../../images/icon_menu_opener.svg';
 import Menu_cross from '../../images/icon_menu_cross.svg';
+import { FavoritesAndCartCountContext } from '../FavoritesCartContext/FavoritesCartContext';
 
 export const Header: React.FC = () => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
@@ -20,6 +23,9 @@ export const Header: React.FC = () => {
     setScrollLocked(currState => !currState);
   };
 
+  const { favoritesCount, cartCount } = useContext(FavoritesAndCartCountContext);
+
+  // console.log('cart  ', cartCount);
   // useEffect(() => {
   //   if (scrollLocked) {
   //     document.body.style.overflow = 'hidden';
@@ -39,11 +45,13 @@ export const Header: React.FC = () => {
           <nav className="header__nav-links">
             <div className="header__logo">
               {/* фото лого */}
-              <img
-                src={Logo}
-                alt="Logo"
-                className="header__logo-image"
-              />
+              <Link to="/">
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="header__logo-image"
+                />
+              </Link>
             </div>
 
             <ul className="header__list">
@@ -111,6 +119,12 @@ export const Header: React.FC = () => {
                 alt="favorite"
                 className="header__favorite-image"
               />
+
+              {favoritesCount.length > 0 && (
+                <div className="header__favorite_icon">
+                  {favoritesCount.length}
+                </div>
+              )}
             </NavLink>
 
             <NavLink
@@ -126,6 +140,11 @@ export const Header: React.FC = () => {
                 alt="shopping_bag"
                 className="header__shopping-bag-image"
               />
+              {cartCount.length > 0 && (
+                <div className="header__favorite_icon">
+                  {cartCount.length}
+                </div>
+              )}
             </NavLink>
 
             <div
@@ -155,6 +174,7 @@ export const Header: React.FC = () => {
                     ({ isActive }) => classNames('menu__list_link',
                       { 'is-active': isActive })
                   }
+                  onClick={() => setIsBurgerOpened(false)}
                 >
                   HOME
                 </NavLink>
@@ -166,6 +186,7 @@ export const Header: React.FC = () => {
                     ({ isActive }) => classNames('menu__list_link',
                       { 'is-active': isActive })
                   }
+                  onClick={() => setIsBurgerOpened(false)}
                 >
                   PHONES
                 </NavLink>
@@ -177,6 +198,7 @@ export const Header: React.FC = () => {
                     ({ isActive }) => classNames('menu__list_link',
                       { 'is-active': isActive })
                   }
+                  onClick={() => setIsBurgerOpened(false)}
                 >
                   TABLETS
                 </NavLink>
@@ -188,6 +210,7 @@ export const Header: React.FC = () => {
                     ({ isActive }) => classNames('menu__list_link',
                       { 'is-active': isActive })
                   }
+                  onClick={() => setIsBurgerOpened(false)}
                 >
                   ACCESSORIES
                 </NavLink>
@@ -202,12 +225,19 @@ export const Header: React.FC = () => {
                 ({ isActive }) => classNames('menu__favorite',
                   { 'is-active': isActive })
               }
+              onClick={() => setIsBurgerOpened(false)}
             >
               <img
                 src={Favorites}
                 alt="favorite"
                 className="menu__favorite-image"
               />
+
+              {favoritesCount.length > 0 && (
+                <div className="menu__favorite_icon">
+                  {favoritesCount.length}
+                </div>
+              )}
             </NavLink>
 
             <NavLink
@@ -216,6 +246,7 @@ export const Header: React.FC = () => {
                 ({ isActive }) => classNames('menu__shopping-bag',
                   { 'is-active': isActive })
               }
+              onClick={() => setIsBurgerOpened(false)}
             >
               {/* иконка корзины */}
               <img
@@ -223,6 +254,11 @@ export const Header: React.FC = () => {
                 alt="shopping_bag"
                 className="menu__shopping-bag-image"
               />
+              {cartCount.length > 0 && (
+                <div className="menu__favorite_icon">
+                  {cartCount.length}
+                </div>
+              )}
             </NavLink>
           </div>
         </nav>

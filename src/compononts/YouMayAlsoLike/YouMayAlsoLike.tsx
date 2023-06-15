@@ -2,18 +2,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { CardData } from '../../types/CardData';
-import { getProductsWithDiscount } from '../../api/products';
+import { getRecomendedProducts } from '../../api/products';
 import { NewModelsSlider } from '../NewModelsCarousel/NewModelsSlider/NewModelsSlider';
 
-import './hotPrices.scss';
-
-export const HotPrices = () => {
+export const YouMayAlsoLike = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
 
   const loadData = useCallback(async () => {
-    const loadestFromServer = await getProductsWithDiscount();
+    try {
+      const loadestFromServer = await getRecomendedProducts();
 
-    setPhones(loadestFromServer);
+      const data = loadestFromServer;
+
+      setPhones(data);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
   }, []);
 
   useEffect(() => {
@@ -23,7 +28,7 @@ export const HotPrices = () => {
   return (
     <>
       <div className="container brendsModels">
-        <NewModelsSlider phonesData={phones} title="Hot prices" />
+        <NewModelsSlider phonesData={phones} title="You may also like" />
       </div>
     </>
   );

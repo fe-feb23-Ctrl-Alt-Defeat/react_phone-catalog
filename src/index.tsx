@@ -4,10 +4,13 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
 import './index.scss';
 import { App } from './App';
+import { FavoritesAndCartCountContextProvider } from './compononts/FavoritesCartContext/FavoritesCartContext';
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <FavoritesAndCartCountContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </FavoritesAndCartCountContextProvider>,
   document.getElementById('root'),
 );

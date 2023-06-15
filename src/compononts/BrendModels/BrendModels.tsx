@@ -12,11 +12,9 @@ import './brendmodels.scss';
 export const BrendsModels = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
 
-  console.log(phones);
-
   const loadData = useCallback(async () => {
     const loadestFromServer: unknown = await getProductWithPaginationSorted(
-      '1', '20', 'DESC', 'fullPrice',
+      '1', '24', 'DESC', 'year',
     );
 
     const data: PhonesForCatalogData = loadestFromServer as PhonesForCatalogData;

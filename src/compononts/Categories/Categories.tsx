@@ -1,20 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { CategoryCard } from '../compononts/CategoryCard/CategoryCard';
-import { getProductWithPagination } from '../api/products';
+import { CategoryCard } from '../CategoryCard/CategoryCard';
+import { getProductsByCategory } from '../../api/products';
 
-import categoriePhone from '../images/categoriesPhone.png';
-import categorieTablet from '../images/categoriesTablets.png';
-import categorieAccessories from '../images/categoriesAccessories.png';
+import categoriePhone from '../../images/categoriesPhone.png';
+import categorieTablet from '../../images/categoriesTablets.png';
+import categorieAccessories from '../../images/categoriesAccessories.png';
 
 import './categorie.scss';
 
 export const Categories = () => {
   const [totalPhones, setTotalPhones] = useState<number>(0);
+  const [totalTablets, setTotalTablets] = useState<number>(0);
+  const [totalAccessories, setTotalAccessories] = useState<number>(0);
 
   const loadData = useCallback(async () => {
-    const phones = await getProductWithPagination('1', '1');
+    const phones = await getProductsByCategory('phones');
+    const tablets = await getProductsByCategory('tablets');
+    const accessories = await getProductsByCategory('accessories');
 
-    setTotalPhones(phones.count);
+    setTotalAccessories(accessories.length);
+    setTotalTablets(tablets.length);
+    setTotalPhones(phones.length);
   }, []);
 
   useEffect(() => {
@@ -37,13 +43,13 @@ export const Categories = () => {
             path="/tablets"
             img={categorieTablet}
             title="Tablets"
-            quantity={12}
+            quantity={totalTablets}
           />
           <CategoryCard
             path="/accessories"
             img={categorieAccessories}
             title="Accessories"
-            quantity={12}
+            quantity={totalAccessories}
           />
         </div>
       </div>
