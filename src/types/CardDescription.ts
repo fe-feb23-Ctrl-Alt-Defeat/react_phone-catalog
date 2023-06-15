@@ -26,6 +26,6 @@ export interface Phone {
   cell: string[];
 }
 
-export type AbbreciatedPhoneInfo = Pick<
-Phone, 'screen' | 'resolution' | 'processor'
->;
+export type FullPhoneInfo = {
+  [key: string]: string | string[];
+};
