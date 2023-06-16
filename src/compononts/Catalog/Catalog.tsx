@@ -19,6 +19,7 @@ import { Pagination } from '../Pagination/Pagination';
 import { Loader } from '../Loader/Loader';
 import { catalogProductsFilter } from '../../utils/functionsHelpers/catalogProductsFilter';
 import { CardData } from '../../types/CardData';
+// import { Cart } from '../../pages/Cart/Cart';
 
 export interface Option {
   title: string;
