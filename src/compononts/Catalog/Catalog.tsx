@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-console */
 import React, {
   useEffect,
   useState,
@@ -29,7 +28,7 @@ export interface Option {
 
 const filterBy = {
   title: 'Sort By',
-  selects: ['Expensive', 'Cheapest'],
+  selects: ['Expensive', 'Cheapest', 'Newest', 'Oldest'],
 };
 
 const selectNum = {

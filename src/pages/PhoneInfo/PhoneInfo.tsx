@@ -18,6 +18,7 @@ import { Gallery } from '../../compononts/Gallery/Gallery';
 import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
 import { DescriptionTitle } from '../../compononts/DescriptionTitle/DescriptionTitle';
+import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -89,56 +90,75 @@ export const PhoneInfo = () => {
       {isLoading
         ? <Loader />
         : (
-          <div className="info">
-            <div className="container">
+          <>
+            <div className="info">
+              <div className="container">
 
-              <div className="info__path">
-                <PageRoute phoneName={phone?.name} text="Phones" />
-              </div>
+                <div className="info__path">
+                  <PageRoute phoneName={phone?.name} text="Phones" />
+                </div>
 
-              <div className="info__back">
-                <MoveBack />
-              </div>
+                <div className="info__back">
+                  <MoveBack />
+                </div>
 
-              <div className="info__title">
-                <h2 className="info__title-subtitle">{phone?.name}</h2>
-              </div>
+                <div className="info__title">
+                  <h2 className="info__title-subtitle">{phone?.name}</h2>
+                </div>
 
-              <div className="info__content">
-                <section className="info__content-description">
-                  <div className="info__content-description-gallery">
-                    {phone?.images && <Gallery images={phone.images} />}
-                  </div>
-                  <div className="info__content-description-title">
-                    <DescriptionTitle title="About" />
-                  </div>
-                  {phone?.description.map(descr => (
-                    <article className="article" key={descr.title}>
-                      <h4 className="article__title">{descr.title}</h4>
-                      <p className="artilce__text">
-                        {descr.text.length === 1 ? descr.text[0] : (
-                          <>
-                            {descr.text[0]}
-                            <br />
-                            <br />
-                            {descr.text[1]}
-                          </>
-                        )}
-
-                      </p>
-                    </article>
-                  ))}
-                </section>
-
-                <section className="info__content-characteristics">
-                  <div className="grid-container">
-                    <div className="available-colors">
-                      <p className="available-colors__text">Available colors</p>
-                      <p className="available-colors__id">ID: 802390</p>
+                <div className="info__content">
+                  <section className="info__content-description">
+                    <div className="info__content-description-gallery">
+                      {phone?.images && <Gallery images={phone.images} />}
                     </div>
+                    <div className="info__content-description-title">
+                      <DescriptionTitle title="About" />
+                    </div>
+                    {phone?.description.map(descr => (
+                      <article className="article" key={descr.title}>
+                        <h4 className="article__title">{descr.title}</h4>
+                        <p className="artilce__text">
+                          {descr.text.length === 1 ? descr.text[0] : (
+                            <>
+                              {descr.text[0]}
+                              <br />
+                              <br />
+                              {descr.text[1]}
+                            </>
+                          )}
 
-                    <div className="color-selects">
-                      <div className="color-selects__colors">
+                        </p>
+                      </article>
+                    ))}
+                  </section>
+
+                  <section className="info__content-characteristics">
+                    <div className="grid-container">
+                      <div className="available-colors">
+                        <p className="available-colors__text">Available colors</p>
+                        <p className="available-colors__id">ID: 802390</p>
+                      </div>
+
+                      <div className="color-selects">
+                        <div className="color-selects__colors">
+
+                          {phone?.colorsAvailable.map(color => (
+                            <div key={color} className="color-selects__colors-item">
+                              <div
+                                className="color-selects__colors-item-color"
+                                style={{ backgroundColor: color }}
+                              />
+                            </div>
+                          ))}
+
+                        </div>
+                      </div>
+
+                      <div className="under-line" />
+
+                      <div className="select-capacity">
+                        <p className="select-capacity__text">Select capacity</p>
+                      </div>
 
                         {phone?.colorsAvailable.map(color => (
                           <div key={color} className="color-selects__colors-item">
@@ -146,8 +166,9 @@ export const PhoneInfo = () => {
                               className="color-selects__colors-item-color"
                               style={{ backgroundColor: color }}
                               onClick={() => handleChangeColor(color)}
+
                             />
-                          </div>
+                          </Fragment>
                         ))}
 
                       </div>
@@ -173,27 +194,24 @@ export const PhoneInfo = () => {
 
                     </div>
 
-                    <div className="under-line" />
+                      <div className="under-line" />
 
-                    <div className="price">
-                      <div className="card__price">
-                        <div className="card__price_normal">
-                          {`${phone?.priceDiscount}$`}
-                        </div>
-                        <div className="card__price_discount">
-                          {`${phone?.priceRegular}$`}
+                      <div className="price">
+                        <div className="card__price">
+                          <div className="card__price_normal">
+                            {`${phone?.priceDiscount}$`}
+                          </div>
+                          <div className="card__price_discount">
+                            {`${phone?.priceRegular}$`}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="buttons-block">
-                      <Button
-                        text="Add to cart"
-                        classes="button-add-to-cart"
-                      />
-
-                      <Button classes="button-favorite" />
-                    </div>
+                      <div className="buttons-block">
+                        <Button
+                          text="Add to cart"
+                          classes="button-add-to-cart"
+                        />
 
                     <div className="characterisriics-block">
                       {abbreviatedPhoneInfo.map(info => {
@@ -208,7 +226,7 @@ export const PhoneInfo = () => {
                         );
                       })}
                     </div>
-                  </div>
+
 
                   <div className="tech-specs">
                     <div className="tech-specs__title">
@@ -245,12 +263,15 @@ export const PhoneInfo = () => {
                           </div>
                         );
                       })}
+                      
                     </div>
-                  </div>
-                </section>
+                  </section>
+                </div>
               </div>
             </div>
-          </div>
+
+            <YouMayAlsoLike />
+          </>
         )}
     </>
   );

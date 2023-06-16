@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
@@ -9,12 +10,20 @@ import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 import './card.scss';
 import { LocalStCart } from '../../types/LocalStCart';
 import { CardData } from '../../types/CardData';
+import { FavoritesAndCartCountContext } from '../FavoritesCartContext/FavoritesCartContext';
 
 type Props = {
   cardData: CardData;
 };
 
 export const Card: React.FC<Props> = ({ cardData }) => {
+  const {
+    favoritesCount,
+    setFavoritesCount,
+    cartCount,
+    setCartCount,
+  } = useContext(FavoritesAndCartCountContext);
+
   const localStorageCart = localStorage.getItem('cart');
   const currCart: LocalStCart = localStorageCart
     ? JSON.parse(localStorageCart)
@@ -34,6 +43,14 @@ export const Card: React.FC<Props> = ({ cardData }) => {
   );
 
   const handleAddToCartClick = (productId: number) => {
+    if (cartCount.includes(productId)) {
+      const data = cartCount.filter(item => item !== productId);
+
+      setCartCount([...data]);
+    } else {
+      setCartCount(prod => [...prod, productId]);
+    }
+
     const cart = localStorage.getItem('cart');
 
     setIsAdded(currVal => !currVal);
@@ -59,6 +76,14 @@ export const Card: React.FC<Props> = ({ cardData }) => {
   };
 
   const handleAddFavoriteClick = (productId: number) => {
+    if (favoritesCount.includes(productId)) {
+      const data = favoritesCount.filter(item => item !== productId);
+
+      setFavoritesCount([...data]);
+    } else {
+      setFavoritesCount(prod => [...prod, productId]);
+    }
+
     const favorites = localStorage.getItem('favorites');
 
     setIsFavoriteSelected(currVal => !currVal);

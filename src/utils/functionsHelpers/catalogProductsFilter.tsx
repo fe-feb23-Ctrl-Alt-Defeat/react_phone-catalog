@@ -12,5 +12,15 @@ export const catalogProductsFilter = (order: string) => {
     orderDir = 'ASC';
   }
 
+  if (order === 'Newest') {
+    orderBy = 'year';
+    orderDir = 'DESC';
+  }
+
+  if (order === 'Oldest') {
+    orderBy = 'year';
+    orderDir = 'ASC';
+  }
+
   return { orderBy, orderDir };
 };

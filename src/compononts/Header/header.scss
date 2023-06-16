@@ -17,8 +17,6 @@
   font-size: 12px;
   line-height: 11px;
 
-  margin-bottom: 56px;
-
   @include onTablet {
     margin-bottom: 32px;
   }
@@ -114,6 +112,30 @@
       pointer-events: none;
     }
 
+    &_icon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background-color: #EB5757;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #fff;
+
+      font-family: 'Mont-Bold';
+      font-size: 9px;
+      line-height: 12px;
+      text-align: center;
+
+      color: #FFFFFF;
+    }
+
   }
 
   &__menu-opener {
@@ -205,6 +227,30 @@
       &:hover {
         border: 1px solid #313237;
       }
+
+      &_icon {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background-color: #EB5757;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #fff;
+
+      font-family: 'Mont-Bold';
+      font-size: 9px;
+      line-height: 12px;
+      text-align: center;
+
+      color: #FFFFFF;
+    }
     }
   }
 }

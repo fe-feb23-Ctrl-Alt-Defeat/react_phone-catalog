@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
 import React, {
   Fragment, useEffect, useState,
 } from 'react';
@@ -18,7 +16,6 @@ export const Favorites = () => {
   const localStorageFavorites = localStorage.getItem('favorites');
   const currentFavorites: number[] = JSON.parse(localStorageFavorites || '[]');
 
-  // const [favoritesDataIds, setFavoritesDataIds] = useState(currentFavorites);
   const [favoritesData, setFavoritesData] = useState<CardData[]>([]);
 
   const loadData = async () => {

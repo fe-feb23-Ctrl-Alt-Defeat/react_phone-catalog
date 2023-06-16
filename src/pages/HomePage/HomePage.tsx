@@ -4,7 +4,7 @@ import './homePage.scss';
 
 import { SalesSlider } from '../../compononts/SalesSlider/SalesSlider';
 import { BrendsModels } from '../../compononts/BrendModels/BrendModels';
-import { Categories } from '../../Categories/Categories';
+import { Categories } from '../../compononts/Categories/Categories';
 import { HotPrices } from '../../compononts/HotPrices/HotPrices';
 
 export const HomePage = () => {

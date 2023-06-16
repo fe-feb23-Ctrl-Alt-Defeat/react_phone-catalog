@@ -31,7 +31,9 @@ export const CategoryCard: FC<Props> = ({
         <Link to={path} className="category__item_descr">
           {title}
         </Link>
-        <div className="category__item_qty">{`${quantity} models`}</div>
+        <div className="category__item_qty">
+          {quantity > 0 ? `${quantity} models` : 'Sorry, there are no products yet'}
+        </div>
       </div>
     </>
   );
