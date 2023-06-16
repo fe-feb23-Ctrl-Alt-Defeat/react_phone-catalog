@@ -164,7 +164,6 @@ export const PhoneInfo = () => {
                         <Fragment key={capacity}>
                           <Button
                             text={capacity}
-                            // classes="button-capacity"
                             classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
                             onClick={() => handleChangeCapacity(capacity)}
                           />

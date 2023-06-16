@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './gallery.scss';
 import cn from 'classnames';
 import { IMAGE_BASE_URL } from '../../utils/globalVariables';
@@ -17,6 +17,10 @@ export const Gallery: React.FC<Props> = ({ images }) => {
   const handleSelectImage = useCallback((image: string) => {
     setMainImage(image);
   }, []);
+
+  useEffect(() => {
+    setMainImage(images[0]);
+  }, [images]);
 
   return (
     <div className="gallery">
