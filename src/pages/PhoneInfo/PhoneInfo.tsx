@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import React, {
   useEffect,
@@ -7,9 +9,9 @@ import React, {
 import cn from 'classnames';
 
 import './phoneInfo.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../../api/products';
-import { Phone } from '../../types/CardDescription';
+import { FullPhoneInfo, Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import { Gallery } from '../../compononts/Gallery/Gallery';
@@ -19,30 +21,68 @@ import { DescriptionTitle } from '../../compononts/DescriptionTitle/DescriptionT
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
+  const navigate = useNavigate();
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>(itemId || '');
 
-  // const [phoneCapacity, setPhoneCapacity] = useState<string>('');
-
-  console.log(itemId);
+  const abbreviatedPhoneInfo = [
+    { screen: phone?.screen || '' },
+    { resolution: phone?.resolution || '' },
+    { ram: phone?.ram || '' },
+  ];
+  const fullPhoneInfo: FullPhoneInfo[] = [
+    { Screen: phone?.screen || '' },
+    { Resolution: phone?.resolution || '' },
+    { Processor: phone?.processor || '' },
+    { Ram: phone?.ram || '' },
+    { 'Built in memory': phone?.capacity || '' },
+    { Camera: phone?.camera || '' },
+    { Zoom: phone?.zoom || '' },
+    { Cell: phone?.cell || [] },
+  ];
 
   const loadPhoneById = async () => {
     setIsLoading(true);
-    const phoneFromServer = await getProductById(itemId || '');
+    const phoneFromServer = await getProductById(query || '');
 
     setIsLoading(false);
-    if (phoneFromServer !== null) {
-      setPhone(phoneFromServer);
-    }
+    setPhone(phoneFromServer);
   };
 
-  // const hanleSetCapacity = (capacity: string) => {
-  //   setPhoneCapacity(capacity);
-  // };
+  const handleChangeCapacity = (capacity: string) => {
+    const newQuery = query
+      .split('-')
+      .map(str => {
+        let res = str;
+
+        if (res.includes('gb')) {
+          res = (capacity.toLowerCase());
+        }
+
+        return res;
+      })
+      .join('-');
+
+    setQuery(newQuery);
+    navigate(`/phones/${newQuery}`, { replace: true });
+  };
+
+  const handleChangeColor = (color: string) => {
+    const splitedQuery = query.split('-');
+    const index = splitedQuery.length - 1;
+
+    splitedQuery.splice(index, 1, color.toLowerCase());
+
+    const newQuery = splitedQuery.join('-');
+
+    setQuery(newQuery);
+    navigate(`/phones/${newQuery}`, { replace: true });
+  };
 
   useEffect(() => {
     loadPhoneById();
-  }, []);
+  }, [query]);
 
   return (
     <>
@@ -105,6 +145,7 @@ export const PhoneInfo = () => {
                             <div
                               className="color-selects__colors-item-color"
                               style={{ backgroundColor: color }}
+                              onClick={() => handleChangeColor(color)}
                             />
                           </div>
                         ))}
@@ -125,7 +166,7 @@ export const PhoneInfo = () => {
                             text={capacity}
                             // classes="button-capacity"
                             classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
-                          // onClick={hanleSetCapacity}
+                            onClick={() => handleChangeCapacity(capacity)}
                           />
                         </Fragment>
                       ))}
@@ -155,22 +196,17 @@ export const PhoneInfo = () => {
                     </div>
 
                     <div className="characterisriics-block">
-                      <div className="characterisriics-block__small-info">
-                        <p className="characterisriics-block__small-info-text">Screen</p>
-                        <p className="characterisriics-block__small-info-info">6.5” OLED</p>
-                      </div>
-                      <div className="characterisriics-block__resolution">
-                        <p className="characterisriics-block__small-info-text">Resolution</p>
-                        <p className="characterisriics-block__small-info-info">2688x1242</p>
-                      </div>
-                      <div className="characterisriics-block__processor">
-                        <p className="characterisriics-block__small-info-text">Processor</p>
-                        <p className="characterisriics-block__small-info-info">Apple A12 Bionic</p>
-                      </div>
-                      <div className="characterisriics-block__ram">
-                        <p className="characterisriics-block__small-info-text">RAM</p>
-                        <p className="characterisriics-block__small-info-info">3 GB</p>
-                      </div>
+                      {abbreviatedPhoneInfo.map(info => {
+                        const [infoField, infoValue]: string[] = Object.entries(info)[0];
+
+                        return (
+                          <div className="characterisriics-block__small-info" key={`${infoField} + ${infoValue}`}>
+                            <p className="characterisriics-block__small-info-text">{infoField}</p>
+
+                            <p className="characterisriics-block__small-info-info">{infoValue}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -179,42 +215,36 @@ export const PhoneInfo = () => {
                       <DescriptionTitle title="Tech specs" />
                     </div>
                     <div className="tech-specs__details">
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Screen</p>
-                        <p className="tech-specs__details-detail-value">6.5” OLED</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Resolution</p>
-                        <p className="tech-specs__details-detail-value">2688x1242</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Processor</p>
-                        <p className="tech-specs__details-detail-value">Apple A12 Bionic</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">RAM</p>
-                        <p className="tech-specs__details-detail-value">3 GB</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Built in memory</p>
-                        <p className="tech-specs__details-detail-value">64 GB</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Camera</p>
-                        <p className="tech-specs__details-detail-value">12 Mp + 12 Mp + 12 Mp (Triple)</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Zoom</p>
-                        <p className="tech-specs__details-detail-value">Optical, 2x</p>
-                      </div>
-                      <div className="tech-specs__details-detail">
-                        <p className="tech-specs__details-detail-key">Cell</p>
-                        <div>
-                          <span className="tech-specs__details-detail-value">GSM,</span>
-                          <span className="tech-specs__details-detail-value">LTE,</span>
-                          <span className="tech-specs__details-detail-value">UMTS</span>
-                        </div>
-                      </div>
+                      {fullPhoneInfo.map(info => {
+                        const [infoField, infoValue] = Object.entries(info)[0];
+
+                        return (
+                          <div className="tech-specs__details-detail" key={`${infoField}${infoValue}`}>
+                            <p className="tech-specs__details-detail-key">{infoField}</p>
+                            {infoField !== 'Cell'
+                              ? <p className="tech-specs__details-detail-value">{infoValue}</p>
+                              : (
+                                <div>
+                                  {
+                                    Array.isArray(infoValue) && infoValue.map((cell, index: number, array: string[]) => {
+                                      return index !== array.length - 1
+                                        ? (
+                                          <Fragment key={cell}>
+                                            <span className="tech-specs__details-detail-value">{`${cell}, `}</span>
+                                          </Fragment>
+                                        )
+                                        : (
+                                          <Fragment key={cell}>
+                                            <span className="tech-specs__details-detail-value">{`${cell}`}</span>
+                                          </Fragment>
+                                        );
+                                    })
+                                  }
+                                </div>
+                              )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </section>

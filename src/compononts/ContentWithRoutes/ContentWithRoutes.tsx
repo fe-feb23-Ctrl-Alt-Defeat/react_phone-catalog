@@ -4,10 +4,10 @@ import { Accessories } from '../../pages/Accessories/Accessories';
 import { Cart } from '../../pages/Cart/Cart';
 import { Favorites } from '../../pages/Favorites/Favorites';
 import { PageNotFound } from '../../pages/PageNotFound/PageNotFound';
-import { PhoneInfo } from '../../pages/PhoneInfo/PhoneInfo';
 import { Phones } from '../../pages/Phones/Phones';
 import { Tablets } from '../../pages/Tablets/Tablets';
 import { HomePage } from '../../pages/HomePage/HomePage';
+import { PhoneInfo } from '../../pages/PhoneInfo/PhoneInfo';
 
 export const ContentWithRoutes = () => {
   return (
