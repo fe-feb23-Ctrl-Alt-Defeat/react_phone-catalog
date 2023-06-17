@@ -8,6 +8,7 @@ import { Phones } from '../../pages/Phones/Phones';
 import { Tablets } from '../../pages/Tablets/Tablets';
 import { HomePage } from '../../pages/HomePage/HomePage';
 import { PhoneInfo } from '../../pages/PhoneInfo/PhoneInfo';
+import { Contacts } from '../../pages/Contacts/Contacts';
 
 export const ContentWithRoutes = () => {
   return (
@@ -22,6 +23,7 @@ export const ContentWithRoutes = () => {
       <Route path="/accessories" element={<Accessories />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/contacts" element={<Contacts />} />
 
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="*" element={<PageNotFound />} />

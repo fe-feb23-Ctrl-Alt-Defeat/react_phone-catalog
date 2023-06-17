@@ -1,4 +1,7 @@
+/* eslint-disable max-len */
 import React, { FC, useCallback } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 import up_arrow from '../../images/up_arrow.svg';
 import logo from '../../images/logo_gnce_gadgets.svg';
@@ -34,14 +37,19 @@ export const Footer: FC = () => {
               </a>
             </li>
             <li className="footer__list_item">
-              <a href="/contacts" className="footer__list_link">
+              <NavLink
+                to="/contacts"
+                className={({ isActive }) => classNames('footer__list_link', {
+                  footer__list_link_active: isActive,
+                })}
+              >
                 contacts
-              </a>
+              </NavLink>
             </li>
             <li className="footer__list_item">
-              <a href="/contacts" className="footer__list_link">
+              <Link to="/something" className="footer__list_link">
                 rights
-              </a>
+              </Link>
             </li>
           </ul>
 

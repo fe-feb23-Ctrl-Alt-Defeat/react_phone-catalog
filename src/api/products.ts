@@ -23,6 +23,10 @@ export const getProductById = (id: string) => {
   return client.get<Phone>(`phones/${id}`);
 };
 
+export const getProductByItemId = (itemId: string) => {
+  return client.get<Phone>(`products/${itemId}`);
+};
+
 export const getProductByIds = (ids: number[]) => {
   return client.get<CardData[]>(`products?ids=${ids.join(',')}`);
 };

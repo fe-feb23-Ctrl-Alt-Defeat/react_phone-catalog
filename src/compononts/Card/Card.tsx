@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Favorite from '../../images/icon_favorites.svg';
 import redHeart from '../../images/redHeart.svg';
-import { IMAGE_BASE_URL } from '../../utils/globalVariables';
 
 import './card.scss';
 import { LocalStCart } from '../../types/LocalStCart';
 import { CardData } from '../../types/CardData';
 import { FavoritesAndCartCountContext } from '../FavoritesCartContext/FavoritesCartContext';
+import { BASE_URL } from '../../utils/globalVariables';
 
 type Props = {
   cardData: CardData;
@@ -116,7 +116,7 @@ export const Card: React.FC<Props> = ({ cardData }) => {
 
         <Link to={`/phones/${cardData.itemId}`} className="card__image">
           <img
-            src={`${IMAGE_BASE_URL}${cardData.image}`}
+            src={`${BASE_URL}${cardData.image}`}
             alt="phone_image"
             className="card__image_img"
           />

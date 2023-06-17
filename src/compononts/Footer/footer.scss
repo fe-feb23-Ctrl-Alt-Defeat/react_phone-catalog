@@ -38,6 +38,10 @@
       color: #89939A;
       transition: 0.5s;
 
+      &_active {
+        color: #313237
+      }
+      
       &:hover {
         color: #313237;
       }

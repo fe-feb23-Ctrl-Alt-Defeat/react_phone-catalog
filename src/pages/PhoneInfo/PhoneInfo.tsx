@@ -11,16 +11,18 @@ import cn from 'classnames';
 
 import './phoneInfo.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getProductById } from '../../api/products';
+
+import { getProductById, getProductByItemId } from '../../api/products';
 import { FullPhoneInfo, Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import { Gallery } from '../../compononts/Gallery/Gallery';
 import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
-import { AboutnTitle } from '../../compononts/AboutTitle/AboutTitle';
+
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
-import { PhoneColors } from '../../types/PhoneColors';
+import { AboutTitle } from '../../compononts/AboutTitle/AboutTitle';
+
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -28,6 +30,27 @@ export const PhoneInfo = () => {
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(itemId || '');
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  const favoriteFromLS = localStorage.getItem('favorites');
+  const parsedFavorites = JSON.parse(favoriteFromLS || '[]');
+
+  console.log(parsedFavorites);
+
+  const phoneColors = {
+    black: '#000000',
+    gold: '#EACFB8',
+    silver: '#DEDED7',
+    red: '#AE2A36',
+    coral: '#E76752',
+    yellow: '#F2D365',
+    green: '#C8E7D8',
+    midnightgreen: '#676E66',
+    spacegray: '#62605F',
+    white: '#FBF7F2',
+    purple: '#D6D3DD',
+    rosegold: '#EECFC8',
+  };
 
   const phoneColors = {
     black: '#000000',
@@ -98,8 +121,15 @@ export const PhoneInfo = () => {
     navigate(`/phones/${newQuery}`, { replace: true });
   };
 
+  const phoneByItemId = async () => {
+    const phoneFromServer = await getProductByItemId(itemId || '');
+
+    console.log(phoneFromServer);
+  };
+
   useEffect(() => {
     loadPhoneById();
+    phoneByItemId();
   }, [query]);
 
   return (
@@ -207,7 +237,7 @@ export const PhoneInfo = () => {
                   <div className="about-block">
                     <div className="about-phone">
                       <div className="about-phone__title">
-                        <AboutnTitle title="About" />
+                        <AboutTitle title="About" />
                       </div>
                       <div className="about-phone__description">
                         {phone?.description.map(descr => (
@@ -232,7 +262,7 @@ export const PhoneInfo = () => {
                     <div className="tech-specs">
                       <div className="tech-specs__about">
                         <div className="tech-specs__about-title">
-                          <AboutnTitle title="Tech specs" />
+                          <AboutTitle title="Tech specs" />
                         </div>
                       </div>
 
