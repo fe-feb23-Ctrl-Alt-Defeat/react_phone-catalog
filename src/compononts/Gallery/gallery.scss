@@ -5,12 +5,33 @@
   flex-direction: row-reverse;
   gap: 16px;
 
+  @include onTablet {
+    gap: 0px;
+  }
+
+  @include onPhone {
+    display: block;
+  }
+
+  @include onPhone {
+    margin-bottom: 40px;
+  }
+
   &__sub-photos {
-    height: 464px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     justify-content: space-around;
+
+    @include onPhone {
+      flex-direction: row;
+    }
+
+    @include onPhone {
+      justify-content: space-evenly;
+      // gap: 12px;
+    }
 
     &-photo {
       display: flex;
@@ -20,6 +41,16 @@
       border: 1px solid #B4BDC4;
       opacity: 0.7;
       cursor: pointer;
+
+      @include onLowTablet {
+        width: 34px;
+        height: 34px;
+      }
+
+      @include onPhone {
+        width: 50px;
+        height: 50px;
+      }
 
       &:hover {
         border-color: #89939A;
@@ -44,6 +75,21 @@
     border-radius: 4px;
     display: flex;
     justify-content: center;
+
+    @include onTablet {
+      width: 370px;
+    }
+
+    @include onLowTablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include onPhone {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto 16px;
+    }
 
     &-image {
       width: auto;

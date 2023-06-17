@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -10,8 +11,8 @@ import React, {
 import cn from 'classnames';
 
 import './phoneInfo.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById, getProductByItemId } from '../../api/products';
 import { FullPhoneInfo, Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
@@ -23,34 +24,17 @@ import { Button } from '../../controls/Button/Button';
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
 import { AboutTitle } from '../../compononts/AboutTitle/AboutTitle';
 
-
 export const PhoneInfo = () => {
   const { itemId } = useParams();
   const navigate = useNavigate();
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(itemId || '');
-  const [favorites, setFavorites] = useState<number[]>([]);
 
   const favoriteFromLS = localStorage.getItem('favorites');
   const parsedFavorites = JSON.parse(favoriteFromLS || '[]');
 
   console.log(parsedFavorites);
-
-  const phoneColors = {
-    black: '#000000',
-    gold: '#EACFB8',
-    silver: '#DEDED7',
-    red: '#AE2A36',
-    coral: '#E76752',
-    yellow: '#F2D365',
-    green: '#C8E7D8',
-    midnightgreen: '#676E66',
-    spacegray: '#62605F',
-    white: '#FBF7F2',
-    purple: '#D6D3DD',
-    rosegold: '#EECFC8',
-  };
 
   const phoneColors = {
     black: '#000000',
@@ -162,7 +146,11 @@ export const PhoneInfo = () => {
                       <div className="available__container">
                         <div className="available__colors">
                           <div className="colors">
-                            <p className="colors__text">Available colors</p>
+                            <div className="colors__texts">
+                              <p className="colors__texts-text">Available colors</p>
+
+                              <p className="colors__texts-id">ID: 802390</p>
+                            </div>
                             <div className="colors__container">
                               {phone?.colorsAvailable.map(color => (
                                 <div

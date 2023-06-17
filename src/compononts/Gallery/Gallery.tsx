@@ -26,7 +26,7 @@ export const Gallery: React.FC<Props> = ({ images }) => {
     <div className="gallery">
       <div className="gallery__main-photo">
         <img
-          src={`${IMAGE_BASE_URL}${mainImage}`}
+          src={`${BASE_URL}${mainImage}`}
           alt="Phone iamge"
           className="gallery__main-photo-image"
         />
