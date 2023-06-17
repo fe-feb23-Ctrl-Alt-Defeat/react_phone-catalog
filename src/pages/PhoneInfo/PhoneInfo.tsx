@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -10,8 +11,8 @@ import React, {
 import cn from 'classnames';
 
 import './phoneInfo.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById, getProductByItemId } from '../../api/products';
 import { FullPhoneInfo, Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
@@ -22,7 +23,6 @@ import { Button } from '../../controls/Button/Button';
 
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
 import { AboutTitle } from '../../compononts/AboutTitle/AboutTitle';
-
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -36,21 +36,6 @@ export const PhoneInfo = () => {
   const parsedFavorites = JSON.parse(favoriteFromLS || '[]');
 
   console.log(parsedFavorites);
-
-  const phoneColors = {
-    black: '#000000',
-    gold: '#EACFB8',
-    silver: '#DEDED7',
-    red: '#AE2A36',
-    coral: '#E76752',
-    yellow: '#F2D365',
-    green: '#C8E7D8',
-    midnightgreen: '#676E66',
-    spacegray: '#62605F',
-    white: '#FBF7F2',
-    purple: '#D6D3DD',
-    rosegold: '#EECFC8',
-  };
 
   const phoneColors = {
     black: '#000000',
