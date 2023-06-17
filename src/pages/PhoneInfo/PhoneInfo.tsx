@@ -19,6 +19,7 @@ import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
 import { DescriptionTitle } from '../../compononts/DescriptionTitle/DescriptionTitle';
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
+// import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -126,7 +127,6 @@ export const PhoneInfo = () => {
                               {descr.text[1]}
                             </>
                           )}
-
                         </p>
                       </article>
                     ))}
@@ -147,6 +147,7 @@ export const PhoneInfo = () => {
                               <div
                                 className="color-selects__colors-item-color"
                                 style={{ backgroundColor: color }}
+                                onClick={() => handleChangeColor(color)}
                               />
                             </div>
                           ))}
@@ -154,47 +155,26 @@ export const PhoneInfo = () => {
                         </div>
                       </div>
 
-                      <div className="under-line" />
+                      <div className="under-line"></div>
 
                       <div className="select-capacity">
                         <p className="select-capacity__text">Select capacity</p>
                       </div>
 
-                        {phone?.colorsAvailable.map(color => (
-                          <div key={color} className="color-selects__colors-item">
-                            <div
-                              className="color-selects__colors-item-color"
-                              style={{ backgroundColor: color }}
-                              onClick={() => handleChangeColor(color)}
-
+                      <div className="capacityes">
+                        {phone?.capacityAvailable.map(capacity => (
+                          <Fragment key={capacity}>
+                            <Button
+                              text={capacity}
+                              // classes="button-capacity"
+                              classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
+                              onClick={() => handleChangeCapacity(capacity)}
                             />
                           </Fragment>
                         ))}
-
                       </div>
-                    </div>
 
-                    <div className="under-line" />
-
-                    <div className="select-capacity">
-                      <p className="select-capacity__text">Select capacity</p>
-                    </div>
-
-                    <div className="capacityes">
-                      {phone?.capacityAvailable.map(capacity => (
-                        <Fragment key={capacity}>
-                          <Button
-                            text={capacity}
-                            // classes="button-capacity"
-                            classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
-                            onClick={() => handleChangeCapacity(capacity)}
-                          />
-                        </Fragment>
-                      ))}
-
-                    </div>
-
-                      <div className="under-line" />
+                      <div className="under-line"></div>
 
                       <div className="price">
                         <div className="card__price">
@@ -213,57 +193,60 @@ export const PhoneInfo = () => {
                           classes="button-add-to-cart"
                         />
 
-                    <div className="characterisriics-block">
-                      {abbreviatedPhoneInfo.map(info => {
-                        const [infoField, infoValue]: string[] = Object.entries(info)[0];
+                        <Button classes="button-favorite" />
+                      </div>
 
-                        return (
-                          <div className="characterisriics-block__small-info" key={`${infoField} + ${infoValue}`}>
-                            <p className="characterisriics-block__small-info-text">{infoField}</p>
+                      <div className="characterisriics-block">
+                        {abbreviatedPhoneInfo.map(info => {
+                          const [infoField, infoValue]: string[] = Object.entries(info)[0];
 
-                            <p className="characterisriics-block__small-info-info">{infoValue}</p>
-                          </div>
-                        );
-                      })}
+                          return (
+                            <div className="characterisriics-block__small-info" key={`${infoField} + ${infoValue}`}>
+                              <p className="characterisriics-block__small-info-text">{infoField}</p>
+
+                              <p className="characterisriics-block__small-info-info">{infoValue}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
 
+                    <div className="tech-specs">
+                      <div className="tech-specs__title">
+                        <DescriptionTitle title="Tech specs" />
+                      </div>
+                      <div className="tech-specs__details">
+                        {fullPhoneInfo.map(info => {
+                          const [infoField, infoValue] = Object.entries(info)[0];
 
-                  <div className="tech-specs">
-                    <div className="tech-specs__title">
-                      <DescriptionTitle title="Tech specs" />
-                    </div>
-                    <div className="tech-specs__details">
-                      {fullPhoneInfo.map(info => {
-                        const [infoField, infoValue] = Object.entries(info)[0];
-
-                        return (
-                          <div className="tech-specs__details-detail" key={`${infoField}${infoValue}`}>
-                            <p className="tech-specs__details-detail-key">{infoField}</p>
-                            {infoField !== 'Cell'
-                              ? <p className="tech-specs__details-detail-value">{infoValue}</p>
-                              : (
-                                <div>
-                                  {
-                                    Array.isArray(infoValue) && infoValue.map((cell, index: number, array: string[]) => {
-                                      return index !== array.length - 1
-                                        ? (
-                                          <Fragment key={cell}>
-                                            <span className="tech-specs__details-detail-value">{`${cell}, `}</span>
-                                          </Fragment>
-                                        )
-                                        : (
-                                          <Fragment key={cell}>
-                                            <span className="tech-specs__details-detail-value">{`${cell}`}</span>
-                                          </Fragment>
-                                        );
-                                    })
-                                  }
-                                </div>
-                              )}
-                          </div>
-                        );
-                      })}
-                      
+                          return (
+                            <div className="tech-specs__details-detail" key={`${infoField}${infoValue}`}>
+                              <p className="tech-specs__details-detail-key">{infoField}</p>
+                              {infoField !== 'Cell'
+                                ? <p className="tech-specs__details-detail-value">{infoValue}</p>
+                                : (
+                                  <div>
+                                    {
+                                      Array.isArray(infoValue) && infoValue.map((cell, index: number, array: string[]) => {
+                                        return index !== array.length - 1
+                                          ? (
+                                            <Fragment key={cell}>
+                                              <span className="tech-specs__details-detail-value">{`${cell}, `}</span>
+                                            </Fragment>
+                                          )
+                                          : (
+                                            <Fragment key={cell}>
+                                              <span className="tech-specs__details-detail-value">{`${cell}`}</span>
+                                            </Fragment>
+                                          );
+                                      })
+                                    }
+                                  </div>
+                                )}
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </section>
                 </div>
