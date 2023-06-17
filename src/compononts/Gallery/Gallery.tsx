@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './gallery.scss';
 import cn from 'classnames';
 import { BASE_URL } from '../../utils/globalVariables';
@@ -18,8 +18,20 @@ export const Gallery: React.FC<Props> = ({ images }) => {
     setMainImage(image);
   }, []);
 
+  useEffect(() => {
+    setMainImage(images[0]);
+  }, [images]);
+
   return (
     <div className="gallery">
+      <div className="gallery__main-photo">
+        <img
+          src={`${IMAGE_BASE_URL}${mainImage}`}
+          alt="Phone iamge"
+          className="gallery__main-photo-image"
+        />
+      </div>
+
       <div className="gallery__sub-photos">
         {images.map((image) => (
           <div
@@ -36,14 +48,6 @@ export const Gallery: React.FC<Props> = ({ images }) => {
             />
           </div>
         ))}
-      </div>
-
-      <div className="gallery__main-photo">
-        <img
-          src={`${BASE_URL}${mainImage}`}
-          alt="Phone iamge"
-          className="gallery__main-photo-image"
-        />
       </div>
     </div>
   );
