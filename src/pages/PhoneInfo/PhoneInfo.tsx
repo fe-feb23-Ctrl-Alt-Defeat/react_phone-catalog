@@ -19,8 +19,9 @@ import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import { Gallery } from '../../compononts/Gallery/Gallery';
 import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
-import { AboutnTitle } from '../../compononts/AboutTitle/AboutTitle';
+
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
+import { AboutTitle } from '../../compononts/AboutTitle/AboutTitle';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -220,7 +221,7 @@ export const PhoneInfo = () => {
                   <div className="about-block">
                     <div className="about-phone">
                       <div className="about-phone__title">
-                        <AboutnTitle title="About" />
+                        <AboutTitle title="About" />
                       </div>
                       <div className="about-phone__description">
                         {phone?.description.map(descr => (
@@ -245,7 +246,7 @@ export const PhoneInfo = () => {
                     <div className="tech-specs">
                       <div className="tech-specs__about">
                         <div className="tech-specs__about-title">
-                          <AboutnTitle title="Tech specs" />
+                          <AboutTitle title="Tech specs" />
                         </div>
                       </div>
 
