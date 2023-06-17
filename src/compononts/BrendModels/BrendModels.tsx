@@ -28,7 +28,7 @@ export const BrendsModels = () => {
 
   return (
     <>
-      <div className="container brendsModels">
+      <div className="container">
         <NewModelsSlider phonesData={phones} title="Brand new models" />
       </div>
     </>

@@ -27,7 +27,7 @@ export const YouMayAlsoLike = () => {
 
   return (
     <>
-      <div className="container brendsModels">
+      <div className="container">
         <NewModelsSlider phonesData={phones} title="You may also like" />
       </div>
     </>
