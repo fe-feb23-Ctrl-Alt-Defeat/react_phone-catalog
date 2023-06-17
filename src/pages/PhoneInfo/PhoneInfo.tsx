@@ -20,6 +20,7 @@ import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
 import { AboutnTitle } from '../../compononts/AboutTitle/AboutTitle';
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
+import { PhoneColors } from '../../types/PhoneColors';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -27,6 +28,21 @@ export const PhoneInfo = () => {
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(itemId || '');
+
+  const phoneColors = {
+    black: '#000000',
+    gold: '#EACFB8',
+    silver: '#DEDED7',
+    red: '#AE2A36',
+    coral: '#E76752',
+    yellow: '#F2D365',
+    green: '#C8E7D8',
+    midnightgreen: '#676E66',
+    spacegray: '#62605F',
+    white: '#FBF7F2',
+    purple: '#D6D3DD',
+    rosegold: '#EECFC8',
+  };
 
   const abbreviatedPhoneInfo = [
     { screen: phone?.screen || '' },
@@ -119,17 +135,16 @@ export const PhoneInfo = () => {
                             <p className="colors__text">Available colors</p>
                             <div className="colors__container">
                               {phone?.colorsAvailable.map(color => (
-                                <Link
-                                  to={`/phones/${query}-${color.toLowerCase()}`}
+                                <div
                                   key={color}
                                   className={cn('colors__item', { 'colors__item--selected': itemId?.includes(color.toLowerCase()) })}
                                   onClick={() => handleChangeColor(color)}
                                 >
                                   <div
                                     className="colors__item-color"
-                                    style={{ backgroundColor: color }}
+                                    style={{ backgroundColor: phoneColors[color] }}
                                   />
-                                </Link>
+                                </div>
                               ))}
                             </div>
                           </div>
