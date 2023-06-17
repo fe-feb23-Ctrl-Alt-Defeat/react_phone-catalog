@@ -34,15 +34,38 @@
   .gallery-block {
     display: flex;
     gap: 75px;
+
+    @include onTablet {
+      gap: 25px;
+    }
+
+    @include onLowTablet {
+      gap: 10px;
+    }
+
+    @include onPhone {
+      display: block;
+    }
   }
 
   .about-block {
     display: flex;
     gap: 75px;
+
+    @include onTablet {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
   }
 
   .about-phone {
     width: 560px;
+
+    @include onTablet {
+      width: 100%;
+    }
 
     &__title {
       margin-bottom: 24px;
@@ -76,6 +99,10 @@
 
   .tech-specs {
     width: 500px;
+
+    @include onTablet {
+      width: 100%;
+    }
 
     &__about {
       margin-bottom: 25px;
@@ -112,6 +139,10 @@
       display: flex;
       justify-content: space-between;
 
+      @include onTablet {
+        display: block;
+      }
+
       &-id {
         flex-shrink: 1;
         font-family: 'Mont-Bold';
@@ -120,6 +151,10 @@
         text-align: right;
 
         color: #B4BDC4;
+
+        @include onTablet {
+          display: none;
+        }
       }
     }
 
@@ -152,14 +187,34 @@
         margin-top: 24px;
       }
 
-      &__text {
-        font-family: 'Mont-SemiBold';
-        font-size: 12px;
-        line-height: 15px;
+      &__texts {
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 8px;
 
-        color: #89939A;
+        &-text {
+          font-family: 'Mont-SemiBold';
+          font-size: 12px;
+          line-height: 15px;
+          margin-bottom: 8px;
+
+          color: #89939A;
+        }
+
+        &-id {
+          visibility: hidden;
+          font-family: 'Mont-Bold';
+          font-size: 12px;
+          line-height: 15px;
+
+          color: #B4BDC4;
+
+          @include onTablet {
+            visibility: visible;
+          }
+        }
       }
+
 
       &__container {
         display: flex;

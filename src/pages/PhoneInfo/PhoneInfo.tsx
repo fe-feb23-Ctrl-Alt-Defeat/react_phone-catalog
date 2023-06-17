@@ -30,7 +30,6 @@ export const PhoneInfo = () => {
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(itemId || '');
-  const [favorites, setFavorites] = useState<number[]>([]);
 
   const favoriteFromLS = localStorage.getItem('favorites');
   const parsedFavorites = JSON.parse(favoriteFromLS || '[]');
@@ -147,7 +146,11 @@ export const PhoneInfo = () => {
                       <div className="available__container">
                         <div className="available__colors">
                           <div className="colors">
-                            <p className="colors__text">Available colors</p>
+                            <div className="colors__texts">
+                              <p className="colors__texts-text">Available colors</p>
+
+                              <p className="colors__texts-id">ID: 802390</p>
+                            </div>
                             <div className="colors__container">
                               {phone?.colorsAvailable.map(color => (
                                 <div
