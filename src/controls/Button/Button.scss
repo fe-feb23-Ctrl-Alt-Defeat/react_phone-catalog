@@ -31,14 +31,12 @@
   font-family: 'Mont-Bold';
   font-size: 14px;
   line-height: 21px;
-  padding: 13.5px 91px;
+  height: 48px;
 
   color: #FFFFFF;
   background-color: #313237;
 
   transition: box-shadow 0.5s;
-
-
 
   &--selected {
     border: 1px solid #E2E6E9;
@@ -49,7 +47,7 @@
 
 .button-favorite {
   background-color: #FFF;
-  padding: 16px 17px;
+  height: 48px;
   border: 1px solid #B4BDC4;
   transition: border-color 0.5s, box-shadow 0.5s;
 

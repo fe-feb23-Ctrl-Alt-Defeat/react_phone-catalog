@@ -25,39 +25,28 @@
   }
 
   &__content {
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    justify-items: start;
-    grid-gap: 16px;
-
-    &-description {
-      grid-column: 1/12;
-
-
-      &-title {
-        margin-bottom: 32px;
-      }
-
-      &-gallery {
-        height: 464px;
-        margin-bottom: 80px;
-
-      }
-    }
-
-    &-characteristics {
-      grid-column: 14 / 24;
-
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin-bottom: 80px;
   }
 
-  .grid-container {
-    height: 464px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: start;
-    margin-bottom: 80px;
+  .gallery-block {
+    display: flex;
+    gap: 75px;
+  }
+
+  .about-block {
+    display: flex;
+    gap: 75px;
+  }
+
+  .about-phone {
+    width: 560px;
+
+    &__title {
+      margin-bottom: 24px;
+    }
   }
 
   .article:not(:last-child) {
@@ -66,7 +55,14 @@
 
   .article {
     margin-bottom: 32px;
-    grid-column: 1/12;
+
+    &__text {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
+
+      color: #89939A;
+    }
 
     &__title {
       font-family: 'Mont-Bold';
@@ -75,166 +71,206 @@
       margin-bottom: 16px;
 
       color: #313237;
-
-      &__text {
-        font-family: 'Mont-Regular';
-        font-size: 14px;
-        line-height: 21px;
-
-        color: #89939A;
-      }
     }
   }
 
-  .available-colors {
-    grid-column: 1/13;
+  .tech-specs {
+    width: 500px;
+
+    &__about {
+      margin-bottom: 25px;
+    }
+  }
+
+  .detail {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 
-    &__text {
-      font-family: 'Mont-SemiBold';
-      font-size: 12px;
-      line-height: 15px;
+    &__field {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
 
       color: #89939A;
     }
 
-    &__id {
-      font-family: 'Mont-Bold';
-      font-size: 12px;
-      line-height: 15px;
+    &__info {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
 
-      color: #B4BDC4;
+      color: #313237;
     }
   }
 
-  .color-selects {
-    grid-column: 1/8;
+  .available {
+    width: 100%;
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+
+      &-id {
+        flex-shrink: 1;
+        font-family: 'Mont-Bold';
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+
+        color: #B4BDC4;
+      }
+    }
 
     &__colors {
-      display: flex;
-      gap: 8px;
+      flex-basis: 350px;
+      flex-shrink: 0;
+    }
 
-      &-item {
+    &__capacity {
+      margin-bottom: 32px;
+    }
+
+    &__price {
+      margin-bottom: 16px;
+    }
+
+    &__buttons {
+      margin-bottom: 32px;
+    }
+
+
+    .colors {
+      margin-bottom: 24px;
+
+      &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        border: 1px solid #E2E6E9;
+        margin-top: 24px;
+      }
+
+      &__text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 8px;
+
+        color: #89939A;
+      }
+
+      &__container {
+        display: flex;
+        gap: 8px;
+      }
+
+      &__item {
         width: 32px;
         height: 32px;
         border-radius: 50%;
         border: 1px solid #E2E6E9;
+        padding: 2px;
         cursor: pointer;
-        padding: 1px;
-
-        &:hover {
-          border-color: #B4BDC4;
-        }
+        transition: box-shadow 0.5s, border 0.5s;
 
         &--selected {
           border-color: #313237;
+        }
+
+
+        &:hover {
+          box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+          border-color: #B4BDC4;
         }
 
         &-color {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background-color: #FCDBC1;
+
+
         }
       }
     }
-  }
 
-  .under-line {
-    grid-column: 1/10;
-    border: 1px solid #E2E6E9;
-  }
+    .capacity {
+      margin-bottom: 24px;
 
-  .select-capacity {
-    grid-column: 1/5;
+      &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        border: 1px solid #E2E6E9;
+        margin-top: 24px;
+      }
 
-    &__text {
-      font-family: 'Mont-SemiBold';
-      font-size: 12px;
-      line-height: 15px;
+      &__text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 8px;
 
-      color: #89939A;
+        color: #89939A;
+      }
+
+      &__items {
+        display: flex;
+        gap: 8px;
+      }
     }
-  }
 
-  .capacityes {
-    grid-column: 1/6;
-    display: flex;
-    gap: 8px;
-  }
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
 
-  .price {
-    grid-column: 1/6;
-    align-items: center;
-  }
+      &__normal {
+        font-family: 'Mont-Black';
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
 
-  .buttons-block {
-    grid-column: 1/10;
-    display: flex;
-    gap: 8px;
-  }
+        color: #313237;
+      }
 
-  .characterisriics-block {
-    grid-column: 1/10;
+      &__discount {
+        font-family: 'Mont-Regular';
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
 
-    &__small-info {
+        color: #89939A;
+      }
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      grid-gap: 8px;
+    }
+
+    .abrevspecs {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 8px;
 
-      &-text {
-        font-family: 'Mont-SemiBold';
+      &__field {
+        font-family: 'Mont-Regular';
         font-size: 12px;
         line-height: 15px;
 
         color: #89939A;
       }
 
-      &-info {
-        font-family: 'Mont-SemiBold';
-        font-size: 12px;
-        line-height: 15px;
+      &__info {
+        font-family: 'Mont-Regular';
+        font-size: 14px;
+        line-height: 21px;
 
         color: #313237;
-      }
-    }
-  }
-
-  .tech-specs {
-    margin-bottom: 25px;
-
-    &__title {
-      margin-bottom: 25px;
-    }
-
-    &__details {
-      margin-bottom: 8px;
-
-      &-detail {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-
-        &-key {
-          font-family: 'Mont-Regular';
-          font-size: 14px;
-          line-height: 21px;
-
-          color: #89939A;
-        }
-
-        &-value {
-          font-family: 'Mont-Regular';
-          font-size: 14px;
-          line-height: 21px;
-
-          color: #313237;
-        }
       }
     }
   }
