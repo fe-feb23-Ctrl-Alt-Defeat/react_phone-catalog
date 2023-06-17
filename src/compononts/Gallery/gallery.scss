@@ -1,10 +1,9 @@
 @import '../../styles/mixins/mixins.scss';
 
 .gallery {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-gap: 16px;
-  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
 
   &__sub-photos {
     height: 464px;
@@ -40,7 +39,7 @@
   }
 
   &__main-photo {
-    width: 380px;
+    width: 464px;
     height: 464px;
     border-radius: 4px;
     display: flex;

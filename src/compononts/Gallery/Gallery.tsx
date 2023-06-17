@@ -24,6 +24,14 @@ export const Gallery: React.FC<Props> = ({ images }) => {
 
   return (
     <div className="gallery">
+      <div className="gallery__main-photo">
+        <img
+          src={`${IMAGE_BASE_URL}${mainImage}`}
+          alt="Phone iamge"
+          className="gallery__main-photo-image"
+        />
+      </div>
+
       <div className="gallery__sub-photos">
         {images.map((image) => (
           <div
@@ -40,14 +48,6 @@ export const Gallery: React.FC<Props> = ({ images }) => {
             />
           </div>
         ))}
-      </div>
-
-      <div className="gallery__main-photo">
-        <img
-          src={`${IMAGE_BASE_URL}${mainImage}`}
-          alt="Phone iamge"
-          className="gallery__main-photo-image"
-        />
       </div>
     </div>
   );
