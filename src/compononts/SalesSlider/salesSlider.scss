@@ -29,7 +29,7 @@
 
 .sliderContainer {
   max-height: 400px;
-  height: 400px;
+  // height: 400px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -71,9 +71,8 @@
 }
 
 .arrow {
-  height: 100%;
+  // height: 100%;
   width: 32px;
-  border: 1px solid #B4BDC4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,9 +81,9 @@
 
   transition: 0.5s;
 
-  &:hover {
-    border: 1px solid #313237;
-  }
+  // &:hover {
+  //   border: 1px solid #313237;
+  // }
 
   @include onPhone {
     display: none;
@@ -97,6 +96,14 @@
 
 .arrow-right {
   margin-left: 16px;
+}
+
+.arrowImg {
+  width: 25px;
+
+  @include onTablet {
+    width: 15px;
+  }
 }
 
 .bannerImg {

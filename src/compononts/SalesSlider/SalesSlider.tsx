@@ -22,6 +22,7 @@ export const SalesSlider = () => {
   const [offset, setOffset] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [widthWindow, setWidthWindow] = useState(window.innerWidth);
+  // const [heightWindow, setHeightWindow] = useState(document.body.scrollHeight);
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,6 +36,18 @@ export const SalesSlider = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [widthWindow]);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setHeightWindow(document.body.scrollHeight);
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [heightWindow]);
 
   let widthSliderImg = 0;
 
@@ -50,7 +63,8 @@ export const SalesSlider = () => {
     widthSliderImg = widthWindow;
   }
 
-  console.log(widthSliderImg);
+  // console.log(widthSliderImg);
+  // console.log(heightWindow);
 
   const hendleLeftArrowClick = () => {
     setOffset((currentOffset) => {
@@ -66,6 +80,18 @@ export const SalesSlider = () => {
       return previousSlide < 0 ? pictures.length - 1 : previousSlide;
     });
   };
+
+  // let heightSliderImg = 0;
+
+  // if (widthWindow > 1200) {
+  //   heightSliderImg = heightWindow - 2331;
+  // }
+
+  // if (widthWindow > 640 && widthWindow < 1199) {
+  //   heightSliderImg = heightWindow - 2041;
+  // }
+
+  // console.log(heightSliderImg);
 
   const hendleRightArrowClick = () => {
     setOffset((currentOffset) => {
@@ -92,6 +118,11 @@ export const SalesSlider = () => {
     root.style.setProperty('--slider-width', `${widthSliderImg}px`);
   }, [widthSliderImg]);
 
+  // useEffect(() => {
+  //   const root = document.documentElement;
+  //   root.style.setProperty('--slider-height', `${heightSliderImg}px`);
+  // }, [heightSliderImg]);
+
   return (
     <>
       <div className="container sliderText">
@@ -105,7 +136,7 @@ export const SalesSlider = () => {
           className="arrow arrow-left"
           onClick={hendleLeftArrowClick}
         >
-          <img src={Banner_arrow_left} alt="arrowLeft" />
+          <img src={Banner_arrow_left} alt="arrowLeft" className="arrowImg" />
         </div>
         <div className="sliderBox">
           <div
@@ -128,7 +159,7 @@ export const SalesSlider = () => {
           className="arrow arrow-right"
           onClick={hendleRightArrowClick}
         >
-          <img src={Banner_arrow_right} alt="arrowRight" />
+          <img src={Banner_arrow_right} alt="arrowRight" className="arrowImg" />
         </div>
       </div>
       <div className="jumpButtonBox">
