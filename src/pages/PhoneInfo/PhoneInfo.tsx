@@ -67,6 +67,8 @@ export const PhoneInfo = () => {
     { Cell: phone?.cell || [] },
   ];
 
+  // console.log(itemId);
+
   const loadPhoneById = async () => {
     setIsLoading(true);
     const phoneFromServer = await getProductById(query || '');
