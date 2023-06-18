@@ -1,8 +1,9 @@
+/* eslint-disable padding-line-between-statements */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Banner from '../../images/Banner/Banner.svg';
 import Banner_2 from '../../images/Banner/Banner_2.jpg';
@@ -20,11 +21,55 @@ export const SalesSlider = () => {
 
   const [offset, setOffset] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [widthWindow, setWidthWindow] = useState(window.innerWidth);
+  // const [heightWindow, setHeightWindow] = useState(document.body.scrollHeight);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidthWindow = window.innerWidth;
+      setWidthWindow(newWidthWindow);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [widthWindow]);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setHeightWindow(document.body.scrollHeight);
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [heightWindow]);
+
+  let widthSliderImg = 0;
+
+  if (widthWindow > 1200) {
+    widthSliderImg = 1040;
+  }
+
+  if (widthWindow > 640 && widthWindow < 1199) {
+    widthSliderImg = widthWindow - 150;
+  }
+
+  if (widthWindow < 639) {
+    widthSliderImg = widthWindow;
+  }
+
+  // console.log(widthSliderImg);
+  // console.log(heightWindow);
 
   const hendleLeftArrowClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset + 1040;
-      const maxOffset = -(1040 * (pictures.length - 1));
+      const newOffset = currentOffset + widthSliderImg;
+      const maxOffset = -(widthSliderImg * (pictures.length - 1));
 
       return newOffset > 0 ? maxOffset : newOffset;
     });
@@ -36,10 +81,22 @@ export const SalesSlider = () => {
     });
   };
 
+  // let heightSliderImg = 0;
+
+  // if (widthWindow > 1200) {
+  //   heightSliderImg = heightWindow - 2331;
+  // }
+
+  // if (widthWindow > 640 && widthWindow < 1199) {
+  //   heightSliderImg = heightWindow - 2041;
+  // }
+
+  // console.log(heightSliderImg);
+
   const hendleRightArrowClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset - 1040;
-      const maxOffset = -(1040 * (pictures.length - 1));
+      const newOffset = currentOffset - widthSliderImg;
+      const maxOffset = -(widthSliderImg * (pictures.length - 1));
 
       return newOffset < maxOffset ? 0 : newOffset;
     });
@@ -52,13 +109,23 @@ export const SalesSlider = () => {
   };
 
   const goToSlide = (slideIndex: number) => {
-    setOffset(-1040 * slideIndex);
+    setOffset(-widthSliderImg * slideIndex);
     setActiveSlide(slideIndex);
   };
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--slider-width', `${widthSliderImg}px`);
+  }, [widthSliderImg]);
+
+  // useEffect(() => {
+  //   const root = document.documentElement;
+  //   root.style.setProperty('--slider-height', `${heightSliderImg}px`);
+  // }, [heightSliderImg]);
+
   return (
-    <div className="container">
-      <div className="sliderText">
+    <>
+      <div className="container sliderText">
         Welcome to Nice
         <wbr />
         &nbsp;Gadgets store!
@@ -69,7 +136,7 @@ export const SalesSlider = () => {
           className="arrow arrow-left"
           onClick={hendleLeftArrowClick}
         >
-          <img src={Banner_arrow_left} alt="arrowLeft" />
+          <img src={Banner_arrow_left} alt="arrowLeft" className="arrowImg" />
         </div>
         <div className="sliderBox">
           <div
@@ -92,7 +159,7 @@ export const SalesSlider = () => {
           className="arrow arrow-right"
           onClick={hendleRightArrowClick}
         >
-          <img src={Banner_arrow_right} alt="arrowRight" />
+          <img src={Banner_arrow_right} alt="arrowRight" className="arrowImg" />
         </div>
       </div>
       <div className="jumpButtonBox">
@@ -111,6 +178,6 @@ export const SalesSlider = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
