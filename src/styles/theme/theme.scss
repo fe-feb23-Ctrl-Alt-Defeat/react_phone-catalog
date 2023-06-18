@@ -1,0 +1,129 @@
+
+:root,
+[data-theme="light"] {
+  --bg-color: #fff;
+  --bg-color-reverse: #0F1121;
+  --white: #fff;
+  
+  //header
+  --header-boxoshadow: 0px 1px 0px #E2E6E9;
+  --header-buton-hover: #313237;
+  --header-icons-border: -1px 0px 1px #E2E6E9;
+  --header-icons-border-hover: 1px solid #313237;
+  --header-icons-bg-hover: none;
+  --header-btn-is-active: #313237;
+  
+
+  --secondary-color: #89939A;
+
+  --primary-color :#313237;
+
+  --color-red: #EB5757;
+  --border-heart: 1px solid #B4BDC4;
+  --heart-color-text: #fff;
+
+  //card
+  --card-border: 1px solid #E2E6E9;
+  --card-hover: rgba(0, 0, 0, 0.1);
+  --btn-discount: #89939A;
+  
+  --text-color: #313237;
+  
+  --card-btn-hover: 0px 3px 13px rgba(23, 32, 49, 0.4);
+  --btn-is-added: #27AE60;
+  --btn-is-added-bg: #fff;
+
+  --btn-bg-color: #313237;
+
+  // favorite
+  --favorite-bg: #fff;
+  --card-border-is-selected: 1px solid #E2E6E9;
+
+  //pagination
+  --pagination-bg: transparent;
+  --pagination-border: 1px solid #E2E6E9;
+  --pagination-border-hover: 1px solid #313237;
+  --pagination-border-hover-bg: none;
+  
+  --pagination-arrows-border: 1px solid #B4BDC4;
+  --pagination-arrows-bg: none;
+
+  //
+  --line-color: #E2E6E9;
+
+  //footer
+  --footer-box-shadow: 0px -1px 0px #E2E6E9;
+  --footer-border-color: #313237;
+
+  //galery
+  --galery-photo-border: 1px solid #B4BDC4;
+  --galery-photo-hover: #89939A;
+
+  //customThing
+  --capacity-btn-border: 1px solid #B4BDC4;
+  --colors-phone-border: 1px solid #E2E6E9;
+  --colors-phone-border-selected: #313237;
+  --colors-phone-border-hover: #B4BDC4;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0F1121;
+  --bg-color-reverse: #fff;
+  --white: #F1F2F9;
+
+  //header
+  --header-boxoshadow: 0px 1px 0px #323542;
+  --header-icons-border: -1px 0px 0px #323542;;
+  --header-buton-hover: #F1F2F9;
+  --header-icons-hover: -1px 0px 0px #323542;
+  --header-icons-border-hover: none;
+  --header-btn-is-active: #F1F2F9;
+
+  --secondary-color: #75767F;
+
+  --header-icons-bg-hover: #4A4D58;
+  --primary-color: #75767F;
+
+  --border-heart: 1px solid #0F1121;
+  --heart-color-text: #fff;
+
+  //card
+
+  --card-border: 1px solid #323542;
+  --card-hover: rgba(0, 0, 0, 0.1);
+  --btn-bg-color:  #905BFF;
+  --btn-is-added: #F1F2F9;
+  --btn-is-added-bg:  #323542;
+  --btn-discount:  #75767F;;
+  --card-border-is-selected: 1px solid #3B3E4A;
+  --card-btn-hover: 0px 3px 13px #8d59fd3b;
+
+
+  --text-color: #F1F2F9;
+
+  //pagination
+  --pagination-bg: #161827;
+  --pagination-border: transparent;
+  --pagination-border-hover-bg: #3B3E4A; 
+  --pagination-border-hover: none; 
+
+  --pagination-arrows-border: none;
+  --pagination-arrows-bg: #323542;
+
+  --line-color: #3B3E4A;
+
+  //footer
+  --footer-box-shadow: 1px solid #3B3E4A;
+  --footer-border-color: none;
+
+  //galery
+  --galery-photo-border: 1px solid #3B3E4A;
+  --galery-photo-hover: #F1F2F9;
+
+  //customThings
+  --capacity-btn-border: 1px solid #4A4D58;
+  --colors-phone-border: 1px solid #3B3E4A;
+  --colors-phone-border-selected: #F1F2F9;
+  --colors-phone-border-hover: #75767F;
+  
+}

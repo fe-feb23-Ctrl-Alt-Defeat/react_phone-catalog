@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .info {
   margin-bottom: 80px;
@@ -20,7 +20,7 @@
       line-height: 41px;
       letter-spacing: -0.01em;
 
-      color: #313237;
+      color: $text-color;
     }
   }
 
@@ -84,7 +84,7 @@
       font-size: 14px;
       line-height: 21px;
 
-      color: #89939A;
+      color: $btn-discount;
     }
 
     &__title {
@@ -93,7 +93,7 @@
       line-height: 26px;
       margin-bottom: 16px;
 
-      color: #313237;
+      color: $text-color;
     }
   }
 
@@ -120,7 +120,7 @@
       font-size: 14px;
       line-height: 21px;
 
-      color: #89939A;
+      color: $secondary-color;
     }
 
     &__info {
@@ -128,7 +128,7 @@
       font-size: 14px;
       line-height: 21px;
 
-      color: #313237;
+      color: $text-color;
     }
   }
 
@@ -150,7 +150,7 @@
         line-height: 15px;
         text-align: right;
 
-        color: #B4BDC4;
+        color: $capacity-btn-border;
 
         @include onTablet {
           display: none;
@@ -183,7 +183,7 @@
         display: block;
         content: '';
         width: 100%;
-        border: 1px solid #E2E6E9;
+        border: $card-border-is-selected;
         margin-top: 24px;
       }
 
@@ -198,7 +198,7 @@
           line-height: 15px;
           margin-bottom: 8px;
 
-          color: #89939A;
+          color: $btn-discount;
         }
 
         &-id {
@@ -207,7 +207,7 @@
           font-size: 12px;
           line-height: 15px;
 
-          color: #B4BDC4;
+          color: $capacity-btn-border;
 
           @include onTablet {
             visibility: visible;
@@ -225,19 +225,19 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        border: 1px solid #E2E6E9;
+        border: $colors-phone-border;
         padding: 2px;
         cursor: pointer;
         transition: box-shadow 0.5s, border 0.5s;
 
         &--selected {
-          border-color: #313237;
+          border-color: $colors-phone-border-selected;
         }
 
 
         &:hover {
           box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
-          border-color: #B4BDC4;
+          border-color: $colors-phone-border-hover;
         }
 
         &-color {
@@ -257,7 +257,7 @@
         display: block;
         content: '';
         width: 100%;
-        border: 1px solid #E2E6E9;
+        border: $card-border-is-selected;
         margin-top: 24px;
       }
 
@@ -267,7 +267,7 @@
         line-height: 15px;
         margin-bottom: 8px;
 
-        color: #89939A;
+        color: $btn-discount;
       }
 
       &__items {
@@ -287,7 +287,7 @@
         line-height: 41px;
         letter-spacing: -0.01em;
 
-        color: #313237;
+        color: $text-color;
       }
 
       &__discount {
@@ -296,7 +296,7 @@
         line-height: 28px;
         text-decoration-line: line-through;
 
-        color: #89939A;
+        color: $secondary-color;
       }
     }
 
@@ -317,7 +317,7 @@
         font-size: 12px;
         line-height: 15px;
 
-        color: #89939A;
+        color: $secondary-color;
       }
 
       &__info {
@@ -325,7 +325,7 @@
         font-size: 14px;
         line-height: 21px;
 
-        color: #313237;
+        color: $text-color;
       }
     }
   }

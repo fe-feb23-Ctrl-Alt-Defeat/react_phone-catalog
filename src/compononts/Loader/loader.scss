@@ -1,3 +1,6 @@
+@import '../../styles/index.scss';
+
+
 .loader_container {
   display: flex;
   justify-content: center;
@@ -15,11 +18,10 @@
 }
 
 .loader .circle {
-  --color: #333;
   --dim: 1.2rem;
   width: var(--dim);
   height: var(--dim);
-  background-color: var(--color);
+  background-color: $btn-bg-color;
   border-radius: 50%;
   position: absolute;
 }

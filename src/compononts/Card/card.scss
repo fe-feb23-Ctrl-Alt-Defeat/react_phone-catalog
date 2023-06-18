@@ -1,10 +1,11 @@
 @import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .card {
   width: 272px;
-  background: #FFFFFF;
-  border: 1px solid #E2E6E9;
-  color:black;
+  background: $bg-color;
+  border: $card-border;
+  color: $text-color;
 
   transition: 0.5s;
 
@@ -19,10 +20,11 @@
   @include onPhone {
     width: 287px;
     height: 440px;
+    margin: 0 auto;
   }
 
   &:hover {
-    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 16px $card-hover;
   }
 
   &__content {
@@ -68,7 +70,7 @@
     line-height: 21px;
     height: 63px;
 
-    color: #313237;
+    color: $text-color;
 
     margin-bottom: 8px;
     cursor: pointer;
@@ -84,7 +86,7 @@
       font-size: 22px;
       line-height: 140%;
 
-      color: #313237;
+      color: $text-color;
     }
 
     &_discount {
@@ -93,12 +95,12 @@
       line-height: 28px;
       text-decoration-line: line-through;
 
-      color: #89939A;
+      color: $btn-discount;
     }
   }
 
   &__divide {
-    border: 1px solid #E2E6E9;
+    border: $card-border-is-selected;
     margin-bottom: 16px;
   }
 
@@ -117,7 +119,7 @@
       font-size: 12px;
       line-height: 15px;
 
-      color: #89939A;
+      color: $secondary-color;
     }
 
     &_descr {
@@ -131,7 +133,7 @@
       line-height: 15px;
       text-align: right;
 
-      color: #313237;
+      color: $header-btn-is-active;
     }
   }
 
@@ -153,8 +155,8 @@
       line-height: 21px;
       text-align: center;
 
-      background: #313237;
-      color: #FFFFFF;
+      background: $btn-bg-color;
+      color: $white;
 
       border: 1px solid transparent;
 
@@ -170,13 +172,13 @@
       }
 
       &:hover {
-        box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+        box-shadow: $card-btn-hover;
       }
 
       &-isAdded {
-        color: #27AE60;
-        background: #fff;
-        border: 1px solid #E2E6E9;
+        color: $btn-is-added;
+        background: $btn-is-added-bg;
+        border: $card-border;
         padding: 9.5px 30.5px;
         height: 40px;
 
@@ -200,18 +202,19 @@
       width: 40px;
       height: 40px;
 
-      background-color: #fff;
-      border: 1px solid #B4BDC4;
+      background-color: $btn-is-added-bg;
+      border: $border-heart;
       transition: 0.5s;
 
       cursor: pointer;
 
       &:hover {
-        border: 1px solid #313237;
+        border: $header-icons-border-hover;
+        background: $header-icons-bg-hover;
       }
 
       &-isSelected {
-        border: 1px solid #E2E6E9;
+        border: $card-border-is-selected;
       }
     }
   }

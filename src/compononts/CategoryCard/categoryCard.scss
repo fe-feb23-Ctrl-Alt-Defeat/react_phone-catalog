@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .category {
 
@@ -37,7 +37,7 @@
       font-family: 'Mont-SemiBold';
       font-size: 20px;
       line-height: 26px;
-      color: #313237;
+      color: $text-color;
       margin-bottom: 4px;
     }
 
@@ -45,7 +45,7 @@
       font-family: 'Mont-Regular';
       font-size: 14px;
       line-height: 21px;
-      color: #89939A;
+      color: $secondary-color;
     }
   }
 }

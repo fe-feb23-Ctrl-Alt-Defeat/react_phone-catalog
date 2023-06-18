@@ -9,10 +9,13 @@ import './hotPrices.scss';
 
 export const HotPrices = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadData = useCallback(async () => {
+    setIsLoading(true);
     const loadestFromServer = await getProductsWithDiscount();
 
+    setIsLoading(false);
     setPhones(loadestFromServer);
   }, []);
 
@@ -23,7 +26,11 @@ export const HotPrices = () => {
   return (
     <>
       <div className="container brendsModels">
-        <NewModelsSlider phonesData={phones} title="Hot prices" />
+        <NewModelsSlider
+          isLoading={isLoading}
+          phonesData={phones}
+          title="Hot prices"
+        />
       </div>
     </>
   );

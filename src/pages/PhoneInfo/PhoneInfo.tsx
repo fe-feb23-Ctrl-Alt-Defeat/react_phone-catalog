@@ -118,6 +118,10 @@ export const PhoneInfo = () => {
     phoneByItemId();
   }, [query]);
 
+  useEffect(() => {
+    setQuery(itemId || '');
+  }, [itemId]);
+
   return (
     <>
       {
@@ -296,7 +300,7 @@ export const PhoneInfo = () => {
                 </div>
               </div>
 
-              <div className="youMayAlsoLike">
+              <div className="alsoLike__container">
                 <YouMayAlsoLike />
               </div>
             </>

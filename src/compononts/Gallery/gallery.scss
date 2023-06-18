@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .gallery {
   display: flex;
@@ -38,7 +38,7 @@
       justify-content: center;
       width: 80px;
       height: 80px;
-      border: 1px solid #B4BDC4;
+      border: $galery-photo-border;
       opacity: 0.7;
       cursor: pointer;
 
@@ -53,7 +53,7 @@
       }
 
       &:hover {
-        border-color: #89939A;
+        border-color: $galery-photo-hover;
       }
 
       &-image {
@@ -63,7 +63,7 @@
       }
 
       &--active {
-        border-color: #313237;
+        border-color: $header-btn-is-active;
         opacity: 1;
       }
     }

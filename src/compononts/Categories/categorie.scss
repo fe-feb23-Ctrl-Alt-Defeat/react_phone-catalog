@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .category {
   margin-bottom: 80px;
@@ -17,7 +17,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: #313237;
+    color: $text-color;
   }
 
   &__content {

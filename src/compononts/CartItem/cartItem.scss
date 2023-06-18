@@ -1,12 +1,15 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .cartItem {
   display: flex;
   justify-content: space-between;
   height: 128px;
-  border: 1px solid #E2E6E9;
+  border: $pagination-border;
+  background: $pagination-bg;
   align-items: center;
   margin-bottom: 16px;
+
+  color: $text-color;
 
   @include onPhone {
     flex-direction: column;
@@ -26,7 +29,7 @@
   }
 
   &__Btn {
-    background-color: white;
+    background-color: $bg-color;
     border: 0px;
     padding: 0;
     height: 9px;
@@ -79,11 +82,17 @@
     font-family: 'Mont-SemiBold';
     height: 32px;
     width: 32px;
-    border: 1px solid #B4BDC4;
+    border: $pagination-border;
     text-align: center;
     line-height: 32px;
-    background-color: white;
+    color: $text-color;
+    background-color: $pagination-bg;
     cursor: pointer;
+
+    &:hover {
+      border: pagination-border;
+      background: $pagination-border-hover-bg;
+    }
   }
 
   &__number {

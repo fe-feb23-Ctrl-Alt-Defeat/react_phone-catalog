@@ -116,6 +116,7 @@ export const Cart: React.FC = () => {
   };
 
   const handleCheckout = () => {
+    setCartCount([]);
     setCartItems([]);
     localStorage.setItem('cart', '[]');
     setIsEmpty(true);

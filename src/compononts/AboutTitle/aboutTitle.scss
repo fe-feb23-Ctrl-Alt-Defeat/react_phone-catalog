@@ -1,3 +1,4 @@
+@import '../../styles/index.scss';
 .about {
   width: 100%;
 
@@ -6,13 +7,13 @@
     font-family: 'Mont-Bold';
     font-size: 22px;
     line-height: 140%;
-    color: #313237;
+    color: $text-color;
 
     &::after {
       content: '';
       display: block;
       height: 1px;
-      background-color: #E2E6E9;
+      background-color: $line-color;
       margin-top: 16px;
     }
   }

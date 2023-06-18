@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -23,13 +25,15 @@
       
       width: 32px;
       height: 32px;
+      background: $pagination-bg;
 
-      color: #313237;
-      border: 1px solid #E2E6E9;
-      transition: 0.5s ease-in-out border;
+      color: $text-color;
+      border: $pagination-border;
+      transition: 0.5s ease-in-out;
 
       &:hover {
-        border: 1px solid #313237;
+        border: $pagination-border-hover;
+        background: $pagination-border-hover-bg;
       }
     }
   }
@@ -40,16 +44,18 @@
 }
 
 .arrowsPagination {
-  border: 1px solid #B4BDC4;
+  border: $pagination-arrows-border;
+  background: $pagination-arrows-bg;
 }
 
 .isSelectedPagination {
-  color: #fff;
-  background: #313237;
+  color: $white;
+  background: $btn-bg-color;
 }
 
 .disabledLink {
-  border: 1px solid #E2E6E9;
+  border: $card-border-is-selected;
+  background: transparent;
 
   &:hover {
     border: 1px solid transparent;
