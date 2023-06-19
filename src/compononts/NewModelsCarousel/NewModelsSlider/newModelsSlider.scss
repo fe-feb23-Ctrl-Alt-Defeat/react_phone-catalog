@@ -1,4 +1,4 @@
-@import '../../../styles/mixins/mixins.scss';
+@import '../../../styles/index.scss';
 
 .simpleSliderContainer {
   margin-bottom: 80px;
@@ -21,9 +21,11 @@
   justify-content:space-between;
   align-items: flex-end;
   margin-bottom: 24px;
+  
 }
 
 .carouselText {
+  color: $text-color;
   font-family: 'Mont-Black';
   font-size: 32px;
   line-height: 41px;
@@ -44,6 +46,7 @@
   transition: border 0.5s ease-in-out;
 
   &:hover {
-    border: 1px solid #313237;
+    border: $header-icons-border-hover;
+    background: $btn-is-added-bg;
   }
 }

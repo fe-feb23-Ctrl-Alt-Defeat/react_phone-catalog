@@ -1,6 +1,7 @@
 import IhorPhoto from '../images/IhorPhoto.jpg';
 import KyrylPhoto from '../images/Kyryl.png';
 import OlehPhoto from '../images/OlehPhoto.png';
+import DimaPhoto from '../images/Dima.jpg';
 
 export const contactsData = [
   {
@@ -34,7 +35,7 @@ export const contactsData = [
     tel: '+380660912743',
   },
   {
-    photo: '',
+    photo: DimaPhoto,
     name: 'Dmitro Bondarenko',
     direction: 'Full-stack Developer',
     linkedIn: 'https://www.linkedin.com/in/dima-bondarenko-b7a0174a/',

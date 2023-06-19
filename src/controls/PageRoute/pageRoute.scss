@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .routing {
 
   display: flex;
@@ -19,13 +21,17 @@
   }
 
   &__selected-page {
-
     &-paragraph {
       font-family: 'Mont-SemiBold';
       font-size: 12px;
       line-height: 15px;
 
-      color: #89939A;
+      color: $secondary-color;
+      
+      cursor: pointer;
+      &:hover {
+        color: $text-color;
+      }
     }
   }
 }

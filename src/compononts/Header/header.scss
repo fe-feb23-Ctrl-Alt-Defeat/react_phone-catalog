@@ -1,4 +1,5 @@
 @import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .containerHeader {
   max-width: 1440px;
@@ -11,7 +12,7 @@
 }
 
 .header {
-  box-shadow: 0px 1px 0px #E2E6E9;
+  box-shadow: $header-boxoshadow;
 
   font-family: 'Mont-Bold';
   font-size: 12px;
@@ -60,11 +61,11 @@
       }
 
     &_link {
-      color: #89939A;
+      color: $secondary-color;
       transition: 0.5s color;
 
       &:hover {
-        color: #313237;
+        color: $header-buton-hover;
       }
     }
 
@@ -99,12 +100,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 1px #E2E6E9;
+    box-shadow: $header-icons-border;
 
-    transition: 0.5s border;
+    transition: 0.5s ease-in-out;
+
+    &-image {
+      &-sun {
+        color: $text-color;
+        width: 25px;
+      }
+
+      &-moon {
+        width: 20px;
+      }
+    }
 
     &:hover {
-      border: 1px solid #313237;
+      border: $header-icons-border-hover;
+      background: $header-icons-bg-hover;
     }
 
     @include onPhone {
@@ -123,17 +136,17 @@
 
       border-radius: 50%;
 
-      background-color: #EB5757;
+      background-color: $color-red;
       width: 14px;
       height: 14px;
-      border: 1px solid #fff;
+      border: $border-heart;
 
       font-family: 'Mont-Bold';
       font-size: 9px;
       line-height: 12px;
       text-align: center;
 
-      color: #FFFFFF;
+      color: $heart-color-text;
     }
 
   }
@@ -150,7 +163,7 @@
       width: 64px;
       height: 64px;
   
-      box-shadow: -1px 0px 1px #E2E6E9;
+      box-shadow: $header-icons-border;
     }
   }
 }
@@ -177,13 +190,13 @@
 
   &__list {
     &_link{
-      color: #89939A;
+      color: $secondary-color;
       position: relative;
 
       transition: 0.5s color;
 
       &:hover {
-        color: #313237;
+        color: $header-buton-hover;
       }
     }
 
@@ -220,12 +233,13 @@
       height: 64px;
       width: 50%;
       
-      box-shadow: -1px 0px 1px #E2E6E9;
+      box-shadow: $header-icons-border;
 
-      transition: 0.5s border;
+      transition: 0.5s ease-in-out;
 
       &:hover {
-        border: 1px solid #313237;
+        border: $header-icons-border-hover;
+        background: $header-icons-bg-hover;
       }
 
       &_icon {
@@ -239,24 +253,23 @@
 
       border-radius: 50%;
 
-      background-color: #EB5757;
+      background-color: $color-red;
       width: 14px;
       height: 14px;
-      border: 1px solid #fff;
 
       font-family: 'Mont-Bold';
       font-size: 9px;
       line-height: 12px;
       text-align: center;
 
-      color: #FFFFFF;
+      color: $heart-color-text;
     }
     }
   }
 }
 
 .is-active {
-  color: #313237;
+  color: $header-btn-is-active;
 
   &::after {
     position: absolute;
@@ -265,7 +278,7 @@
     width: 100%;
     height: 4px;
     bottom: 0;
-    background-color: #313237;
+    background-color: $header-btn-is-active;
     border-radius: 8px;
     margin: 0 auto;
 

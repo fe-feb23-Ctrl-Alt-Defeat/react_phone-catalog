@@ -11,13 +11,17 @@ import './slick.scss';
 import './slick-theme.scss';
 import { Card } from '../../Card/Card';
 import { CardData } from '../../../types/CardData';
+import { Loader } from '../../Loader/Loader';
 
 interface Props {
   phonesData: CardData[];
   title: string;
+  isLoading?: boolean;
 }
 
-export const NewModelsSlider: FC<Props> = ({ phonesData, title }) => {
+export const NewModelsSlider: FC<Props> = ({
+  phonesData, title, isLoading,
+}) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings = {
@@ -89,15 +93,21 @@ export const NewModelsSlider: FC<Props> = ({ phonesData, title }) => {
           </div>
         </div>
       </div>
-      <div className="simpleSliderContainer">
-        <Slider ref={sliderRef} {...settings}>
-          {phonesData.map((phone) => (
-            <div key={phone.itemId} className="picturesBan">
-              <Card cardData={phone} />
+      {
+        isLoading
+          ? <Loader />
+          : (
+            <div className="simpleSliderContainer">
+              <Slider ref={sliderRef} {...settings}>
+                {phonesData.map((phone) => (
+                  <div key={phone.itemId} className="picturesBan">
+                    <Card cardData={phone} />
+                  </div>
+                ))}
+              </Slider>
             </div>
-          ))}
-        </Slider>
-      </div>
+          )
+      }
     </>
   );
 };

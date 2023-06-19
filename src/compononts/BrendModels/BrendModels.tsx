@@ -11,15 +11,25 @@ import './brendmodels.scss';
 
 export const BrendsModels = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  console.log(isLoading);
   const loadData = useCallback(async () => {
-    const loadestFromServer: unknown = await getProductWithPaginationSorted(
-      '1', '24', 'DESC', 'year',
-    );
+    try {
+      setIsLoading(true);
+      const loadestFromServer: unknown = await getProductWithPaginationSorted(
+        '1', '24', 'DESC', 'year',
+      );
 
-    const data: PhonesForCatalogData = loadestFromServer as PhonesForCatalogData;
+      const data: PhonesForCatalogData = loadestFromServer as PhonesForCatalogData;
 
-    setPhones(data.rows);
+      setIsLoading(false);
+      setPhones(data.rows);
+    } catch (error) {
+      console.log('Something was wrong');
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -28,8 +38,14 @@ export const BrendsModels = () => {
 
   return (
     <>
-      <div className="container brendsModels">
-        <NewModelsSlider phonesData={phones} title="Brand new models" />
+      <div className="container">
+        <div className="brendmodels">
+          <NewModelsSlider
+            phonesData={phones}
+            isLoading={isLoading}
+            title="Brand new models"
+          />
+        </div>
       </div>
     </>
   );

@@ -7,14 +7,15 @@ import { NewModelsSlider } from '../NewModelsCarousel/NewModelsSlider/NewModelsS
 
 export const YouMayAlsoLike = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadData = useCallback(async () => {
     try {
+      setIsLoading(true);
       const loadestFromServer = await getRecomendedProducts();
 
-      const data = loadestFromServer;
-
-      setPhones(data);
+      setIsLoading(false);
+      setPhones(loadestFromServer);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error);
@@ -27,8 +28,12 @@ export const YouMayAlsoLike = () => {
 
   return (
     <>
-      <div className="container brendsModels">
-        <NewModelsSlider phonesData={phones} title="You may also like" />
+      <div className="container">
+        <NewModelsSlider
+          isLoading={isLoading}
+          phonesData={phones}
+          title="You may also like"
+        />
       </div>
     </>
   );

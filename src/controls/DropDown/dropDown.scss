@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .sort:not(:last-child) {
   margin-right: 16px;
@@ -11,16 +11,19 @@
     font-size: 12px;
     line-height: 15px;
 
-    color: #89939A;
+    color: $secondary-color;
   }
 
   &__form {
+    background-color: $pagination-arrows-bg;
+
       &-select {
+      color: $text-color;
       height: 40px;
       padding: 12px;
       margin-bottom: 4px;
       
-      border: 1px solid #B4BDC4;
+      border: $pagination-arrows-border;
       outline: none;
 
       display: flex;
@@ -43,6 +46,7 @@
         @include onPhone {
           width: 136px;
         }
+        
       }
 
       &--items-on-page {
@@ -66,14 +70,14 @@
           outline: none;
           cursor: pointer;
         }
+      }
 
-        &:hover {
-          border-color: #89939A;
-        }
+      &:hover {
+        border: 1px solid $drop-down-border-color;
+      }
 
-        &:focus {
-          border-color: #313237;
-        }
+      &:focus {
+        border-color: $btn-bg-color;
       }
     }
 
@@ -89,9 +93,9 @@
       align-items: flex-start;
       justify-content: space-evenly;
 
-      border: 1px solid #E2E6E9;
+      border: $card-border-is-selected;
       box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
-      background-color: #FFF;
+      background-color: $bg-color;
       overflow-y: auto;
 
 
@@ -140,14 +144,14 @@
         padding: 6px 86px 5px 12px;
         cursor: pointer;
 
-        color: #89939A;
+        color: $galery-photo-hover;
 
         &:hover {
           font-size: 14px;
           line-height: 21px;
 
-          background-color: #FAFBFC;
-          color: #313237;
+          background-color: $drop-down-bg-color;
+          color: $text-color;
         }
       }
     }
