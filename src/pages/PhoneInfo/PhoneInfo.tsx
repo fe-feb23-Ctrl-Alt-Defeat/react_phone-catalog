@@ -7,8 +7,8 @@ import React, {
   useEffect,
   useState,
   useCallback,
+  useContext,
 } from 'react';
-import cn from 'classnames';
 import './phoneInfo.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById, getProductByItemId } from '../../api/products';
@@ -27,6 +27,7 @@ import { AvailableColors } from '../../compononts/AvailableColors';
 import { Specifications } from '../../compononts/Specifications';
 import { AboutPhone } from '../../compononts/AboutPhone';
 import { PhonesForFavorites } from '../../types/PhonesForFavorites';
+import { FavoritesAndCartCountContext } from '../../compononts/FavoritesCartContext/FavoritesCartContext';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -36,18 +37,23 @@ export const PhoneInfo = () => {
   const [query, setQuery] = useState<string>(itemId || '');
   const [abbrevPhoneInfo, setAbbrevPhoneInfo] = useState<PhonesForFavorites | null>(null);
   const [isFavoriteSelected, setIsFavoriteSelected] = useState<boolean>(false);
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+  const {
+    favoritesCount,
+    setFavoritesCount,
+    cartCount,
+    setCartCount,
+  } = useContext(FavoritesAndCartCountContext);
 
-  const favorites = localStorage.getItem('favorites');
-  const favoritesArray: number[] = JSON.parse(favorites || '[]');
-
-  // eslint-disable-next-line consistent-return
-  const getId = useCallback(() => {
+  function getId() {
     if (phone?.id && abbrevPhoneInfo?.itemId) {
       if (phone.id === abbrevPhoneInfo.itemId) {
         return abbrevPhoneInfo.id;
       }
     }
-  }, [phone?.id, abbrevPhoneInfo?.itemId]);
+
+    return 0;
+  }
 
   const loadPhoneById = async () => {
     setIsLoading(true);
@@ -93,16 +99,80 @@ export const PhoneInfo = () => {
     setAbbrevPhoneInfo(phoneFromServer);
   };
 
-  const handleAddToFavorites = (productId = '') => {
-    // console.log('productId', productId);
+  const handleToggleFavorites = () => {
+    if (favoritesCount.includes(getId())) {
+      const data = favoritesCount.filter(item => item !== getId());
+
+      setFavoritesCount([...data]);
+    } else {
+      setFavoritesCount(prod => [...prod, getId()]);
+    }
+
+    const favorites = localStorage.getItem('favorites');
+
+    setIsFavoriteSelected(currentval => !currentval);
+
+    if (!favorites || favorites === '[]') {
+      localStorage.setItem('favorites', JSON.stringify([getId()]));
+
+      return;
+    }
+
+    const currentFavorites: number[] = JSON.parse(favorites);
+
+    if (!currentFavorites.some((item: number) => item === getId())) {
+      currentFavorites.push(getId());
+      localStorage.setItem('favorites', JSON.stringify(currentFavorites));
+
+      return;
+    }
+
+    const newFavorite = currentFavorites.filter((item: number) => item !== getId());
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorite));
+
+    console.log('favoritesCount', favoritesCount);
+  };
+
+  const handleAddToCartClick = () => {
+    if (cartCount.includes(getId())) {
+      const data = cartCount.filter(item => item !== getId());
+
+      setCartCount([...data]);
+    } else {
+      setCartCount(prod => [...prod, getId()]);
+    }
+
+    const cart = localStorage.getItem('cart');
+
+    setIsAdded(currVal => !currVal);
+
+    if (!cart || cart === '[]') {
+      localStorage.setItem('cart', JSON.stringify([[getId(), 1]]));
+
+      return;
+    }
+
+    const currentCart: [[number, number]] = JSON.parse(cart);
+
+    if (!currentCart.some(cartVal => cartVal[0] === getId())) {
+      currentCart.push([getId(), 1]);
+      localStorage.setItem('cart', JSON.stringify(currentCart));
+
+      return;
+    }
+
+    const newCart = currentCart.filter(cartVal => cartVal[0] !== getId());
+
+    localStorage.setItem('cart', JSON.stringify(newCart));
   };
 
   useEffect(() => {
     setQuery(itemId || '');
     loadPhoneById();
     getPhoneByItemId();
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    setIsFavoriteSelected(favoritesArray.includes(getId() || 0));
+    setIsFavoriteSelected(favoritesCount.includes(getId()));
+    setIsAdded(cartCount.includes(getId()));
   }, [query, itemId, getId()]);
 
   return (
@@ -175,12 +245,14 @@ export const PhoneInfo = () => {
                               <Button
                                 text="Buy now"
                                 classes="button-add-to-cart"
+                                isSelected={isAdded}
+                                onClick={() => handleAddToCartClick()}
                               />
 
                               <Button
                                 classes="button-favorite"
                                 isSelected={isFavoriteSelected}
-                                onClick={() => handleAddToFavorites(phone?.id)}
+                                onClick={() => handleToggleFavorites()}
                               />
                             </div>
                           </div>

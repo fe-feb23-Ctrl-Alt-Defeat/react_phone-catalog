@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from 'react';
+import cn from 'classnames';
 import './Button.scss';
 import redHeart from '../../images/redHeart.svg';
 import Favorite from '../../images/icon_favorites.svg';
@@ -18,12 +19,9 @@ export const Button: React.FC<Props> = ({
   classes = '',
   isSelected,
 }) => {
-  // eslint-disable-next-line no-console
-  console.log(isSelected);
-
   return (
     <button
-      className={`customButton ${classes}`}
+      className={cn(`customButton ${classes}`, { 'button-add-to-cart--selected': isSelected })}
       type="button"
       onClick={onClick}
     >

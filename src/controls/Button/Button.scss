@@ -42,7 +42,12 @@
   &--selected {
     // border: 1px solid #E2E6E9;
     background-color: $btn-is-added-bg;
-    color: $btn-is-added
+    color: $btn-is-added;
+    border: $card-border;
+  }
+
+  &:hover {
+    box-shadow: $card-btn-hover;
   }
 }
 

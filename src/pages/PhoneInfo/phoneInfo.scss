@@ -80,7 +80,6 @@
     }
   }
 
-<<<<<<< HEAD
   .article:not(:last-child) {
     margin-bottom: 32px;
   }
@@ -106,8 +105,7 @@
     }
   }
 
-=======
->>>>>>> cde44f6 (decompose component phoneInfo)
+
   .tech-specs {
     width: 500px;
 
@@ -120,7 +118,6 @@
     }
   }
 
-<<<<<<< HEAD
   .detail {
     display: flex;
     align-items: center;
@@ -144,8 +141,6 @@
     }
   }
 
-=======
->>>>>>> cde44f6 (decompose component phoneInfo)
   .available {
     width: 100%;
 
@@ -228,8 +223,6 @@
           }
         }
       }
-<<<<<<< HEAD
-
 
       &__container {
         display: flex;
@@ -291,15 +284,10 @@
       }
     }
 
-=======
-    }
-   
->>>>>>> cde44f6 (decompose component phoneInfo)
     .price {
       display: flex;
       align-items: center;
       gap: 8px;
-<<<<<<< HEAD
 
       &__normal {
         font-family: 'Mont-Black';
@@ -318,8 +306,7 @@
 
         color: $secondary-color;
       }
-=======
->>>>>>> cde44f6 (decompose component phoneInfo)
+
     }
 
     .buttons {
@@ -327,7 +314,6 @@
       grid-template-columns: 1fr 48px;
       grid-gap: 8px;
     }
-<<<<<<< HEAD
 
     .abrevspecs {
       display: flex;
@@ -351,7 +337,5 @@
         color: $text-color;
       }
     }
-=======
->>>>>>> cde44f6 (decompose component phoneInfo)
   }
 }
