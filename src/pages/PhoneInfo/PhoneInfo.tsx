@@ -10,6 +10,7 @@ import React, {
   useContext,
 } from 'react';
 import './phoneInfo.scss';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById, getProductByItemId } from '../../api/products';
 import { Phone } from '../../types/CardDescription';
@@ -28,6 +29,7 @@ import { Specifications } from '../../compononts/Specifications';
 import { AboutPhone } from '../../compononts/AboutPhone';
 import { PhonesForFavorites } from '../../types/PhonesForFavorites';
 import { FavoritesAndCartCountContext } from '../../compononts/FavoritesCartContext/FavoritesCartContext';
+
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -175,6 +177,11 @@ export const PhoneInfo = () => {
     setIsAdded(cartCount.includes(getId()));
   }, [query, itemId, getId()]);
 
+
+  useEffect(() => {
+    setQuery(itemId || '');
+  }, [itemId]);
+
   return (
     <>
       {
@@ -289,11 +296,13 @@ export const PhoneInfo = () => {
                       </div>
                     </div>
                   </div>
+
                 </div>
 
                 <YouMayAlsoLike />
               </div>
             </div>
+
           )
       }
     </>

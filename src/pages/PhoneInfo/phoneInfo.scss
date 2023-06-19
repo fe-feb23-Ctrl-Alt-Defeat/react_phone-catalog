@@ -105,7 +105,6 @@
     }
   }
 
-
   .tech-specs {
     width: 500px;
 
@@ -168,6 +167,7 @@
     }
 
     &__items {
+
       flex-basis: 350px;
       flex-shrink: 0;
     }
@@ -306,7 +306,6 @@
 
         color: $secondary-color;
       }
-
     }
 
     .buttons {
