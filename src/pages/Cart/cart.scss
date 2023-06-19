@@ -1,5 +1,8 @@
-@import '../../styles/mixins/mixins.scss';
-@import '../../styles/pageContainer/pageContainer.scss';
+@import '../../styles/index.scss';
+
+.classForTest{
+  color: $text-color;
+}
 
 .cart {
   &__moveback {
@@ -28,7 +31,7 @@
     }
 
     &__checkout {
-      border: 1px solid #E2E6E9;
+      border: $card-border-is-selected;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -39,18 +42,19 @@
         font-family: 'Mont-black';
         font-size: 32px;
         line-height: 41px;
+        color: $text-color;
       }
 
       &__totalLabel {
         font-family: 'Mont-Regular';
         font-size: 14px;
         line-height: 150%;
-        color: #89939A;
+        color: $secondary-color;
         margin-bottom: 24px;
       }
 
       &__breakline {
-        border-top: 1px solid #E2E6E9;
+        border: $card-border-is-selected;
         width: 100%;
         margin-bottom: 24px;
       }
@@ -60,7 +64,7 @@
         height: 48px;
         font-size: 14px;
         line-height: 150%;
-        background-color: black;
+        background-color: $btn-bg-color;
         color: white;
         cursor: pointer;
       }

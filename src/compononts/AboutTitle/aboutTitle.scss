@@ -1,0 +1,20 @@
+@import '../../styles/index.scss';
+.about {
+  width: 100%;
+
+  &__title {
+    width: 100%;
+    font-family: 'Mont-Bold';
+    font-size: 22px;
+    line-height: 140%;
+    color: $text-color;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: $line-color;
+      margin-top: 16px;
+    }
+  }
+}

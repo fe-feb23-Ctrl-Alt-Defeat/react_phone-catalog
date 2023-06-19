@@ -1,11 +1,11 @@
 import React from 'react';
-import './descriptionTitle.scss';
+import './aboutTitle.scss';
 
 interface Props {
   title: string;
 }
 
-export const DescriptionTitle: React.FC<Props> = ({ title }) => {
+export const AboutTitle: React.FC<Props> = ({ title }) => {
   return (
     <div className="about">
       <h3 className="about__title">{title}</h3>

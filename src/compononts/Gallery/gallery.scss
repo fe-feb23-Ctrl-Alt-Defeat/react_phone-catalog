@@ -1,29 +1,59 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .gallery {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-gap: 16px;
-  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
+
+  @include onTablet {
+    gap: 0px;
+  }
+
+  @include onPhone {
+    display: block;
+  }
+
+  @include onPhone {
+    margin-bottom: 40px;
+  }
 
   &__sub-photos {
-    height: 464px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     justify-content: space-around;
+
+    @include onPhone {
+      flex-direction: row;
+    }
+
+    @include onPhone {
+      justify-content: space-evenly;
+      // gap: 12px;
+    }
 
     &-photo {
       display: flex;
       justify-content: center;
       width: 80px;
       height: 80px;
-      border: 1px solid #B4BDC4;
+      border: $galery-photo-border;
       opacity: 0.7;
       cursor: pointer;
 
+      @include onLowTablet {
+        width: 34px;
+        height: 34px;
+      }
+
+      @include onPhone {
+        width: 50px;
+        height: 50px;
+      }
+
       &:hover {
-        border-color: #89939A;
+        border-color: $galery-photo-hover;
       }
 
       &-image {
@@ -33,18 +63,31 @@
       }
 
       &--active {
-        border-color: #313237;
+        border-color: $header-btn-is-active;
         opacity: 1;
       }
     }
   }
 
   &__main-photo {
-    width: 380px;
+    width: 464px;
     height: 464px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
+
+    @include onTablet {
+      width: 370px;
+    }
+
+    @include onLowTablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include onPhone {
+      margin: 0 auto 16px;
+    }
 
     &-image {
       width: auto;

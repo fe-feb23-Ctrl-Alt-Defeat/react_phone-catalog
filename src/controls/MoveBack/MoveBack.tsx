@@ -10,7 +10,7 @@ export const MoveBack = () => {
     <button
       type="button"
       className="move-back"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate('/phones', { replace: true })}
     >
       <div className="move-back__icon">
         <img src={IconBack} alt="Back icon" className="move-back__icon-image" />

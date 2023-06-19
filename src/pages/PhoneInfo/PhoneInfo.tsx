@@ -1,24 +1,32 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 import React, {
   useEffect,
   useState,
-  Fragment,
+  useCallback,
 } from 'react';
 import cn from 'classnames';
-
 import './phoneInfo.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProductById } from '../../api/products';
-import { FullPhoneInfo, Phone } from '../../types/CardDescription';
+import { getProductById, getProductByItemId } from '../../api/products';
+import { Phone } from '../../types/CardDescription';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { MoveBack } from '../../controls/MoveBack/MoveBack';
 import { Gallery } from '../../compononts/Gallery/Gallery';
 import { Loader } from '../../compononts/Loader/Loader';
 import { Button } from '../../controls/Button/Button';
-import { DescriptionTitle } from '../../compononts/DescriptionTitle/DescriptionTitle';
 import { YouMayAlsoLike } from '../../compononts/YouMayAlsoLike/YouMayAlsoLike';
+import { AboutTitle } from '../../compononts/AboutTitle/AboutTitle';
+import { Capacity } from '../../controls/Capacity';
+import { Price } from '../../compononts/Price';
+import { AbrevSpecs } from '../../compononts/AbrevSpecs';
+import { AvailableColors } from '../../compononts/AvailableColors';
+import { Specifications } from '../../compononts/Specifications';
+import { AboutPhone } from '../../compononts/AboutPhone';
+import { PhonesForFavorites } from '../../types/PhonesForFavorites';
 
 export const PhoneInfo = () => {
   const { itemId } = useParams();
@@ -26,22 +34,20 @@ export const PhoneInfo = () => {
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(itemId || '');
+  const [abbrevPhoneInfo, setAbbrevPhoneInfo] = useState<PhonesForFavorites | null>(null);
+  const [isFavoriteSelected, setIsFavoriteSelected] = useState<boolean>(false);
 
-  const abbreviatedPhoneInfo = [
-    { screen: phone?.screen || '' },
-    { resolution: phone?.resolution || '' },
-    { ram: phone?.ram || '' },
-  ];
-  const fullPhoneInfo: FullPhoneInfo[] = [
-    { Screen: phone?.screen || '' },
-    { Resolution: phone?.resolution || '' },
-    { Processor: phone?.processor || '' },
-    { Ram: phone?.ram || '' },
-    { 'Built in memory': phone?.capacity || '' },
-    { Camera: phone?.camera || '' },
-    { Zoom: phone?.zoom || '' },
-    { Cell: phone?.cell || [] },
-  ];
+  const favorites = localStorage.getItem('favorites');
+  const favoritesArray: number[] = JSON.parse(favorites || '[]');
+
+  // eslint-disable-next-line consistent-return
+  const getId = useCallback(() => {
+    if (phone?.id && abbrevPhoneInfo?.itemId) {
+      if (phone.id === abbrevPhoneInfo.itemId) {
+        return abbrevPhoneInfo.id;
+      }
+    }
+  }, [phone?.id, abbrevPhoneInfo?.itemId]);
 
   const loadPhoneById = async () => {
     setIsLoading(true);
@@ -81,21 +87,34 @@ export const PhoneInfo = () => {
     navigate(`/phones/${newQuery}`, { replace: true });
   };
 
+  const getPhoneByItemId = async () => {
+    const phoneFromServer = await getProductByItemId(itemId || '');
+
+    setAbbrevPhoneInfo(phoneFromServer);
+  };
+
+  const handleAddToFavorites = (productId = '') => {
+    // console.log('productId', productId);
+  };
+
   useEffect(() => {
+    setQuery(itemId || '');
     loadPhoneById();
-  }, [query]);
+    getPhoneByItemId();
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    setIsFavoriteSelected(favoritesArray.includes(getId() || 0));
+  }, [query, itemId, getId()]);
 
   return (
     <>
-      {isLoading
-        ? <Loader />
-        : (
-          <>
+      {
+        isLoading
+          ? <Loader />
+          : (
             <div className="info">
               <div className="container">
-
                 <div className="info__path">
-                  <PageRoute phoneName={phone?.name} text="Phones" />
+                  <PageRoute to="/phones" phoneName={phone?.name} text="Phones" />
                 </div>
 
                 <div className="info__back">
@@ -107,171 +126,104 @@ export const PhoneInfo = () => {
                 </div>
 
                 <div className="info__content">
-                  <section className="info__content-description">
-                    <div className="info__content-description-gallery">
+                  <div className="gallery-block">
+                    <section className="gallery-container">
                       {phone?.images && <Gallery images={phone.images} />}
-                    </div>
-                    <div className="info__content-description-title">
-                      <DescriptionTitle title="About" />
-                    </div>
-                    {phone?.description.map(descr => (
-                      <article className="article" key={descr.title}>
-                        <h4 className="article__title">{descr.title}</h4>
-                        <p className="artilce__text">
-                          {descr.text.length === 1 ? descr.text[0] : (
-                            <>
-                              {descr.text[0]}
-                              <br />
-                              <br />
-                              {descr.text[1]}
-                            </>
-                          )}
+                    </section>
 
-                        </p>
-                      </article>
-                    ))}
-                  </section>
+                    <section className="available">
+                      <div className="available__container">
+                        <div className="available__items">
+                          <div className="available__colors">
+                            <div className="available__colors-texts">
+                              <p className="available__colors-texts-text">Available colors</p>
 
-                  <section className="info__content-characteristics">
-                    <div className="grid-container">
-                      <div className="available-colors">
-                        <p className="available-colors__text">Available colors</p>
-                        <p className="available-colors__id">ID: 802390</p>
-                      </div>
+                              <p className="available__colors-texts-id">ID: 802390</p>
+                            </div>
 
-                      <div className="color-selects">
-                        <div className="color-selects__colors">
+                            <div className="available__colors-colors">
+                              {phone?.colorsAvailable && (
+                                <AvailableColors
+                                  colors={phone.colorsAvailable}
+                                  itemId={itemId || ''}
+                                  onChange={handleChangeColor}
+                                />
+                              )}
+                            </div>
+                          </div>
 
-                          {phone?.colorsAvailable.map(color => (
-                            <div key={color} className="color-selects__colors-item">
-                              <div
-                                className="color-selects__colors-item-color"
-                                style={{ backgroundColor: color }}
+                          <div className="available__capacity">
+                            {phone?.capacityAvailable && (
+                              <Capacity
+                                capacities={phone?.capacityAvailable}
+                                itemId={itemId || ''}
+                                onChange={handleChangeCapacity}
+                              />
+                            )}
+                          </div>
+
+                          <div className="available__price">
+                            <div className="price">
+                              {phone?.priceRegular && <Price price={phone.priceRegular} classes="price__normal" />}
+
+                              {phone?.priceDiscount && <Price price={phone.priceDiscount} classes="price__discount" />}
+                            </div>
+                          </div>
+
+                          <div className="available__buttons">
+                            <div className="buttons">
+                              <Button
+                                text="Buy now"
+                                classes="button-add-to-cart"
+                              />
+
+                              <Button
+                                classes="button-favorite"
+                                isSelected={isFavoriteSelected}
+                                onClick={() => handleAddToFavorites(phone?.id)}
                               />
                             </div>
-                          ))}
+                          </div>
 
+                          <div className="available__abrevspecs">
+                            {phone && <AbrevSpecs phone={phone} />}
+                          </div>
+                        </div>
+
+                        <p className="available__container-id">ID: 802390</p>
+                      </div>
+                    </section>
+                  </div>
+
+                  <div className="about-block">
+                    <div className="about-phone">
+                      <div className="about-phone__title">
+                        <AboutTitle title="About" />
+                      </div>
+                      <div className="about-phone__description">
+                        {phone && <AboutPhone phone={phone} />}
+                      </div>
+                    </div>
+
+                    <div className="tech-specs">
+                      <div className="tech-specs__about">
+                        <div className="tech-specs__about-title">
+                          <AboutTitle title="Tech specs" />
                         </div>
                       </div>
 
-                      <div className="under-line" />
-
-                      <div className="select-capacity">
-                        <p className="select-capacity__text">Select capacity</p>
-                      </div>
-
-                        {phone?.colorsAvailable.map(color => (
-                          <div key={color} className="color-selects__colors-item">
-                            <div
-                              className="color-selects__colors-item-color"
-                              style={{ backgroundColor: color }}
-                              onClick={() => handleChangeColor(color)}
-
-                            />
-                          </Fragment>
-                        ))}
-
+                      <div className="tech-specs__details">
+                        {phone && <Specifications phone={phone} />}
                       </div>
                     </div>
-
-                    <div className="under-line" />
-
-                    <div className="select-capacity">
-                      <p className="select-capacity__text">Select capacity</p>
-                    </div>
-
-                    <div className="capacityes">
-                      {phone?.capacityAvailable.map(capacity => (
-                        <Fragment key={capacity}>
-                          <Button
-                            text={capacity}
-                            classes={cn('button-capacity', { 'button-capacity--selected': itemId?.includes(capacity.toLowerCase()) })}
-                            onClick={() => handleChangeCapacity(capacity)}
-                          />
-                        </Fragment>
-                      ))}
-
-                    </div>
-
-                      <div className="under-line" />
-
-                      <div className="price">
-                        <div className="card__price">
-                          <div className="card__price_normal">
-                            {`${phone?.priceDiscount}$`}
-                          </div>
-                          <div className="card__price_discount">
-                            {`${phone?.priceRegular}$`}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="buttons-block">
-                        <Button
-                          text="Add to cart"
-                          classes="button-add-to-cart"
-                        />
-
-                    <div className="characterisriics-block">
-                      {abbreviatedPhoneInfo.map(info => {
-                        const [infoField, infoValue]: string[] = Object.entries(info)[0];
-
-                        return (
-                          <div className="characterisriics-block__small-info" key={`${infoField} + ${infoValue}`}>
-                            <p className="characterisriics-block__small-info-text">{infoField}</p>
-
-                            <p className="characterisriics-block__small-info-info">{infoValue}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-
-                  <div className="tech-specs">
-                    <div className="tech-specs__title">
-                      <DescriptionTitle title="Tech specs" />
-                    </div>
-                    <div className="tech-specs__details">
-                      {fullPhoneInfo.map(info => {
-                        const [infoField, infoValue] = Object.entries(info)[0];
-
-                        return (
-                          <div className="tech-specs__details-detail" key={`${infoField}${infoValue}`}>
-                            <p className="tech-specs__details-detail-key">{infoField}</p>
-                            {infoField !== 'Cell'
-                              ? <p className="tech-specs__details-detail-value">{infoValue}</p>
-                              : (
-                                <div>
-                                  {
-                                    Array.isArray(infoValue) && infoValue.map((cell, index: number, array: string[]) => {
-                                      return index !== array.length - 1
-                                        ? (
-                                          <Fragment key={cell}>
-                                            <span className="tech-specs__details-detail-value">{`${cell}, `}</span>
-                                          </Fragment>
-                                        )
-                                        : (
-                                          <Fragment key={cell}>
-                                            <span className="tech-specs__details-detail-value">{`${cell}`}</span>
-                                          </Fragment>
-                                        );
-                                    })
-                                  }
-                                </div>
-                              )}
-                          </div>
-                        );
-                      })}
-                      
-                    </div>
-                  </section>
+                  </div>
                 </div>
+
+                <YouMayAlsoLike />
               </div>
             </div>
-
-            <YouMayAlsoLike />
-          </>
-        )}
+          )
+      }
     </>
   );
 };

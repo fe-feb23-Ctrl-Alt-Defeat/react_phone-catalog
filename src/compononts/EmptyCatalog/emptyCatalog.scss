@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .message {
   display: flex;
@@ -28,7 +28,7 @@
   }
 
   &__text {
-    color: black;
+    color: $text-color;
     font-size: 50px;
 
     @include onPhone {

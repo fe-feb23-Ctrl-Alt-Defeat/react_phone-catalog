@@ -1,0 +1,22 @@
+.abrevspecs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &__field {
+    font-family: 'Mont-Regular';
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #89939A;
+  }
+
+  &__info {
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #313237;
+  }
+}

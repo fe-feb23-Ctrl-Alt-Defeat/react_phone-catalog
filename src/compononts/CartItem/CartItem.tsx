@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMAGE_BASE_URL } from '../../utils/globalVariables';
+import { BASE_URL } from '../../utils/globalVariables';
 import './cartItem.scss';
 import removeImage from '../../images/icon_menu_cross.svg';
 import { CardData } from '../../types/CardData';
@@ -36,7 +36,7 @@ export const CartItem: React.FC<Props> = ({
         <div className="cartItem__image-box">
           <img
             className="cartItem__image"
-            src={`${IMAGE_BASE_URL}${data.image}`}
+            src={`${BASE_URL}${data.image}`}
             alt={data.itemId}
           />
         </div>

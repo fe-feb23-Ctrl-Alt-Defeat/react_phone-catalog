@@ -1,0 +1,25 @@
+.capacity {
+  margin-bottom: 24px;
+
+  &::after {
+    display: block;
+    content: '';
+    width: 100%;
+    border: 1px solid #E2E6E9;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-family: 'Mont-SemiBold';
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 8px;
+
+    color: #89939A;
+  }
+
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+}

@@ -5,10 +5,11 @@ import React, {
   useState,
 } from 'react';
 import cn from 'classnames';
-import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
 import IconUp from '../../images/icon_arrow_up.svg';
 import { DropMenu } from './DropMenu';
+
+import './dropDown.scss';
 
 interface Props {
   options: {

@@ -1,10 +1,18 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .info {
   margin-bottom: 80px;
 
   &__path {
     margin: 31px 0 41px;
+
+    @include onTablet {
+      margin: 25px 0 44px;
+    }
+
+    @include onPhone {
+      margin: 25px 0 28px;
+    }
   }
 
   &__back {
@@ -20,53 +28,73 @@
       line-height: 41px;
       letter-spacing: -0.01em;
 
-      color: #313237;
+      color: $text-color;
     }
   }
 
   &__content {
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    justify-items: start;
-    grid-gap: 16px;
-
-    &-description {
-      grid-column: 1/12;
-
-
-      &-title {
-        margin-bottom: 32px;
-      }
-
-      &-gallery {
-        height: 464px;
-        margin-bottom: 80px;
-
-      }
-    }
-
-    &-characteristics {
-      grid-column: 14 / 24;
-
-    }
-  }
-
-  .grid-container {
-    height: 464px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
     margin-bottom: 80px;
   }
 
+  .gallery-block {
+    display: flex;
+    gap: 75px;
+
+    @include onTablet {
+      gap: 25px;
+    }
+
+    @include onLowTablet {
+      gap: 10px;
+    }
+
+    @include onPhone {
+      display: block;
+    }
+  }
+
+  .about-block {
+    display: flex;
+    gap: 75px;
+
+    @include onTablet {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .about-phone {
+    width: 560px;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+  }
+
+<<<<<<< HEAD
   .article:not(:last-child) {
     margin-bottom: 32px;
   }
 
   .article {
     margin-bottom: 32px;
-    grid-column: 1/12;
+
+    &__text {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
+
+      color: $btn-discount;
+    }
 
     &__title {
       font-family: 'Mont-Bold';
@@ -74,168 +102,256 @@
       line-height: 26px;
       margin-bottom: 16px;
 
-      color: #313237;
-
-      &__text {
-        font-family: 'Mont-Regular';
-        font-size: 14px;
-        line-height: 21px;
-
-        color: #89939A;
-      }
+      color: $text-color;
     }
   }
 
-  .available-colors {
-    grid-column: 1/13;
+=======
+>>>>>>> cde44f6 (decompose component phoneInfo)
+  .tech-specs {
+    width: 500px;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    &__about {
+      margin-bottom: 25px;
+    }
+  }
+
+<<<<<<< HEAD
+  .detail {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 
-    &__text {
-      font-family: 'Mont-SemiBold';
-      font-size: 12px;
-      line-height: 15px;
+    &__field {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
 
-      color: #89939A;
+      color: $secondary-color;
     }
 
-    &__id {
-      font-family: 'Mont-Bold';
-      font-size: 12px;
-      line-height: 15px;
+    &__info {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      line-height: 21px;
 
-      color: #B4BDC4;
+      color: $text-color;
     }
   }
 
-  .color-selects {
-    grid-column: 1/8;
+=======
+>>>>>>> cde44f6 (decompose component phoneInfo)
+  .available {
+    width: 100%;
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+
+      @include onTablet {
+        display: block;
+      }
+
+      &-id {
+        flex-shrink: 1;
+        font-family: 'Mont-Bold';
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+
+        color: $capacity-btn-border;
+
+        @include onTablet {
+          display: none;
+        }
+      }
+    }
+
+    &__items {
+      flex-basis: 350px;
+      flex-shrink: 0;
+    }
+
+    &__capacity {
+      margin-bottom: 32px;
+    }
+
+    &__price {
+      margin-bottom: 16px;
+    }
+
+    &__buttons {
+      margin-bottom: 32px;
+    }
+
 
     &__colors {
-      display: flex;
-      gap: 8px;
+      margin-bottom: 24px;
 
-      &-item {
+      &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        border: $card-border-is-selected;
+        margin-top: 24px;
+      }
+
+      &-texts {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        &-text {
+          font-family: 'Mont-SemiBold';
+          font-size: 12px;
+          line-height: 15px;
+          margin-bottom: 8px;
+
+          color: $btn-discount;
+        }
+
+        &-id {
+          visibility: hidden;
+          font-family: 'Mont-Bold';
+          font-size: 12px;
+          line-height: 15px;
+
+          color: $capacity-btn-border;
+
+          @include onTablet {
+            visibility: visible;
+          }
+        }
+      }
+<<<<<<< HEAD
+
+
+      &__container {
+        display: flex;
+        gap: 8px;
+      }
+
+      &__item {
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        border: 1px solid #E2E6E9;
+        border: $colors-phone-border;
+        padding: 2px;
         cursor: pointer;
-        padding: 1px;
-
-        &:hover {
-          border-color: #B4BDC4;
-        }
+        transition: box-shadow 0.5s, border 0.5s;
 
         &--selected {
-          border-color: #313237;
+          border-color: $colors-phone-border-selected;
+        }
+
+
+        &:hover {
+          box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+          border-color: $colors-phone-border-hover;
         }
 
         &-color {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background-color: #FCDBC1;
+
+
         }
       }
     }
-  }
 
-  .under-line {
-    grid-column: 1/10;
-    border: 1px solid #E2E6E9;
-  }
+    .capacity {
+      margin-bottom: 24px;
 
-  .select-capacity {
-    grid-column: 1/5;
+      &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        border: $card-border-is-selected;
+        margin-top: 24px;
+      }
 
-    &__text {
-      font-family: 'Mont-SemiBold';
-      font-size: 12px;
-      line-height: 15px;
+      &__text {
+        font-family: 'Mont-SemiBold';
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 8px;
 
-      color: #89939A;
+        color: $btn-discount;
+      }
+
+      &__items {
+        display: flex;
+        gap: 8px;
+      }
     }
-  }
 
-  .capacityes {
-    grid-column: 1/6;
-    display: flex;
-    gap: 8px;
-  }
+=======
+    }
+   
+>>>>>>> cde44f6 (decompose component phoneInfo)
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+<<<<<<< HEAD
 
-  .price {
-    grid-column: 1/6;
-    align-items: center;
-  }
+      &__normal {
+        font-family: 'Mont-Black';
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
 
-  .buttons-block {
-    grid-column: 1/10;
-    display: flex;
-    gap: 8px;
-  }
+        color: $text-color;
+      }
 
-  .characterisriics-block {
-    grid-column: 1/10;
+      &__discount {
+        font-family: 'Mont-Regular';
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
 
-    &__small-info {
+        color: $secondary-color;
+      }
+=======
+>>>>>>> cde44f6 (decompose component phoneInfo)
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      grid-gap: 8px;
+    }
+<<<<<<< HEAD
+
+    .abrevspecs {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 8px;
 
-      &-text {
-        font-family: 'Mont-SemiBold';
+      &__field {
+        font-family: 'Mont-Regular';
         font-size: 12px;
         line-height: 15px;
 
-        color: #89939A;
+        color: $secondary-color;
       }
 
-      &-info {
-        font-family: 'Mont-SemiBold';
-        font-size: 12px;
-        line-height: 15px;
+      &__info {
+        font-family: 'Mont-Regular';
+        font-size: 14px;
+        line-height: 21px;
 
-        color: #313237;
+        color: $text-color;
       }
     }
-  }
-
-  .tech-specs {
-    margin-bottom: 25px;
-
-    &__title {
-      margin-bottom: 25px;
-    }
-
-    &__details {
-      margin-bottom: 8px;
-
-      &-detail {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-
-        &-key {
-          font-family: 'Mont-Regular';
-          font-size: 14px;
-          line-height: 21px;
-
-          color: #89939A;
-        }
-
-        &-value {
-          font-family: 'Mont-Regular';
-          font-size: 14px;
-          line-height: 21px;
-
-          color: #313237;
-        }
-      }
-    }
+=======
+>>>>>>> cde44f6 (decompose component phoneInfo)
   }
 }

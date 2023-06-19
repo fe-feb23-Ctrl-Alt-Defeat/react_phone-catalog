@@ -1,6 +1,7 @@
+@import '../../styles/index.scss';
+
 .customButton {
   font-family: 'Mont-Bold';
-  // width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +9,7 @@
   transition: box-shadow 0.5s;
 
   &:hover {
-    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 16px rgba(42, 40, 40, 0.258);
   }
 }
 
@@ -17,13 +18,13 @@
   font-size: 14px;
   line-height: 21px;
   padding: 7px 8px 4px;
-  border: 1px solid #B4BDC4;
-  color: #313237;
-  background-color: #fff;
+  border: $capacity-btn-border;
+  color: $text-color;
+  background-color: $bg-color;
 
   &--selected {
-    color: #FFFFFF;
-    background-color: #313237;
+    color: $bg-color;
+    background-color: $header-btn-is-active;
   }
 }
 
@@ -31,30 +32,28 @@
   font-family: 'Mont-Bold';
   font-size: 14px;
   line-height: 21px;
-  padding: 13.5px 91px;
+  height: 48px;
 
-  color: #FFFFFF;
-  background-color: #313237;
+  color: $white;
+  background-color: $btn-bg-color;
 
   transition: box-shadow 0.5s;
 
-
-
   &--selected {
-    border: 1px solid #E2E6E9;
-    background-color: #FFF;
-    color: #27AE60
+    // border: 1px solid #E2E6E9;
+    background-color: $btn-is-added-bg;
+    color: $btn-is-added
   }
 }
 
 .button-favorite {
-  background-color: #FFF;
-  padding: 16px 17px;
-  border: 1px solid #B4BDC4;
+  background-color: $bg-color;
+  height: 48px;
+  border: $galery-photo-border;
   transition: border-color 0.5s, box-shadow 0.5s;
 
   &:hover {
-    border-color: #313237;
+    border-color: $header-buton-hover;
   }
 
   &__image {

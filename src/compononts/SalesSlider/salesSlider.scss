@@ -6,41 +6,49 @@
   line-height: 56px;
 
   white-space: normal;
+
+  margin-bottom: 56px;
   
 
   @include onTablet {
     line-height: 48px;
     white-space: pre-wrap;
     display: block;
+
+    margin-bottom: 32px;
   }
 
   @include onPhone {
     font-size: 32px;
     line-height: 41px;
     white-space: pre-wrap;
+
+    margin-bottom: 24px;
   }
 }
 
 .sliderContainer {
-  height: 400px;
+  max-height: 400px;
+  // height: 400px;
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 56px;
+  max-width: 1136px;
 
-  @include onTablet {
-    height: 189px;
-    width: 100%;
-  }
+  margin: 0 auto;
+
+  padding-left: 16px;
+  padding-right: 16px;
 
   @include onPhone {
-    height: 320px;
-    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 .sliderBox {
-  height: 100%;
+
+  height: max-content;
   width: 100%;
   object-fit: contain;
 
@@ -48,7 +56,8 @@
 
   &__contents {
     display: flex;
-
+    width: 100%;
+  
     transition: translate;
     transition-property: transform;
     transition-duration: 300ms;
@@ -57,9 +66,7 @@
 }
 
 .arrow {
-  height: 100%;
   width: 32px;
-  border: 1px solid #B4BDC4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,10 +74,6 @@
   cursor: pointer;
 
   transition: 0.5s;
-
-  &:hover {
-    border: 1px solid #313237;
-  }
 
   @include onPhone {
     display: none;
@@ -85,19 +88,25 @@
   margin-left: 16px;
 }
 
-.bannerImg {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.arrowImg {
+  width: 25px;
+  height: 25px;
+
+  &__item{
+    width: 25px;
+    height: 25px;
+  }
 
   @include onTablet {
-    height: 189px;
+    width: 15px;
+    height: 15px;
   }
+}
 
-  @include onPhone {
-    height: 320px;
-    width: 320px;
-  }
+.bannerImg {
+  height: max-content;
+  width: var(--slider-width);
+  object-fit: cover;
 }
 
 .jumpButtonBox {

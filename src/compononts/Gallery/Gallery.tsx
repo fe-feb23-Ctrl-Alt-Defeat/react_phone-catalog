@@ -5,7 +5,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import './gallery.scss';
 import cn from 'classnames';
-import { IMAGE_BASE_URL } from '../../utils/globalVariables';
+import { BASE_URL } from '../../utils/globalVariables';
 
 interface Props {
   images: string[];
@@ -24,6 +24,14 @@ export const Gallery: React.FC<Props> = ({ images }) => {
 
   return (
     <div className="gallery">
+      <div className="gallery__main-photo">
+        <img
+          src={`${BASE_URL}${mainImage}`}
+          alt="Phone iamge"
+          className="gallery__main-photo-image"
+        />
+      </div>
+
       <div className="gallery__sub-photos">
         {images.map((image) => (
           <div
@@ -34,20 +42,12 @@ export const Gallery: React.FC<Props> = ({ images }) => {
             onClick={() => handleSelectImage(image)}
           >
             <img
-              src={`${IMAGE_BASE_URL}${image}`}
+              src={`${BASE_URL}${image}`}
               alt="Phone iamge"
               className="gallery__sub-photos-photo-image"
             />
           </div>
         ))}
-      </div>
-
-      <div className="gallery__main-photo">
-        <img
-          src={`${IMAGE_BASE_URL}${mainImage}`}
-          alt="Phone iamge"
-          className="gallery__main-photo-image"
-        />
       </div>
     </div>
   );

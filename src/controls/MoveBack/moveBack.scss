@@ -1,9 +1,11 @@
+@import '../../styles/index.scss';
+
 .move-back {
   display: flex;
   align-items: center;
   border: none;
   cursor: pointer;
-  background-color: #fff;
+  background-color: transparent;
 
 
 
@@ -11,7 +13,7 @@
     margin-right: 10px;
 
     &-image {
-      color: #313237;
+      color: $text-color;
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
   }
@@ -23,11 +25,11 @@
       font-size: 12px;
       line-height: 15px;
 
-      color: #89939A;
+      color: $galery-photo-hover;
       transition: color 0.3s ease-in-out;
 
       &:hover {
-        color: #313237;
+        color: $text-color;
       }
     }
   }
