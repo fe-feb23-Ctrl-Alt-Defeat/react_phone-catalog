@@ -1,0 +1,20 @@
+.price {
+
+  &__normal {
+    font-family: 'Mont-Black';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    color: #313237;
+  }
+
+  &__discount {
+    font-family: 'Mont-Regular';
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+
+    color: #89939A;
+  }
+}

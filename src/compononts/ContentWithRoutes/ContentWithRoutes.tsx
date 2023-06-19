@@ -7,6 +7,7 @@ import { PageNotFound } from '../../pages/PageNotFound/PageNotFound';
 import { Phones } from '../../pages/Phones/Phones';
 import { Tablets } from '../../pages/Tablets/Tablets';
 import { HomePage } from '../../pages/HomePage/HomePage';
+import { Contacts } from '../../pages/Contacts/Contacts';
 import { PhoneInfo } from '../../pages/PhoneInfo/PhoneInfo';
 import { Contacts } from '../../pages/Contacts/Contacts';
 

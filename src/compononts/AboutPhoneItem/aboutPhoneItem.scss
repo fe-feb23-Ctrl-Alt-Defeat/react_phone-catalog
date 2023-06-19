@@ -1,0 +1,24 @@
+.article:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.article {
+  margin-bottom: 32px;
+
+  &__text {
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #89939A;
+  }
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 16px;
+
+    color: #313237;
+  }
+}

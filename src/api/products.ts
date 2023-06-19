@@ -1,6 +1,7 @@
 import { CardData } from '../types/CardData';
 import { Phone } from '../types/CardDescription';
 import { PhonesForCatalogData } from '../types/PhonesForCatalogData';
+import { PhonesForFavorites } from '../types/PhonesForFavorites';
 import { client } from '../utils/fetchClient';
 
 export const getProducts = () => {
@@ -24,7 +25,7 @@ export const getProductById = (id: string) => {
 };
 
 export const getProductByItemId = (itemId: string) => {
-  return client.get<Phone>(`products/${itemId}`);
+  return client.get<PhonesForFavorites>(`products/${itemId}`);
 };
 
 export const getProductByIds = (ids: number[]) => {

@@ -5,6 +5,14 @@
 
   &__path {
     margin: 31px 0 41px;
+
+    @include onTablet {
+      margin: 25px 0 44px;
+    }
+
+    @include onPhone {
+      margin: 25px 0 28px;
+    }
   }
 
   &__back {
@@ -158,7 +166,8 @@
       }
     }
 
-    &__colors {
+    &__items {
+
       flex-basis: 350px;
       flex-shrink: 0;
     }
@@ -176,7 +185,7 @@
     }
 
 
-    .colors {
+    &__colors {
       margin-bottom: 24px;
 
       &::after {
@@ -187,7 +196,7 @@
         margin-top: 24px;
       }
 
-      &__texts {
+      &-texts {
         display: flex;
         justify-content: space-between;
         margin-bottom: 8px;
@@ -214,7 +223,6 @@
           }
         }
       }
-
 
       &__container {
         display: flex;

@@ -18,14 +18,6 @@
   font-size: 12px;
   line-height: 11px;
 
-  @include onTablet {
-    margin-bottom: 32px;
-  }
-
-  @include onPhone {
-    margin-bottom: 24px;
-  }
-
   &__nav-links {
     display: flex;
     align-items: center;

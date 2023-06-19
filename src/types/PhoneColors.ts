@@ -13,3 +13,7 @@ export enum PhoneColors {
   purple = 'purple',
   rosegold = 'rosegold',
 }
+
+export type Colors = {
+  [key: string]: string;
+};

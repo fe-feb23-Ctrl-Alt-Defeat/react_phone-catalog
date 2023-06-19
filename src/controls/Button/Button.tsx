@@ -1,6 +1,8 @@
 import React, { MouseEventHandler } from 'react';
+import cn from 'classnames';
 import './Button.scss';
 import redHeart from '../../images/redHeart.svg';
+import Favorite from '../../images/icon_favorites.svg';
 
 type ButtonType = (MouseEventHandler<HTMLButtonElement>);
 
@@ -8,25 +10,24 @@ type Props = {
   text?: string;
   onClick?: ButtonType;
   classes?: string;
-  disabled?: boolean;
+  isSelected?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
   text,
-  onClick = () => {},
+  onClick = () => { },
   classes = '',
-  // disabled = false,
+  isSelected,
 }) => {
   return (
     <button
-      className={`customButton ${classes}`}
+      className={cn(`customButton ${classes}`, { 'button-add-to-cart--selected': isSelected })}
       type="button"
-      // disabled={disabled}
       onClick={onClick}
     >
       {text || (
         <img
-          src={redHeart}
+          src={isSelected ? redHeart : Favorite}
           alt="favourite"
           className="favorite-button__image"
         />

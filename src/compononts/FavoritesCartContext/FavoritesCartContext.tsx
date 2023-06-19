@@ -17,9 +17,9 @@ interface FavoritesAndCartCountContextType {
 
 export const FavoritesAndCartCountContext = createContext<FavoritesAndCartCountContextType>({
   favoritesCount: [],
-  setFavoritesCount: () => {},
+  setFavoritesCount: () => { },
   cartCount: [],
-  setCartCount: () => {},
+  setCartCount: () => { },
 });
 
 export const FavoritesAndCartCountContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
