@@ -19,7 +19,6 @@
 
   @include onPhone {
     width: 287px;
-    height: 440px;
     margin: 0 auto;
   }
 
@@ -53,6 +52,9 @@
       height: auto;
       max-height: 208px;
       object-fit: contain;
+
+    border-radius: 15px;
+
 
       @include onPhone {
         max-height: 130px;

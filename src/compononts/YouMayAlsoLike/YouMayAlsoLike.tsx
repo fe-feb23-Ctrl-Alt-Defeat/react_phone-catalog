@@ -28,7 +28,7 @@ export const YouMayAlsoLike = () => {
 
   return (
     <>
-      <div className="container">
+      <div>
         <NewModelsSlider
           isLoading={isLoading}
           phonesData={phones}

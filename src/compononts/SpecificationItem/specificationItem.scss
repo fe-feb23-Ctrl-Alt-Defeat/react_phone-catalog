@@ -4,6 +4,13 @@
   justify-content: space-between;
   margin-bottom: 8px;
 
+  &__cell {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 200px;
+    justify-content: flex-end;
+  }
+
   &__field {
     font-family: 'Mont-Regular';
     font-size: 14px;

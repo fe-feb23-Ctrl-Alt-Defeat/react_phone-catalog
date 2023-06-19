@@ -1,6 +1,4 @@
 import React from 'react';
-// import { EmptyCatalog } from '../../compononts/EmptyCatalog/EmptyCatalog';
-// import { Search } from 'react-router';
-import { Search } from '../../compononts/Search/Search';
+import { EmptyCatalog } from '../../compononts/EmptyCatalog/EmptyCatalog';
 
-export const Tablets = () => <Search />;
+export const Tablets = () => <EmptyCatalog />;
