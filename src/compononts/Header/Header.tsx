@@ -7,8 +7,6 @@ import { Link, NavLink } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
-import Menu_opener from '../../images/icon_menu_opener.svg';
-import Menu_cross from '../../images/icon_menu_cross.svg';
 import { FavoritesAndCartCountContext } from '../FavoritesCartContext/FavoritesCartContext';
 import { LogoHeader } from '../../controls/Logo/Logo';
 
@@ -172,13 +170,22 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
               className="header__menu-opener"
             >
               {/* иконка menu */}
-              <img
-                src={isBurgerOpened
-                  ? Menu_cross
-                  : Menu_opener}
-                alt="menu-opener"
-                className="header__menu-opener-image"
-              />
+              {isBurgerOpened
+                ? (
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M9.47157 1.4714C9.73192 1.21105 9.73192 0.78894 9.47157 0.52859C9.21122 0.268241 8.78911 0.268241 8.52876 0.52859L5.00016 4.05719L1.47157 0.52859C1.21122 0.268241 0.789108 0.268241 0.528758 0.52859C0.268409 0.78894 0.268409 1.21105 0.528758 1.4714L4.05735 4.99999L0.528758 8.52859C0.268409 8.78894 0.268409 9.21105 0.528758 9.4714C0.789108 9.73175 1.21122 9.73175 1.47157 9.4714L5.00016 5.9428L8.52876 9.4714C8.78911 9.73175 9.21122 9.73175 9.47157 9.4714C9.73192 9.21105 9.73192 8.78894 9.47157 8.52859L5.94297 4.99999L9.47157 1.4714Z" />
+                  </svg>
+
+                )
+                : (
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M0 1.5C0 1.08579 0.391751 0.75 0.875 0.75H13.125C13.6082 0.75 14 1.08579 14 1.5C14 1.91421 13.6082 2.25 13.125 2.25H0.875C0.391751 2.25 0 1.91421 0 1.5Z" />
+                    <path fill="currentColor" d="M0 5C0 4.58579 0.391751 4.25 0.875 4.25H13.125C13.6082 4.25 14 4.58579 14 5C14 5.41421 13.6082 5.75 13.125 5.75H0.875C0.391751 5.75 0 5.41421 0 5Z" />
+                    <path fill="currentColor" d="M0.875 7.75C0.391751 7.75 0 8.08579 0 8.5C0 8.91421 0.391751 9.25 0.875 9.25H13.125C13.6082 9.25 14 8.91421 14 8.5C14 8.08579 13.6082 7.75 13.125 7.75H0.875Z" />
+                  </svg>
+
+                )}
+
             </div>
           </div>
         </div>
@@ -260,7 +267,6 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
                   </svg>
 
                 )}
-
             </div>
             <NavLink
               to="/favorites"
@@ -292,12 +298,6 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
               }
               onClick={() => setIsBurgerOpened(false)}
             >
-              {/* иконка корзины */}
-              {/* <img
-                src={ShoppingBag}
-                alt="shopping_bag"
-                className="menu__shopping-bag-image"
-              /> */}
               <div className="menu__shopping-bag-image">
                 <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M2.46671 0.933323C2.59261 0.765453 2.7902 0.666656 3.00004 0.666656H11C11.2099 0.666656 11.4075 0.765453 11.5334 0.933323L13.5334 3.59999C13.6199 3.71539 13.6667 3.85574 13.6667 3.99999V13.3333C13.6667 13.8638 13.456 14.3725 13.0809 14.7475C12.7058 15.1226 12.1971 15.3333 11.6667 15.3333H2.33337C1.80294 15.3333 1.29423 15.1226 0.91916 14.7475C0.544088 14.3725 0.333374 13.8638 0.333374 13.3333V3.99999C0.333374 3.85574 0.380159 3.71539 0.466707 3.59999L2.46671 0.933323ZM3.33337 1.99999L1.66671 4.22221V13.3333C1.66671 13.5101 1.73695 13.6797 1.86197 13.8047C1.98699 13.9298 2.15656 14 2.33337 14H11.6667C11.8435 14 12.0131 13.9298 12.1381 13.8047C12.2631 13.6797 12.3334 13.5101 12.3334 13.3333V4.22221L10.6667 1.99999H3.33337Z" />
