@@ -64,6 +64,9 @@
   --colors-phone-border: 1px solid #E2E6E9;
   --colors-phone-border-selected: #313237;
   --colors-phone-border-hover: #B4BDC4;
+
+  --drop-down-border-color: #89939A;
+  --drop-down-bg-color: #FAFBFC;
 }
 
 [data-theme="dark"] {
@@ -125,5 +128,7 @@
   --colors-phone-border: 1px solid #3B3E4A;
   --colors-phone-border-selected: #F1F2F9;
   --colors-phone-border-hover: #75767F;
-  
+
+  --drop-down-border-color: #4A4D58;  
+  --drop-down-bg-color: #323542;  
 }

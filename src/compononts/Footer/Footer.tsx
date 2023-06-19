@@ -4,9 +4,9 @@ import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import up_arrow from '../../images/up_arrow.svg';
-import logo from '../../images/logo_gnce_gadgets.svg';
 
 import './footer.scss';
+import { LogoHeader } from '../../controls/Logo/Logo';
 
 export const Footer: FC = () => {
   const handleScrollToTop = useCallback(() => {
@@ -18,11 +18,7 @@ export const Footer: FC = () => {
       <div className="container">
         <div className="footer__content">
           <a href="/home" className="footer__logo">
-            <img
-              src={logo}
-              alt="logo"
-              className="footer__logo_img"
-            />
+            <LogoHeader />
           </a>
 
           <ul className="footer__list">

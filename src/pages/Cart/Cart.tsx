@@ -179,11 +179,17 @@ export const Cart: React.FC = () => {
               </div>
             </div>
           )
-          : (<h2>You cart is empty</h2>)}
+          : (
+            <div className="classForTest">
+              <h2>Your cart is empty</h2>
+            </div>
+          )}
         {haveBought && (
           <>
-            <hr />
-            <h3>Congratulations! You have successfuly made an order!</h3>
+            <div className="classForTest">
+              <hr />
+              <h3>Congratulations! You have successfuly made an order!</h3>
+            </div>
           </>
         )}
       </div>

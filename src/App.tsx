@@ -21,7 +21,7 @@ export const App: FC = () => {
 
   return (
     <div className="App" data-theme={theme}>
-      <Header switchTheme={switchTheme} />
+      <Header switchTheme={switchTheme} theme={theme} />
       <ContentWithRoutes />
       <Footer />
     </div>

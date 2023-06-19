@@ -104,9 +104,15 @@
 
     transition: 0.5s ease-in-out;
 
-    &_sun {
-      width: 30px;
-      background-color: white;
+    &-image {
+      &-sun {
+        color: $text-color;
+        width: 25px;
+      }
+
+      &-moon {
+        width: 20px;
+      }
     }
 
     &:hover {
