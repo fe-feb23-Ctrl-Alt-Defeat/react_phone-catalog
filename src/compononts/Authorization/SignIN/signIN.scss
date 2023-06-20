@@ -2,8 +2,6 @@
 
 .form__container {
   display: flex;
-  
-  // width: 200px;
 
   margin: 0 auto;
   margin-bottom: 25px;
@@ -19,6 +17,10 @@
 
 .signIN-button,
 .form-field {
+  font-family: 'Mont-SemiBold';
+  font-weight: 600;
+  font-style: normal;
+
   box-sizing: border-box;
   display: block;
 
