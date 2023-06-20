@@ -1,12 +1,38 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import './search.scss';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../utils/searchHelper';
 
 export const Search = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    setSearchParams(
+      getSearchWith(searchParams, { query: query || null }),
+    );
+  };
+
   return (
     <div>
       <div className="containers">
-        <input placeholder="Type to search..." required className="input" name="text" type="text" />
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Type to search..."
+            required
+            className="input"
+            name="text"
+            type="text"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+            }}
+          />
+        </form>
         <div className="icon">
           <svg viewBox="0 0 512 512" className="ionicon" xmlns="http://www.w3.org/2000/svg">
             <title>Search</title>

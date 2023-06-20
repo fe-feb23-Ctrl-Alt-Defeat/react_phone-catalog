@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, {
   useEffect,
@@ -7,7 +8,6 @@ import React, {
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import './catalog.scss';
 import { Card } from '../Card/Card';
 import { getProductWithPaginationSorted } from '../../api/products';
 import { DropDown } from '../../controls/DropDown/DropDown';
@@ -19,7 +19,9 @@ import { Pagination } from '../Pagination/Pagination';
 import { Loader } from '../Loader/Loader';
 import { catalogProductsFilter } from '../../utils/functionsHelpers/catalogProductsFilter';
 import { CardData } from '../../types/CardData';
-// import { Cart } from '../../pages/Cart/Cart';
+import { Search } from '../Search/Search';
+
+import './catalog.scss';
 
 export interface Option {
   title: string;
@@ -45,6 +47,8 @@ export const Catalog: React.FC = () => {
   const page = searchParams.get('page') || '1';
   const order = searchParams.get('order') || 'Expensive';
 
+  // const query = searchParams.get('query') || '';
+
   const { orderBy, orderDir } = catalogProductsFilter(order);
 
   const [selectedPage, setSelectedPage] = useState(limit);
@@ -66,7 +70,6 @@ export const Catalog: React.FC = () => {
       handleCatalogData(data.rows);
       setTotal(data.count);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -91,16 +94,23 @@ export const Catalog: React.FC = () => {
           </div>
 
           <div className="catalog__sorts">
-            <DropDown
-              options={filterBy}
-              selectedItem={selectedFilter}
-              setOnSelect={setSelectedFilter}
-            />
-            <DropDown
-              options={selectNum}
-              selectedItem={selectedPage}
-              setOnSelect={setSelectedPage}
-            />
+            <div className="catalog__sorts-items">
+              <div className="catalog__sorts-items-dropdown">
+                <DropDown
+                  options={filterBy}
+                  selectedItem={selectedFilter}
+                  setOnSelect={setSelectedFilter}
+                />
+                <DropDown
+                  options={selectNum}
+                  selectedItem={selectedPage}
+                  setOnSelect={setSelectedPage}
+                />
+              </div>
+              <div className="catalog__sorts-items-search">
+                <Search />
+              </div>
+            </div>
           </div>
 
           {isLoading

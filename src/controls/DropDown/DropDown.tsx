@@ -11,11 +11,12 @@ import React, {
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
-import './dropDown.scss';
 import IconDown from '../../images/icon_arrow_down.svg';
 import IconUp from '../../images/icon_arrow_up.svg';
 import { DropMenu } from './DropMenu';
 import { getSearchWith } from '../../utils/searchHelper';
+
+import './dropDown.scss';
 
 interface Props {
   options: {
