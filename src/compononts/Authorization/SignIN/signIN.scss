@@ -1,4 +1,4 @@
-@import '../../../styles/mixins/mixins.scss';
+@import '../../../styles/index.scss';
 
 .form__container {
   display: flex;
@@ -31,26 +31,25 @@
     width: 100%;
   }
 
-  background-color: #f8f8fa;
-  border: 1px solid transparent;
-  // border-radius: 16px;
+  background-color: $pagination-arrows-bg;
+  border: $card-border;
 
   padding: 14px 16px;
 
-  color: #313237;
+  color: $text-color;
 
   transition: border 0.5s;
 
   &::placeholder {
-    color: #7e7e83;
+    color: $text-color;
   }
 
   &:hover {
-    border: 1px solid #d5d7de;
+    border: 1px solid $btn-bg-color;
   }
 
   &:focus {
-    border-color: #313237;
+    border-color: $btn-bg-color;
     outline: none;
   }
 
@@ -58,11 +57,11 @@
 }
 
 .signIN-button {
-  color: #313237;
-  background-color: #d5d7de;
-  border: 1px solid #313237;
+  color: $white;
+  background-color: $btn-bg-color;
+  border: $header-btn-is-active;
 }
 
 .error-border {
-  color: red;
+  color: $color-red;
 }
