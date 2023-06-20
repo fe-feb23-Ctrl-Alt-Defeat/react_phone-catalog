@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { SignIN } from './SignIN/SignIN';
 import { SignUp } from './SignUp/SignUp';
 import './authorization.scss';
+import MenuCrossImage from '../../images/Menu_cross.svg';
 
 export const Authorization = () => {
   const [activeTab, setActiveTab] = useState('signin');
@@ -14,6 +15,11 @@ export const Authorization = () => {
   return (
     <>
       <div className="authorization__box">
+        <img
+          src={MenuCrossImage}
+          className="menu-cross-image"
+          alt="Menu Cross"
+        />
         <div className="authorization__container">
           <div className="form__container">
             <div className="form__content">

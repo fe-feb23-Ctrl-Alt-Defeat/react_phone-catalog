@@ -1,7 +1,18 @@
 @import '../../styles/mixins/mixins.scss';
 
+.menu-cross-image {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+}
+
 .authorization__box {
   margin: 0 auto;
+  position: relative;
 }
 
 .authorization__container {

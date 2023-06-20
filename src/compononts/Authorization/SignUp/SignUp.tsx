@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Formik,
   Field,
@@ -7,15 +9,45 @@ import {
   ErrorMessage,
 } from 'formik';
 import * as Yup from 'yup';
+import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import './signUp.scss';
 
 const SignupSchema = Yup.object().shape({
   fullName: Yup.string().required('Full Name is required'),
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required'),
-  confirm_password: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm Password is required'),
+  // confirm_password: Yup.string()
+  //   .oneOf([Yup.ref('password'), null], 'Passwords must match')
+  //   .required('Confirm Password is required'),
 });
+
+const PasswordInput = ({ field, form, ...props }: any) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  return (
+    <div className="password-input-container">
+      <input
+        type={showPassword ? 'text' : 'password'}
+        {...field}
+        {...props}
+      />
+      <span
+        className="password-toggle"
+        onClick={togglePasswordVisibility}
+      >
+        {showPassword ? (
+          <EyeInvisibleOutlined rev={undefined} />
+        ) : (
+          <EyeOutlined rev={undefined} />
+        )}
+      </span>
+    </div>
+  );
+};
 
 export const SignUp = () => {
   const handleSubmit = (values: any, { setSubmitting, resetForm }: any) => {
@@ -49,7 +81,7 @@ export const SignUp = () => {
             <ErrorMessage
               name="fullName"
               component="div"
-              className="error-message"
+              className="error-message error-border"
             />
 
             <Field
@@ -61,22 +93,22 @@ export const SignUp = () => {
             <ErrorMessage
               name="email"
               component="div"
-              className="error-message"
+              className="error-message error-border"
             />
 
             <Field
               name="password"
-              type="password"
               placeholder="Password"
+              component={PasswordInput}
               className="contacts__field form-field"
             />
             <ErrorMessage
               name="password"
               component="div"
-              className="error-message"
+              className="error-message error-border"
             />
 
-            <Field
+            {/* <Field
               name="confirm_password"
               type="password"
               placeholder="Confirm Password"
@@ -85,11 +117,11 @@ export const SignUp = () => {
             <ErrorMessage
               name="confirm_password"
               component="div"
-              className="error-message"
-            />
+              className="error-message error-border"
+            /> */}
 
             <button className="signIN-button" type="submit">
-              Sign Up
+              SIGN UP
             </button>
           </Form>
         </Formik>

@@ -62,7 +62,7 @@ export const SignIN = () => {
             />
 
             <button className="signIN-button" type="submit">
-              Sign IN
+              SIGN IN
             </button>
           </Form>
         </Formik>
