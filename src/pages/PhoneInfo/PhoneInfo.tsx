@@ -30,7 +30,6 @@ import { AboutPhone } from '../../compononts/AboutPhone';
 import { PhonesForFavorites } from '../../types/PhonesForFavorites';
 import { FavoritesAndCartCountContext } from '../../compononts/FavoritesCartContext/FavoritesCartContext';
 
-
 export const PhoneInfo = () => {
   const { itemId } = useParams();
   const navigate = useNavigate();
@@ -176,7 +175,6 @@ export const PhoneInfo = () => {
     setIsFavoriteSelected(favoritesCount.includes(getId()));
     setIsAdded(cartCount.includes(getId()));
   }, [query, itemId, getId()]);
-
 
   useEffect(() => {
     setQuery(itemId || '');

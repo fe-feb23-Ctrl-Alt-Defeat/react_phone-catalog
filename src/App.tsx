@@ -11,7 +11,7 @@ import { ContentWithRoutes } from './compononts/ContentWithRoutes/ContentWithRou
 import './App.scss';
 
 export const App: FC = () => {
-  const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light', 'dark');
+  const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light', 'light');
 
   const switchTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';

@@ -16,7 +16,7 @@ export const SpecificationItem: React.FC<Props> = ({
       {infoField !== 'Cell'
         ? <p className="detail__info">{infoValue}</p>
         : (
-          <div>
+          <div className="detail__cell">
             {Array.isArray(infoValue) && infoValue.map((
               cell,
               index: number,

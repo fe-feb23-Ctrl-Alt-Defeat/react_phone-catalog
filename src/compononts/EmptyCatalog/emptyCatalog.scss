@@ -6,6 +6,10 @@
   margin: 0 auto;
   margin-top: 200px;
 
+  @include onPhone {
+    margin-top: 100px;
+  }
+
   font-family: 'Mont-SemiBold';
   max-height: 500px;
   max-width: 1000px;
@@ -15,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
   }
   &__header {
     color: #27AE60;
@@ -35,4 +40,8 @@
       font-size: 25px;
     }
   }
+}
+
+.message__text{
+  text-align: center;
 }

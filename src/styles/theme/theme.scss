@@ -54,6 +54,7 @@
   //footer
   --footer-box-shadow: 0px -1px 0px #E2E6E9;
   --footer-border-color: #313237;
+  --footer-border-dark: none;
 
   //galery
   --galery-photo-border: 1px solid #B4BDC4;
@@ -67,6 +68,7 @@
 
   --drop-down-border-color: #89939A;
   --drop-down-bg-color: #FAFBFC;
+  --id-color-card:  #B4BDC4;
 }
 
 [data-theme="dark"] {
@@ -118,6 +120,7 @@
   //footer
   --footer-box-shadow: 1px solid #3B3E4A;
   --footer-border-color: none;
+  --footer-border-dark: 1px solid #3B3E4A;
 
   //galery
   --galery-photo-border: 1px solid #3B3E4A;
@@ -131,4 +134,6 @@
 
   --drop-down-border-color: #4A4D58;  
   --drop-down-bg-color: #323542;  
+
+  --id-color-card: #4A4D58;
 }

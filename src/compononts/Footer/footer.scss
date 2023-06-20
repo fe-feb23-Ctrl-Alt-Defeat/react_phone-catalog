@@ -8,6 +8,7 @@
 
   background: $bg-color;
   box-shadow: $footer-box-shadow;
+  border-top: $footer-border-dark;
 
   &__content {
     display: flex;

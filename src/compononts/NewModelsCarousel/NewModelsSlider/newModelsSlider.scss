@@ -12,9 +12,9 @@
   }
 }
 
-// .picturesBan {
-//   height: 500px;
-// }
+.picturesBan {
+  margin-bottom: 64px;
+}
 
 .carouselHeader {
   display: flex;
@@ -29,6 +29,10 @@
   font-family: 'Mont-Black';
   font-size: 32px;
   line-height: 41px;
+
+  @include onPhone {
+    font-size: 22px;
+  }
 }
 
 .buttonBox {
