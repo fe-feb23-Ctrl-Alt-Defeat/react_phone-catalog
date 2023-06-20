@@ -5,13 +5,15 @@ import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Banner from '../../images/Banner/Banner.svg';
 import Banner_2 from '../../images/Banner/Banner_2.jpg';
+import Banner_3 from '../../images/Banner/Banner_3.jpg';
+
 import Jump_Button_Empty from '../../images/Banner/Banner_icon_jumpButton_empty.svg';
 import Jump_Button_Color from '../../images/Banner/Banner_icon_jumpButton_color.svg';
 
 import './salesSlider.scss';
 
 export const SalesSlider = () => {
-  const pictures = [Banner, Banner_2, Banner];
+  const pictures = [Banner, Banner_2, Banner_3];
 
   const [offset, setOffset] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
