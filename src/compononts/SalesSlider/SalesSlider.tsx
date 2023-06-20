@@ -50,7 +50,7 @@ export const SalesSlider = () => {
   }
 
   if (widthWindow > 640 && widthWindow < 1199) {
-    widthSliderImg = widthWindow - 150;
+    widthSliderImg = widthWindow - 94;
   }
 
   if (widthWindow < 639) {

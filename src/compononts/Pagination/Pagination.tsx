@@ -7,9 +7,6 @@ import classNames from 'classnames';
 import { getSearchWith } from '../../utils/searchHelper';
 import { getNumbers } from '../../utils/functionsHelpers/getNumbers';
 
-import arowRight from '../../images/arrowRight.svg';
-import arrowLeft from '../../images/arrowLeft.svg';
-
 import './Pagination.scss';
 
 interface Props {

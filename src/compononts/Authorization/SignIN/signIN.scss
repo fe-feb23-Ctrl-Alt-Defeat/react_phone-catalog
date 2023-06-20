@@ -1,0 +1,66 @@
+@import '../../../styles/mixins/mixins.scss';
+
+.form__container {
+  display: flex;
+  
+  // width: 200px;
+
+  margin: 0 auto;
+  margin-bottom: 25px;
+
+  transition: 0.5s border;
+}
+
+.signIN-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signIN-button,
+.form-field {
+  box-sizing: border-box;
+  display: block;
+
+  height: 48px;
+  width: 300px;
+
+  @include onPhone {
+    width: 100%;
+  }
+
+  background-color: #f8f8fa;
+  border: 1px solid transparent;
+  // border-radius: 16px;
+
+  padding: 14px 16px;
+
+  color: #313237;
+
+  transition: border 0.5s;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border: 1px solid #d5d7de;
+  }
+
+  &:focus {
+    border-color: #313237;
+    outline: none;
+  }
+
+  
+}
+
+.signIN-button {
+  color: #313237;
+  background-color: #d5d7de;
+  border: 1px solid #313237;
+}
+
+.error-border {
+  color: red;
+}
