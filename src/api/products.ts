@@ -16,6 +16,10 @@ export const getProductsByCategory = (productType: string) => {
   return client.get<CardData[]>(`products?productType=${productType}`);
 };
 
+export const getProductsByQuery = (query: string) => {
+  return client.get<CardData[]>(`products?search=${query}`);
+};
+
 export const getProductsWithDiscount = () => {
   return client.get<CardData[]>('products/discount');
 };

@@ -17,9 +17,9 @@ export const Footer: FC = () => {
     <div className="footer">
       <div className="container">
         <div className="footer__content">
-          <a href="/home" className="footer__logo">
+          <Link to="/" className="footer__logo">
             <LogoHeader />
-          </a>
+          </Link>
 
           <ul className="footer__list">
             <li className="footer__list_item">

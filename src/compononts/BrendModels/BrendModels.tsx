@@ -13,7 +13,6 @@ export const BrendsModels = () => {
   const [phones, setPhones] = useState<CardData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(isLoading);
   const loadData = useCallback(async () => {
     try {
       setIsLoading(true);

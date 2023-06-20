@@ -1,15 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, {
   useEffect,
   useState,
   Fragment,
-  useCallback,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Card } from '../Card/Card';
-import { getProductWithPaginationSorted } from '../../api/products';
+import { getProductWithPaginationSorted, getProductsByQuery } from '../../api/products';
 import { DropDown } from '../../controls/DropDown/DropDown';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { PageTitle } from '../../controls/PageTitle/PageTitle';
@@ -22,6 +22,7 @@ import { CardData } from '../../types/CardData';
 import { Search } from '../Search/Search';
 
 import './catalog.scss';
+// import { getSearchWith } from '../../utils/searchHelper';
 
 export interface Option {
   title: string;
@@ -47,7 +48,7 @@ export const Catalog: React.FC = () => {
   const page = searchParams.get('page') || '1';
   const order = searchParams.get('order') || 'Expensive';
 
-  // const query = searchParams.get('query') || '';
+  const query = searchParams.get('query') || '';
 
   const { orderBy, orderDir } = catalogProductsFilter(order);
 
@@ -60,25 +61,42 @@ export const Catalog: React.FC = () => {
     setCatalogData(data);
   };
 
-  const fetchPhonesForCatalog = useCallback(async () => {
+  // const navigate = useNavigate();
+  const fetchPhonesForCatalog = async () => {
     try {
       setIsLoading(true);
+
+      if (query) {
+        const data = await getProductsByQuery(query);
+
+        setIsLoading(false);
+        handleCatalogData(data);
+        setTotal(data.length);
+        console.log('with query', catalogData);
+
+        // Remove the 'query' search parameter from the URL
+        // navigate('/phones', { replace: true });
+
+        return;
+      }
+
       const productsFromServer: unknown = await getProductWithPaginationSorted(page, limit, orderDir, orderBy);
       const data: PhonesForCatalogData = productsFromServer as PhonesForCatalogData;
 
       setIsLoading(false);
       handleCatalogData(data.rows);
       setTotal(data.count);
+      console.log('without query  ', catalogData);
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false);
     }
-  }, [page, limit, order, orderBy, orderDir]);
+  };
 
   useEffect(() => {
     fetchPhonesForCatalog();
-  }, [page, limit, order, orderBy, orderDir]);
+  }, [page, limit, order, orderBy, orderDir, query]);
 
   return (
     <>
