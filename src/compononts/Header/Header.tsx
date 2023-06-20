@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link, NavLink } from 'react-router-dom';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './header.scss';
 import { FavoritesAndCartCountContext } from '../FavoritesCartContext/FavoritesCartContext';
@@ -26,18 +26,15 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
 
   const { favoritesCount, cartCount } = useContext(FavoritesAndCartCountContext);
 
-  // console.log('cart  ', cartCount);
-  // useEffect(() => {
-  //   if (scrollLocked) {
-  //     document.body.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.overflow = 'visible';
-  //   }
+  useEffect(() => {
+    if (isBurgerOpened) {
+      document.body.classList.add('scroll-lock');
+    }
 
-  //   return () => {
-  //     document.body.style.overflow = 'visible';
-  //   };
-  // }, [scrollLocked]);
+    return () => {
+      document.body.classList.remove('scroll-lock');
+    };
+  }, [isBurgerOpened]);
 
   return (
     <>
