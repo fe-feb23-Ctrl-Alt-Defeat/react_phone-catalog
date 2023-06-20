@@ -1,10 +1,10 @@
 .form__container {
   display: flex;
   
-  height: 350px;
-  width: 200px;
+  // width: 200px;
 
   margin: 0 auto;
+  margin-bottom: 25px;
 
   transition: 0.5s border;
 }
@@ -21,7 +21,7 @@
   display: block;
 
   height: 48px;
-  width: 100%;
+  width: 300px;
 
   background-color: #f8f8fa;
   border: 1px solid transparent;
@@ -45,10 +45,16 @@
     border-color: #313237;
     outline: none;
   }
+
+  
 }
 
 .signIN-button {
   color: #313237;
   background-color: #d5d7de;
   border: 1px solid #313237;
+}
+
+.error-border {
+  color: red;
 }

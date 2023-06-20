@@ -13,25 +13,29 @@ export const Authorization = () => {
 
   return (
     <>
-      <div className="form__container">
-        <div className="form__content">
-          <NavLink
-            to="#"
-            className={`form__content_item ${activeTab === 'signin' ? 'is-active' : ''}`}
-            onClick={() => handleTabClick('signin')}
-          >
-            SIGN IN
-          </NavLink>
-          <NavLink
-            to="#"
-            className={`form__content_item ${activeTab === 'signup' ? 'is-active' : ''}`}
-            onClick={() => handleTabClick('signup')}
-          >
-            SIGN UP
-          </NavLink>
+      <div className="authorization__box">
+        <div className="authorization__container">
+          <div className="form__container">
+            <div className="form__content">
+              <NavLink
+                to="#"
+                className={`form__content_item ${activeTab === 'signin' ? 'is-active' : ''}`}
+                onClick={() => handleTabClick('signin')}
+              >
+                SIGN IN
+              </NavLink>
+              <NavLink
+                to="#"
+                className={`form__content_item ${activeTab === 'signup' ? 'is-active' : ''}`}
+                onClick={() => handleTabClick('signup')}
+              >
+                SIGN UP
+              </NavLink>
+            </div>
+          </div>
+          {activeTab === 'signin' ? <SignIN /> : <SignUp />}
         </div>
       </div>
-      {activeTab === 'signin' ? <SignIN /> : <SignUp />}
     </>
   );
 };

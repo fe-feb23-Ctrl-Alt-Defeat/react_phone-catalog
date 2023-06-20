@@ -1,8 +1,20 @@
 @import '../../styles/mixins/mixins.scss';
 
+.authorization__box {
+  margin: 0 auto;
+}
+
+.authorization__container {
+  margin-top: 90px;
+  border: 1px solid #E2E6E9;
+  width: max-content;
+  padding: 0 15px 0 15px;
+}
+
 .form__content {
   display: flex;
   gap: 15px;
+  margin-top: 15px;
 
   font-family: 'Mont-SemiBold';
   src: url('../../utils/fonts/Mont-SemiBold.otf') format('opentype');
@@ -12,17 +24,20 @@
   transition: 0.5s;
 
   &:hover {
-    font-family: 'Mont-Black';
-    src: url('../../utils/fonts/Mont-Bold.otf') format('opentype');
-    font-weight: 800;
-    font-style: normal;
+    color: #313237;
   }
 
   &_item {
     position: relative;
     cursor: pointer;
-  }
+    color: #89939A;
 
+    transition: 0.5s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
 }
 
 .is-active {

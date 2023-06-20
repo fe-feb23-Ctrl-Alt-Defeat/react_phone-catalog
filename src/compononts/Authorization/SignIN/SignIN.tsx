@@ -40,25 +40,25 @@ export const SignIN = () => {
             <Field
               name="email"
               type="email"
-              placeholder="email"
+              placeholder="E-mail"
               className="contacts__field form-field"
             />
             <ErrorMessage
               name="email"
               component="p"
-              className="field-error-message"
+              className="field-error-message error-border"
             />
 
             <Field
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Password"
               className="contacts__field form-field"
             />
             <ErrorMessage
               name="password"
               component="p"
-              className="field-error-message"
+              className="field-error-message error-border"
             />
 
             <button className="signIN-button" type="submit">
