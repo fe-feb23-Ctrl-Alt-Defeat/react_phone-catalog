@@ -1,4 +1,4 @@
-@import '../../styles/mixins/mixins.scss';
+@import '../../styles/index.scss';
 
 .menu-cross-image {
   position: absolute;
@@ -17,7 +17,7 @@
 
 .authorization__container {
   margin-top: 90px;
-  border: 1px solid #E2E6E9;
+  border: $card-border;
   width: max-content;
   padding: 0 15px 0 15px;
 }
