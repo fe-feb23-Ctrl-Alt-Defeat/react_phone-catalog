@@ -17,11 +17,9 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
-  const [, setScrollLocked] = useState(false);
 
   const handleBurgerToggle = () => {
     setIsBurgerOpened(currState => !currState);
-    setScrollLocked(currState => !currState);
   };
 
   const { favoritesCount, cartCount } = useContext(FavoritesAndCartCountContext);
