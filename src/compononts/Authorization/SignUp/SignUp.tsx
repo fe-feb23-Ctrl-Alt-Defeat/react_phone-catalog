@@ -55,7 +55,7 @@ export const SignUp = () => {
             <Field
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder="E-mail"
               className="contacts__field form-field"
             />
             <ErrorMessage
