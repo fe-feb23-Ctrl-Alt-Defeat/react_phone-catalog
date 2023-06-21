@@ -33,7 +33,7 @@ export const SignIN: React.FC = () => {
   const handleSubmit = (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     // Logic for form submission
     console.log('Form submission', values);
-    setIsModalOpen(prev => !prev);
+    setIsModalOpen(false);
     resetForm();
   };
 

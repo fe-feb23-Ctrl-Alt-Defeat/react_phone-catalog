@@ -109,6 +109,7 @@ export const SignUp: React.FC = () => {
             />
 
             <Button classes="signIN-button" text="SIGN UP" />
+
           </Form>
         </Formik>
       </div>
