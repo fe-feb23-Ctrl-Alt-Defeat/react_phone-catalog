@@ -68,6 +68,7 @@ export const Catalog: React.FC = () => {
       if (query) {
         const data = await getProductsByQuery(query);
 
+        console.log('data - ', data);
         setIsLoading(false);
         handleCatalogData(data);
         setTotal(data.length);
@@ -82,6 +83,8 @@ export const Catalog: React.FC = () => {
       handleCatalogData(data.rows);
       setTotal(data.count);
     } catch (error) {
+      handleCatalogData([]);
+      console.log('error ocured');
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -124,6 +127,8 @@ export const Catalog: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {catalogData.length === 0 && <div>error</div>}
 
           {isLoading
             ? <Loader />
