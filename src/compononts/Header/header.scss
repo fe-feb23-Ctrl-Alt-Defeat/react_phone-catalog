@@ -51,7 +51,7 @@
         gap: 32px;
       }
 
-      @include onPhone {
+      @include onLowTablet {
         display: none;
         pointer-events: none;
       }
@@ -120,7 +120,7 @@
       background: $header-icons-bg-hover;
     }
 
-    @include onPhone {
+    @include onLowTablet {
       display: none;
       pointer-events: none;
     }
@@ -155,7 +155,7 @@
     display: none;
     pointer-events: none;
   
-    @include onPhone {
+    @include onLowTablet {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -175,7 +175,7 @@
   font-size: 12px;
   line-height: 11px;
 
-  @include onPhone {
+  @include onLowTablet {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -206,7 +206,7 @@
   }
 
   &__bottom {
-    @include onPhone {
+    @include onLowTablet {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -223,7 +223,7 @@
 
   &__favorite,
   &__shopping-bag {
-    @include onPhone {
+    @include onLowTablet {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -282,7 +282,7 @@
     border-radius: 8px;
     margin: 0 auto;
 
-    @include onPhone {
+    @include onLowTablet {
       display: block;
       height: 2px;
       margin: 0 auto;
