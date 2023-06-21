@@ -19,7 +19,9 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
 
   const handleBurgerToggle = () => {
-    setIsBurgerOpened(currState => !currState);
+    if (window.innerWidth <= 768) {
+      setIsBurgerOpened(currState => !currState);
+    }
   };
 
   const { favoritesCount, cartCount } = useContext(FavoritesAndCartCountContext);
