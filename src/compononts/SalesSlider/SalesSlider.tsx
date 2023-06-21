@@ -33,18 +33,6 @@ export const SalesSlider = () => {
     };
   }, [widthWindow]);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setHeightWindow(document.body.scrollHeight);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, [heightWindow]);
-
   let widthSliderImg = 0;
 
   if (widthWindow > 1200) {
@@ -100,6 +88,20 @@ export const SalesSlider = () => {
     root.style.setProperty('--slider-width', `${widthSliderImg}px`);
   }, [widthSliderImg]);
 
+  useEffect(() => {
+    const root = document.documentElement;
+
+    root.style.setProperty('--slider-width', `${widthSliderImg}px`);
+
+    const timer = setInterval(() => {
+      hendleRightArrowClick();
+    }, 4000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [widthSliderImg]);
+
   return (
     <>
       <div className="container sliderText">
@@ -124,6 +126,7 @@ export const SalesSlider = () => {
             className="sliderBox__contents"
             style={{
               transform: `translateX(${offset}px)`,
+              transition: 'transform 1s ease',
             }}
           >
             {pictures.map((picture) => (
