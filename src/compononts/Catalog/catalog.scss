@@ -28,7 +28,23 @@
 
   &__sorts {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 24px;
+
+    &-items {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+
+      @include onLowTablet {
+        display: block;
+      }
+
+      &-dropdown {
+        display: flex;
+      }
+    }
   }
 
   &__products {

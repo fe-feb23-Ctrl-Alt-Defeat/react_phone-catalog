@@ -2,7 +2,6 @@
 
 .form__container {
   display: flex;
-
   margin: 0 auto;
   margin-bottom: 25px;
 
@@ -32,11 +31,10 @@
   }
 
   background-color: $pagination-arrows-bg;
-  border: $card-border;
-
-  padding: 14px 16px;
-
   color: $text-color;
+
+  border: $pagination-arrows-border;
+  padding: 14px 16px;
 
   transition: border 0.5s;
 
@@ -64,4 +62,8 @@
 
 .error-border {
   color: $color-red;
+}
+
+.error-border {
+  color: rgba(255, 0, 0, 0.519);
 }

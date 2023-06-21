@@ -1,15 +1,15 @@
+/* eslint-disable no-console */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-len */
 import React, {
   useEffect,
   useState,
   Fragment,
-  useCallback,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import './catalog.scss';
 import { Card } from '../Card/Card';
-import { getProductWithPaginationSorted } from '../../api/products';
+import { getProductWithPaginationSorted, getProductsByQuery } from '../../api/products';
 import { DropDown } from '../../controls/DropDown/DropDown';
 import { PageRoute } from '../../controls/PageRoute/PageRoute';
 import { PageTitle } from '../../controls/PageTitle/PageTitle';
@@ -19,7 +19,10 @@ import { Pagination } from '../Pagination/Pagination';
 import { Loader } from '../Loader/Loader';
 import { catalogProductsFilter } from '../../utils/functionsHelpers/catalogProductsFilter';
 import { CardData } from '../../types/CardData';
-// import { Cart } from '../../pages/Cart/Cart';
+import { Search } from '../Search/Search';
+
+import './catalog.scss';
+// import { getSearchWith } from '../../utils/searchHelper';
 
 export interface Option {
   title: string;
@@ -45,6 +48,8 @@ export const Catalog: React.FC = () => {
   const page = searchParams.get('page') || '1';
   const order = searchParams.get('order') || 'Expensive';
 
+  const query = searchParams.get('query') || '';
+
   const { orderBy, orderDir } = catalogProductsFilter(order);
 
   const [selectedPage, setSelectedPage] = useState(limit);
@@ -56,9 +61,20 @@ export const Catalog: React.FC = () => {
     setCatalogData(data);
   };
 
-  const fetchPhonesForCatalog = useCallback(async () => {
+  const fetchPhonesForCatalog = async () => {
     try {
       setIsLoading(true);
+
+      if (query) {
+        const data = await getProductsByQuery(query);
+
+        setIsLoading(false);
+        handleCatalogData(data);
+        setTotal(data.length);
+
+        return;
+      }
+
       const productsFromServer: unknown = await getProductWithPaginationSorted(page, limit, orderDir, orderBy);
       const data: PhonesForCatalogData = productsFromServer as PhonesForCatalogData;
 
@@ -66,16 +82,15 @@ export const Catalog: React.FC = () => {
       handleCatalogData(data.rows);
       setTotal(data.count);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
     } finally {
       setIsLoading(false);
     }
-  }, [page, limit, order, orderBy, orderDir]);
+  };
 
   useEffect(() => {
     fetchPhonesForCatalog();
-  }, [page, limit, order, orderBy, orderDir]);
+  }, [page, limit, order, orderBy, orderDir, query]);
 
   return (
     <>
@@ -91,16 +106,23 @@ export const Catalog: React.FC = () => {
           </div>
 
           <div className="catalog__sorts">
-            <DropDown
-              options={filterBy}
-              selectedItem={selectedFilter}
-              setOnSelect={setSelectedFilter}
-            />
-            <DropDown
-              options={selectNum}
-              selectedItem={selectedPage}
-              setOnSelect={setSelectedPage}
-            />
+            <div className="catalog__sorts-items">
+              <div className="catalog__sorts-items-dropdown">
+                <DropDown
+                  options={filterBy}
+                  selectedItem={selectedFilter}
+                  setOnSelect={setSelectedFilter}
+                />
+                <DropDown
+                  options={selectNum}
+                  selectedItem={selectedPage}
+                  setOnSelect={setSelectedPage}
+                />
+              </div>
+              <div className="catalog__sorts-items-search">
+                <Search />
+              </div>
+            </div>
           </div>
 
           {isLoading

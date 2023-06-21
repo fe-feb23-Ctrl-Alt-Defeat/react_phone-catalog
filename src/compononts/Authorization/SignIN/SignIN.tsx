@@ -1,29 +1,35 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React from 'react';
 import {
   Formik,
-  Form,
   Field,
   ErrorMessage,
+  Form,
+  FormikHelpers,
 } from 'formik';
 import * as Yup from 'yup';
 import './signIN.scss';
 
-export const SignIN = () => {
-  const initialValues = {
+interface FormValues {
+  email: string;
+  password: string;
+}
+
+export const SignIN: React.FC = () => {
+  const initialValues: FormValues = {
     email: '',
     password: '',
   };
 
   const validationSchema = Yup.object({
-    email: Yup
-      .string().email('Invalid email').required('Email field is required'),
+    email: Yup.string().email('Invalid email').required('Email field is required'),
     password: Yup.string().required('Password field is required'),
   });
 
-  const handleSubmit = (values: any, { resetForm }: any) => {
-    // Логику отправки формы
-    console.log('Отправка формы', values);
+  const handleSubmit = (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
+    // Logic for form submission
+    console.log('Form submission', values);
 
     resetForm();
   };
@@ -31,11 +37,7 @@ export const SignIN = () => {
   return (
     <>
       <div className="form__container">
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           <Form className="signIN-form">
             <Field
               name="email"
@@ -43,11 +45,7 @@ export const SignIN = () => {
               placeholder="E-mail"
               className="contacts__field form-field"
             />
-            <ErrorMessage
-              name="email"
-              component="p"
-              className="field-error-message error-border"
-            />
+            <ErrorMessage name="email" component="p" className="field-error-message error-border" />
 
             <Field
               name="password"
@@ -55,11 +53,7 @@ export const SignIN = () => {
               placeholder="Password"
               className="contacts__field form-field"
             />
-            <ErrorMessage
-              name="password"
-              component="p"
-              className="field-error-message error-border"
-            />
+            <ErrorMessage name="password" component="p" className="field-error-message error-border" />
 
             <button className="signIN-button" type="submit">
               SIGN IN
