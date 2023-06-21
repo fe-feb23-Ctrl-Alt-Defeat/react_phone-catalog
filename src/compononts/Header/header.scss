@@ -13,11 +13,6 @@
 
 .scroll-lock {
   overflow: hidden;
-  // position: fixed;
-  // width: 100%;
-  // height: 100%;
-  // top: 0;
-  // left: 0;
 }
 
 .header {
@@ -283,7 +278,7 @@
     width: 100%;
     height: 4px;
     bottom: 0;
-    background-color: $header-btn-is-active;
+    background-color: $header-buton-hover;
     border-radius: 8px;
     margin: 0 auto;
 

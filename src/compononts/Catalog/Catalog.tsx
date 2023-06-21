@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-len */
 import React, {
   useEffect,
@@ -61,7 +61,6 @@ export const Catalog: React.FC = () => {
     setCatalogData(data);
   };
 
-  // const navigate = useNavigate();
   const fetchPhonesForCatalog = async () => {
     try {
       setIsLoading(true);
@@ -72,10 +71,6 @@ export const Catalog: React.FC = () => {
         setIsLoading(false);
         handleCatalogData(data);
         setTotal(data.length);
-        console.log('with query', catalogData);
-
-        // Remove the 'query' search parameter from the URL
-        // navigate('/phones', { replace: true });
 
         return;
       }
@@ -86,7 +81,6 @@ export const Catalog: React.FC = () => {
       setIsLoading(false);
       handleCatalogData(data.rows);
       setTotal(data.count);
-      console.log('without query  ', catalogData);
     } catch (error) {
       console.error(error);
     } finally {

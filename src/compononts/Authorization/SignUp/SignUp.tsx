@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-console */
@@ -7,21 +8,27 @@ import {
   Field,
   Form,
   ErrorMessage,
+  FieldProps,
+  FormikHelpers,
 } from 'formik';
 import * as Yup from 'yup';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import './signUp.scss';
 
+interface FormValues {
+  fullName: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+}
+
 const SignupSchema = Yup.object().shape({
   fullName: Yup.string().required('Full Name is required'),
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required'),
-  // confirm_password: Yup.string()
-  //   .oneOf([Yup.ref('password'), null], 'Passwords must match')
-  //   .required('Confirm Password is required'),
 });
 
-const PasswordInput = ({ field, form, ...props }: any) => {
+const PasswordInput: React.FC<FieldProps> = ({ field, form, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -30,28 +37,20 @@ const PasswordInput = ({ field, form, ...props }: any) => {
 
   return (
     <div className="password-input-container">
-      <input
-        type={showPassword ? 'text' : 'password'}
-        {...field}
-        {...props}
-      />
-      <span
-        className="password-toggle"
-        onClick={togglePasswordVisibility}
-      >
-        {showPassword ? (
-          <EyeInvisibleOutlined rev={undefined} />
-        ) : (
-          <EyeOutlined rev={undefined} />
-        )}
+      <input type={showPassword ? 'text' : 'password'} {...field} {...props} />
+      <span className="password-toggle" onClick={togglePasswordVisibility}>
+        {showPassword ? <EyeInvisibleOutlined rev={undefined} /> : <EyeOutlined rev={undefined} />}
       </span>
     </div>
   );
 };
 
-export const SignUp = () => {
-  const handleSubmit = (values: any, { setSubmitting, resetForm }: any) => {
-    // Логику отправки формы
+export const SignUp: React.FC = () => {
+  const handleSubmit = (
+    values: FormValues,
+    { setSubmitting, resetForm }: FormikHelpers<FormValues>,
+  ) => {
+    // Logic for form submission
     console.log(values);
 
     resetForm();
