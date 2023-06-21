@@ -42,16 +42,17 @@ const selectNum = {
 };
 
 export const Catalog: React.FC = () => {
+  const [searchParams] = useSearchParams();
+
   const [catalogData, setCatalogData] = useState<CardData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
-  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
 
   const limit = searchParams.get('limit') || '16';
   const page = searchParams.get('page') || '1';
   const order = searchParams.get('order') || 'Expensive';
-  const query = searchParams.get('query') || '';
+  const search = searchParams.get('query') || '';
 
   const { orderBy, orderDir } = catalogProductsFilter(order);
 
@@ -67,8 +68,8 @@ export const Catalog: React.FC = () => {
     try {
       setIsLoading(true);
 
-      if (query) {
-        const data = await getProductsByQuery(query);
+      if (query.trim()) {
+        const data = await getProductsByQuery(search);
 
         setIsLoading(false);
         handleCatalogData(data);
@@ -97,11 +98,11 @@ export const Catalog: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [page, limit, order, orderBy, orderDir, query]);
+  }, [page, limit, order, orderBy, orderDir, search]);
 
   useEffect(() => {
     fetchPhonesForCatalog();
-  }, [page, limit, order, orderBy, orderDir, query]);
+  }, [page, limit, order, orderBy, orderDir, search]);
 
   return (
     <>
@@ -131,7 +132,7 @@ export const Catalog: React.FC = () => {
                 />
               </div>
               <div className="catalog__sorts-items-search">
-                <Search />
+                <Search query={query} setQuery={setQuery} />
               </div>
             </div>
           </div>
