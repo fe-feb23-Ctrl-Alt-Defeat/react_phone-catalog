@@ -14,6 +14,7 @@ import {
 import * as Yup from 'yup';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import './signUp.scss';
+import { Button } from '../../../controls/Button/Button';
 
 interface FormValues {
   fullName: string;
@@ -107,21 +108,7 @@ export const SignUp: React.FC = () => {
               className="error-message error-border"
             />
 
-            {/* <Field
-              name="confirm_password"
-              type="password"
-              placeholder="Confirm Password"
-              className="contacts__field form-field"
-            />
-            <ErrorMessage
-              name="confirm_password"
-              component="div"
-              className="error-message error-border"
-            /> */}
-
-            <button className="signIN-button" type="submit">
-              SIGN UP
-            </button>
+            <Button classes="signIN-button" text="SIGN UP" />
           </Form>
         </Formik>
       </div>

@@ -13,6 +13,8 @@ interface FavoritesAndCartCountContextType {
   setFavoritesCount: Dispatch<SetStateAction<number[]>>;
   cartCount: number[];
   setCartCount: Dispatch<SetStateAction<number[]>>;
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const FavoritesAndCartCountContext = createContext<FavoritesAndCartCountContextType>({
@@ -20,6 +22,8 @@ export const FavoritesAndCartCountContext = createContext<FavoritesAndCartCountC
   setFavoritesCount: () => { },
   cartCount: [],
   setCartCount: () => { },
+  isModalOpen: false,
+  setIsModalOpen: () => { },
 });
 
 export const FavoritesAndCartCountContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
@@ -32,12 +36,15 @@ export const FavoritesAndCartCountContextProvider: FC<PropsWithChildren<{}>> = (
 
   const [favoritesCount, setFavoritesCount] = useState<number[]>(currentFavorites);
   const [cartCount, setCartCount] = useState<number[]>(dataToSetINcartCount);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const contextValue: FavoritesAndCartCountContextType = {
     favoritesCount,
     setFavoritesCount,
     cartCount,
     setCartCount,
+    isModalOpen,
+    setIsModalOpen,
   };
 
   return (

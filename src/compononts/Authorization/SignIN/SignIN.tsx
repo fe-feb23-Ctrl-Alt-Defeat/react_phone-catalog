@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Formik,
   Field,
@@ -10,6 +10,8 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import './signIN.scss';
+import { FavoritesAndCartCountContext } from '../../FavoritesCartContext/FavoritesCartContext';
+import { Button } from '../../../controls/Button/Button';
 
 interface FormValues {
   email: string;
@@ -17,6 +19,7 @@ interface FormValues {
 }
 
 export const SignIN: React.FC = () => {
+  const { setIsModalOpen } = useContext(FavoritesAndCartCountContext);
   const initialValues: FormValues = {
     email: '',
     password: '',
@@ -30,7 +33,7 @@ export const SignIN: React.FC = () => {
   const handleSubmit = (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     // Logic for form submission
     console.log('Form submission', values);
-
+    setIsModalOpen(prev => !prev);
     resetForm();
   };
 
@@ -55,9 +58,7 @@ export const SignIN: React.FC = () => {
             />
             <ErrorMessage name="password" component="p" className="field-error-message error-border" />
 
-            <button className="signIN-button" type="submit">
-              SIGN IN
-            </button>
+            <Button classes="signIN-button" text="SIGN IN" />
           </Form>
         </Formik>
       </div>
