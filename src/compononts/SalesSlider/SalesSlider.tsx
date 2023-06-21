@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
@@ -86,16 +87,10 @@ export const SalesSlider = () => {
     const root = document.documentElement;
 
     root.style.setProperty('--slider-width', `${widthSliderImg}px`);
-  }, [widthSliderImg]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-
-    root.style.setProperty('--slider-width', `${widthSliderImg}px`);
 
     const timer = setInterval(() => {
       hendleRightArrowClick();
-    }, 4000);
+    }, 3000);
 
     return () => {
       clearInterval(timer);
@@ -126,7 +121,7 @@ export const SalesSlider = () => {
             className="sliderBox__contents"
             style={{
               transform: `translateX(${offset}px)`,
-              transition: 'transform 1s ease',
+              transition: 'transform 0.8s ease',
             }}
           >
             {pictures.map((picture) => (
