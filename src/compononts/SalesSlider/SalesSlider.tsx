@@ -100,6 +100,20 @@ export const SalesSlider = () => {
     root.style.setProperty('--slider-width', `${widthSliderImg}px`);
   }, [widthSliderImg]);
 
+  useEffect(() => {
+    const root = document.documentElement;
+
+    root.style.setProperty('--slider-width', `${widthSliderImg}px`);
+
+    const timer = setInterval(() => {
+      hendleRightArrowClick();
+    }, 3000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [widthSliderImg]);
+
   return (
     <>
       <div className="container sliderText">
