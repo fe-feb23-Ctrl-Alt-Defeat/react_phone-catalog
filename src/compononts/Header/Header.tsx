@@ -17,6 +17,8 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { isModalOpen, setIsModalOpen } = useContext(FavoritesAndCartCountContext);
 
   const handleBurgerToggle = () => {
     if (window.innerWidth <= 768) {
@@ -25,6 +27,10 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
   };
 
   const { favoritesCount, cartCount } = useContext(FavoritesAndCartCountContext);
+
+  const handleShowModal = () => {
+    setIsModalOpen(prev => !prev);
+  };
 
   useEffect(() => {
     if (isBurgerOpened) {
@@ -164,7 +170,11 @@ export const Header: React.FC<Props> = ({ switchTheme, theme }) => {
             </NavLink>
 
             {/* login */}
-            <div className="header__shopping-bag">
+            <div
+              className="header__shopping-bag"
+              onClick={handleShowModal}
+
+            >
               <div className="header__shopping-bag-image">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="16" fill="none">
                   <path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />

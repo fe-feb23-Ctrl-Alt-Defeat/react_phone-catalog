@@ -1,5 +1,8 @@
 import React from 'react';
-// import { EmptyCatalog } from '../../compononts/EmptyCatalog/EmptyCatalog';
-import { Authorization } from '../../compononts/Authorization/Authorization';
+import { EmptyCatalog } from '../../compononts/EmptyCatalog/EmptyCatalog';
 
-export const Accessories = () => <Authorization />;
+export const Accessories = () => {
+  return (
+    <EmptyCatalog />
+  );
+};

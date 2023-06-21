@@ -1,0 +1,7 @@
+.routes {
+
+  &--onBlur {
+    filter: blur(15px);
+    pointer-events: none;
+  }
+}
