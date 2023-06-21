@@ -33,18 +33,6 @@ export const SalesSlider = () => {
     };
   }, [widthWindow]);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setHeightWindow(document.body.scrollHeight);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, [heightWindow]);
-
   let widthSliderImg = 0;
 
   if (widthWindow > 1200) {
@@ -107,7 +95,8 @@ export const SalesSlider = () => {
 
     const timer = setInterval(() => {
       hendleRightArrowClick();
-    }, 3000);
+    }, 4000);
+
 
     return () => {
       clearInterval(timer);
@@ -138,6 +127,7 @@ export const SalesSlider = () => {
             className="sliderBox__contents"
             style={{
               transform: `translateX(${offset}px)`,
+              transition: 'transform 1s ease',
             }}
           >
             {pictures.map((picture) => (

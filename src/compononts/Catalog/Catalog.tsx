@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
   Fragment,
+  useCallback,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -22,7 +23,8 @@ import { CardData } from '../../types/CardData';
 import { Search } from '../Search/Search';
 
 import './catalog.scss';
-// import { getSearchWith } from '../../utils/searchHelper';
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
+import { MessageError } from '../../types/MessageError';
 
 export interface Option {
   title: string;
@@ -40,33 +42,34 @@ const selectNum = {
 };
 
 export const Catalog: React.FC = () => {
+  const [searchParams] = useSearchParams();
+
   const [catalogData, setCatalogData] = useState<CardData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams] = useSearchParams();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [query, setQuery] = useState('');
 
   const limit = searchParams.get('limit') || '16';
   const page = searchParams.get('page') || '1';
   const order = searchParams.get('order') || 'Expensive';
-
-  const query = searchParams.get('query') || '';
+  const search = searchParams.get('query') || '';
 
   const { orderBy, orderDir } = catalogProductsFilter(order);
 
   const [selectedPage, setSelectedPage] = useState(limit);
   const [selectedFilter, setSelectedFilter] = useState(order);
-
   const [total, setTotal] = useState(0);
 
   const handleCatalogData = (data: CardData[]) => {
     setCatalogData(data);
   };
 
-  const fetchPhonesForCatalog = async () => {
+  const fetchPhonesForCatalog = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      if (query) {
-        const data = await getProductsByQuery(query);
+      if (query.trim()) {
+        const data = await getProductsByQuery(search);
 
         setIsLoading(false);
         handleCatalogData(data);
@@ -82,15 +85,24 @@ export const Catalog: React.FC = () => {
       handleCatalogData(data.rows);
       setTotal(data.count);
     } catch (error) {
-      console.error(error);
+      if (catalogData.length !== 0) {
+        setErrorMessage(MessageError.NO_RESULTS_FOUND);
+
+        setCatalogData([]);
+        setTotal(0);
+
+        return;
+      }
+
+      setErrorMessage(MessageError.SERVER_ERROR);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [page, limit, order, orderBy, orderDir, search]);
 
   useEffect(() => {
     fetchPhonesForCatalog();
-  }, [page, limit, order, orderBy, orderDir, query]);
+  }, [page, limit, order, orderBy, orderDir, search]);
 
   return (
     <>
@@ -120,12 +132,14 @@ export const Catalog: React.FC = () => {
                 />
               </div>
               <div className="catalog__sorts-items-search">
-                <Search />
+                <Search query={query} setQuery={setQuery} />
               </div>
             </div>
           </div>
 
-          {isLoading
+          {errorMessage && catalogData.length === 0 && <ErrorMessage errorTitle={errorMessage} />}
+
+          {(catalogData.length !== 0) && isLoading
             ? <Loader />
             : (
               <div className="catalog__products">
@@ -144,7 +158,7 @@ export const Catalog: React.FC = () => {
         </div>
       </div>
 
-      {!isLoading && (
+      {(catalogData.length !== 0) && !isLoading && (
         <div className="catalog__pagination">
           <Pagination limit={limit} total={total} page={page} />
         </div>
