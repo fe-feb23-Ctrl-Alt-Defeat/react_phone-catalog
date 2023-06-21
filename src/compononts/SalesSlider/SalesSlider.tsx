@@ -97,7 +97,6 @@ export const SalesSlider = () => {
       hendleRightArrowClick();
     }, 4000);
 
-
     return () => {
       clearInterval(timer);
     };
