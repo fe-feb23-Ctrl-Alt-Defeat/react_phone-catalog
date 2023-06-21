@@ -1,0 +1,21 @@
+@import '../../styles/index.scss';
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgba(247, 104, 104, 0.558);
+  width: max-content;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    // gap: 20px;
+
+
+    &_title {
+      color: $text-color;
+    }
+  }
+}
