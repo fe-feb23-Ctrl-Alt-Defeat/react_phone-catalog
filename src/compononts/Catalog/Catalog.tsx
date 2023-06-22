@@ -139,7 +139,7 @@ export const Catalog: React.FC = () => {
 
           {errorMessage && catalogData.length === 0 && <ErrorMessage errorTitle={errorMessage} />}
 
-          {(catalogData.length !== 0) && isLoading
+          {isLoading
             ? <Loader />
             : (
               <div className="catalog__products">

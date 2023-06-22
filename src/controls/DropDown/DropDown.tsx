@@ -47,7 +47,6 @@ export const DropDown: React.FC<Props> = (
         getSearchWith(searchParams, { limit: String(select) }),
       );
     } else {
-      console.log(`select  ${select}`);
       setSearchParams(
         getSearchWith(searchParams, { order: String(select) }),
       );
