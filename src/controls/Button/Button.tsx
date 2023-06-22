@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { MouseEventHandler } from 'react';
 import cn from 'classnames';
 import './Button.scss';
@@ -11,6 +12,7 @@ type Props = {
   onClick?: ButtonType;
   classes?: string;
   isSelected?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 };
 
 export const Button: React.FC<Props> = ({
@@ -18,11 +20,12 @@ export const Button: React.FC<Props> = ({
   onClick = () => { },
   classes = '',
   isSelected,
+  type = 'button',
 }) => {
   return (
     <button
       className={cn(`customButton ${classes}`, { 'button-add-to-cart--selected': isSelected })}
-      type="button"
+      type={type}
       onClick={onClick}
     >
       {text || (

@@ -58,7 +58,7 @@ export const SignIN: React.FC = () => {
             />
             <ErrorMessage name="password" component="p" className="field-error-message error-border" />
 
-            <Button classes="signIN-button" text="SIGN IN" />
+            <Button type="submit" classes="signIN-button" text="SIGN IN" />
           </Form>
         </Formik>
       </div>
