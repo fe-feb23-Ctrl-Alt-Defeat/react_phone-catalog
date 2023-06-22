@@ -108,7 +108,7 @@ export const SignUp: React.FC = () => {
               className="error-message error-border"
             />
 
-            <Button classes="signIN-button" text="SIGN UP" />
+            <Button type="submit" classes="signIN-button" text="SIGN UP" />
 
           </Form>
         </Formik>

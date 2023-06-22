@@ -239,9 +239,9 @@ export const PhoneInfo = () => {
 
                           <div className="available__price">
                             <div className="price">
-                              {phone?.priceRegular && <Price price={phone.priceRegular} classes="price__normal" />}
+                              {phone?.priceRegular && <Price price={phone.priceDiscount} classes="price__normal" />}
 
-                              {phone?.priceDiscount && <Price price={phone.priceDiscount} classes="price__discount" />}
+                              {phone?.priceDiscount && <Price price={phone.priceRegular} classes="price__discount" />}
                             </div>
                           </div>
 

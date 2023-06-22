@@ -90,7 +90,7 @@ export const SalesSlider = () => {
 
     const timer = setInterval(() => {
       hendleRightArrowClick();
-    }, 3000);
+    }, 7000);
 
     return () => {
       clearInterval(timer);
